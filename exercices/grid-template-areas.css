@@ -1,0 +1,13 @@
+body {
+  display: grid;
+  grid-template-areas:
+    "entete"
+    "navigation"
+    "contenu"
+    "pied";
+}
+ 
+header { grid-area: entete; }
+nav    { grid-area: navigation; }
+main   { grid-area: contenu; }
+footer { grid-area: pied; }

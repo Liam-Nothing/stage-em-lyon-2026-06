@@ -1,0 +1,9 @@
+:root {
+    --main-color: #fcf8f1;
+    --secondary-color: #71232f;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+}
