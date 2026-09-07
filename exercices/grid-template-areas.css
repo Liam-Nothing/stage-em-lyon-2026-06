@@ -6,8 +6,33 @@ body {
     "contenu"
     "pied";
 }
- 
-header { grid-area: entete; }
-nav    { grid-area: navigation; }
-main   { grid-area: contenu; }
-footer { grid-area: pied; }
+
+header {
+  grid-area: entete;
+}
+
+nav {
+  grid-area: navigation;
+}
+
+main {
+  grid-area: contenu;
+}
+
+footer {
+  grid-area: pied;
+}
+
+:root {
+  --main-color: #fcf8f1;
+  --secondary-color: #71232f;
+}
+
+nav {
+  background-color: var(--secondary-color);
+  color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 1rem;
+}
