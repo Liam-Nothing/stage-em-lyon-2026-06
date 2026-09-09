@@ -1,0 +1,41 @@
+:root {
+    --primaire: #F8F3E9;
+    --card: #FFFCF7;
+    --bordure: #EAE3D2;
+    --bouton: #6B2A35;
+    --secondaire-bouton: #45161E;
+    --text: #2D2B2A;
+    --secondaire-text: #575350;
+}
+
+h1 {
+    font-size: 47px;
+}
+
+h2 {
+    font-size: 39px;
+}
+
+h3 {
+    font-size: 33px;
+}
+
+h4 {
+    font-size: 27px;
+}
+
+h5 {
+    font-size: 23px;
+}
+
+.container {
+    width: 1200px;
+}
+
+.card {
+    width: 300px;
+    padding: 20px;
+    background: var(--card);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}

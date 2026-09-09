@@ -1,0 +1,36 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family: Roboto;
+    line-height: 1.5;
+    font-size: 16px;
+    color: var(--text);
+}
+
+main{
+    max-width: 1200px;
+}
+
+
+/*////// styles titre ////// */
+
+h1{
+    font-family: 'Times New Roman';
+}
+
+h2 {
+    font-family: 'Times New Roman';
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
