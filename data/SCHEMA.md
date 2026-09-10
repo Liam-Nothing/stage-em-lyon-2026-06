@@ -70,14 +70,16 @@
 | commentaire | string | oui |
 | date de publication du commentaire | string | oui | 
 | couverture | string | oui | 
+| pseudo-utilisateur | string | oui | 
 
 
 ## Exemple dans le json
 
 {
-    "id": "user-456-comments",
+    "id": "user-067-comments",
     "note" : 4,
     "commentaire" : "Très rythmé et plein de twists, c’est le genre de livre qui donne envie de lire la suite immédiatement. L’ambiance “jeu d’héritage” fonctionne super bien.",
     "date de publication du commentaire" : "juin 2026",
-    "couverture" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmAWl-92plBYEMtusXWMXc_qgh_neL3qbl9y3sgAs8Vg&s=10"
+    "couverture" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmAWl-92plBYEMtusXWMXc_qgh_neL3qbl9y3sgAs8Vg&s=10",
+    "pseudo-utilisateur":"lulu34",
 }

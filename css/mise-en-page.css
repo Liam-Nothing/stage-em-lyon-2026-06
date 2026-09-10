@@ -20,7 +20,9 @@ nav{
     gap: 9px;
 }
 
-
+.lien {
+    width: 30px;
+}
 
 
 /*///// STYLE FOOTER */
@@ -97,4 +99,8 @@ button.statut {
     border-color: #6b2a35;
     color: #6b2a35;
     background-color: #f8f3e9;
+}
+
+.icon {
+    width: 100px;
 }

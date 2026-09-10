@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,27 +10,68 @@
     <link rel="stylesheet" href="/css/composants.css">
     <title>Livrio</title>
 </head>
+
 <body>
     <header>
         <nav>
             <img src="/assets/logo.png" alt="logo-site">
             <div class="div-lien-nav">
                 <a href="">
-                    <img src="/assets/lens.svg" alt="icône-loupe">
+                    <img class="lien" src="/assets/lens.svg" alt="icône-loupe">
                 </a>
                 <a href="">
-                    <img src="/assets/library.svg" alt="icône-biblio">
+                    <img class="lien" src="/assets/library.svg" alt="icône-biblio">
                 </a>
                 <a href="">
-                    <img src="/assets/profile.svg" alt="icône-profil">
+                    <img class="lien" src="/assets/profile.svg" alt="icône-profil">
                 </a>
             </div>
-    
+
         </nav>
     </header>
     <main>
         <section>
-            <div class="container"></div>
+            <div class="container">
+                <fieldset>
+                    <legend>Filtrer par genre</legend>
+
+                    <div>
+                        <input type="checkbox" id="genre-roman" name="genre" value="roman">
+                        <label for="genre-roman">Roman</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="genre-sf" name="genre" value="science-fiction">
+                        <label for="genre-sf">Science-fiction</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="genre-fantasy" name="genre" value="fantasy">
+                        <label for="genre-fantasy">Fantasy</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="genre-policier" name="genre" value="policier">
+                        <label for="genre-policier">Policier</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="genre-bio" name="genre" value="biographie">
+                        <label for="genre-bio">Biographie</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="genre-jeunesse" name="genre" value="jeunesse">
+                        <label for="genre-jeunesse">Jeunesse</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="genre-bd" name="genre" value="bande-dessinee">
+                        <label for="genre-bd">Bande dessinée</label>
+                    </div>
+
+                </fieldset>
+            </div>
         </section>
     </main>
     <footer>
@@ -37,9 +79,9 @@
             <div class="logo-rs-colomn">
                 <img src="/assets/logo.png" alt="">
                 <div class="lien-reseaux-sociaux-row">
-                    <a href=""><img src="" alt="icône-facebook"></a>
-                    <a href=""><img src="" alt="icône-instagram"></a>
-                    <a href=""><img src="" alt="icône-x"></a>
+                    <a href=""><img class="icon" src="/assets/facebook.svg" alt="icône-facebook"></a>
+                    <a href=""><img class="icon" src="/assets/instagram.svg" alt="icône-instagram"></a>
+                    <a href=""><img class="icon" src="/assets/x.svg" alt="icône-x"></a>
                 </div>
             </div>
 
@@ -53,9 +95,9 @@
                 <h4>ABONNEZ-VOUS</h4>
                 <p>Recevez chaque moi la newsletter de Livrio</p>
                 <form action="#" method="post"></form>
-                    <label for="email">Entrer votre adresse mail</label>
-                    <input type="text" id="email">
-                    <button type="submit">Envoyer</button>
+                <label for="email">Entrer votre adresse mail</label>
+                <input type="text" id="email">
+                <button type="submit">Envoyer</button>
             </div>
 
         </div>
@@ -64,4 +106,5 @@
         </div>
     </footer>
 </body>
+
 </html>

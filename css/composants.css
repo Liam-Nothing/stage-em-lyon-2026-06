@@ -112,7 +112,83 @@ p.summury {
     display: flex;
   }
 
-/*DEUXIEME ETAT (survol de la sourie) /////////*/
+.div-couverture-colomn-index {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.grille-flex-wrap {
+    display: flex;
+    flex-wrap:wrap;
+    gap: 35px;
+    width: fit-content;
+    margin: auto;
+}
+
+img.couverture.card-fiche {
+    width: 230px;
+}
 
 
-/*TROISIEME ETAT (survol de la sourie) /////////*/
+/*//// template formulaire noter un livre CSS //////*/
+
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 0.5rem;
+}
+
+.note-etoile {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0.25rem;
+  justify-content: flex-end;
+}
+
+.note-etoile input {
+  position: absolute;
+  opacity: 0;
+}
+
+.note-etoile label {
+  font-size: 1.8rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.note-etoile input:checked ~ label,
+.note-etoile label:hover,
+.note-etoile label:hover ~ label {
+  color: #f5a623;
+}
+
+.note-etoile input:focus-visible + label {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* template avis utilisateur CSS////*/
+
+article {
+    width: fit-content;
+    background-color: #FFFCF7;
+    padding: 25px;
+    border-color: #EAE3D2;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+time {
+    text-align: end;
+}
