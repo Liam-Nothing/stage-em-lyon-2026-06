@@ -79,11 +79,22 @@ footer {
 button {
     background-color: var(--bouton);
     color: var(--primaire);
-    padding: 4px;
+    padding: 7px;
     border-color: var(--secondaire-bouton);
     border-style: solid;
     border-radius: 20px;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 15px;
+    padding-left: 15px;
     text-align: center;
+    border-color: #EAE3D2;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    font-size: 16px;
+}
+
+button.statut {
+    border-color: #6b2a35;
+    color: #6b2a35;
+    background-color: #f8f3e9;
 }
