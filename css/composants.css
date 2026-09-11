@@ -1,136 +1,137 @@
-
-
 /*//// COMPOSANTS VISUELS//////
 
 ///// template composant CARTE LIVRE CSS  ///////*/
 
-.couverture{
-    width: 280px;
+.couverture {
+  width: 280px;
 }
 
 .div-couverture-colomn {
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    padding: 40px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 40px;
 }
+
 .note-row {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 }
+
 .div-row {
-    display: flex;
-    flex-direction: row;
-    width: 1080px;
+  display: flex;
+  flex-direction: row;
+  width: 1080px;
 }
 
 .infos-row {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
 
 p.summury {
-    background-color: #FFFCF7;
-    padding: 10px;
+  background-color: #FFFCF7;
+  padding: 10px;
 }
 
 
 
 /* CHAMP DE SAISIE */
 
- .search-bar {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    display: flex;
-    align-items: center;
-  }
- 
-  .search-bar svg.search-icon {
-    position: absolute;
-    left: 13px;
-    color: var(--text-muted);
-    pointer-events: none;
-    flex-shrink: 0;
-  }
- 
-  .search-bar input {
-    width: 100%;
-    font-family: var(--font);
-    font-size: 14.5px;
-    color: var(--text);
-    background: var(--bg);
-    border: 1.5px solid var(--border);
-    border-radius: 999px;
-    padding: 10px 40px 10px 38px;
-    outline: none;
-    transition: border-color 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
-  }
- 
-  .search-bar input::placeholder {
-    color: var(--placeholder);
-  }
- 
-  .search-bar input:hover:not(:focus) {
-    border-color: #B4BAC2;
-  }
- 
-  .search-bar input:focus {
-    border-color: var(--border-focus);
-    box-shadow: 0 0 0 3px var(--ring-focus);
-    background: var(--bg);
-  }
- 
-  /* Bouton pour effacer, visible seulement quand il y a du texte */
-  .search-bar .clear-btn {
-    position: absolute;
-    right: 8px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
-    border: none;
-    border-radius: 50%;
-    background: var(--bg-subtle);
-    color: var(--text-muted);
-    cursor: pointer;
-    padding: 0;
-  }
- 
-  .search-bar .clear-btn:hover {
-    background: #E5E7EB;
-    color: var(--text);
-  }
- 
-  .search-bar input:not(:placeholder-shown) ~ .clear-btn {
-    display: flex;
-  }
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar svg.search-icon {
+  position: absolute;
+  left: 13px;
+  color: var(--text-muted);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.search-bar input {
+  width: 100%;
+  font-family: var(--font);
+  font-size: 14.5px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 40px 10px 38px;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+.search-bar input::placeholder {
+  color: var(--placeholder);
+}
+
+.search-bar input:hover:not(:focus) {
+  border-color: #B4BAC2;
+}
+
+.search-bar input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--ring-focus);
+  background: var(--bg);
+}
+
+/* Bouton pour effacer, visible seulement quand il y a du texte */
+.search-bar .clear-btn {
+  position: absolute;
+  right: 8px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+}
+
+.search-bar .clear-btn:hover {
+  background: #E5E7EB;
+  color: var(--text);
+}
+
+.search-bar input:not(:placeholder-shown)~.clear-btn {
+  display: flex;
+}
 
 .div-couverture-colomn-index {
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
 }
 
 .grille-flex-wrap {
-    display: flex;
-    flex-wrap:wrap;
-    gap: 35px;
-    width: fit-content;
-    margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  width: fit-content;
+  margin: auto;
 }
 
 img.couverture.card-fiche {
-    width: 230px;
+  max-width: 100%;
+  height: auto;
 }
 
 
@@ -166,13 +167,13 @@ legend {
   cursor: pointer;
 }
 
-.note-etoile input:checked ~ label,
+.note-etoile input:checked~label,
 .note-etoile label:hover,
-.note-etoile label:hover ~ label {
+.note-etoile label:hover~label {
   color: #f5a623;
 }
 
-.note-etoile input:focus-visible + label {
+.note-etoile input:focus-visible+label {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
 }
@@ -180,15 +181,15 @@ legend {
 /* template avis utilisateur CSS////*/
 
 article {
-    width: fit-content;
-    background-color: #FFFCF7;
-    padding: 25px;
-    border-color: #EAE3D2;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
+  width: fit-content;
+  background-color: #FFFCF7;
+  padding: 25px;
+  border-color: #EAE3D2;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 time {
-    text-align: end;
+  text-align: end;
 }
