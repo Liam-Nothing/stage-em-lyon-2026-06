@@ -29,7 +29,10 @@ h5 {
 }
 
 .container {
-    width: 1200px;
+    width: 100%;
+    max-width: 1200px; 
+    margin: auto;
+    padding: 0 16px;
 }
 
 .card {
