@@ -8,6 +8,7 @@
 
 header{
     background-color: var(--bouton);
+    color: var(--primaire);
 }
 
 /*//// STYLE NAV /////*/
@@ -93,7 +94,7 @@ button {
     padding-right: 15px;
     padding-left: 15px;
     text-align: center;
-    border-color: #EAE3D2;
+    border-color: var(--bordure);
     display: flex;
     flex-direction: row;
     gap: 40px;
@@ -101,9 +102,9 @@ button {
 }
 
 button.statut {
-    border-color: #6b2a35;
-    color: #6b2a35;
-    background-color: #f8f3e9;
+    border-color: var(--bouton);
+    color: var(--bouton);
+    background-color: var(--primaire);
 }
 
 .icon {
@@ -111,3 +112,4 @@ button.statut {
     width: 100px;
     height: auto;
 }
+
