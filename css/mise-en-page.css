@@ -113,3 +113,8 @@ button.statut {
     height: auto;
 }
 
+.div-photo {
+    background-color: var(--bouton);
+    color: var(--primaire);
+    border-radius: 5px;
+}
