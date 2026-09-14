@@ -1,4 +1,8 @@
-/*//// COMPOSANTS VISUELS//////
+/*//// COMPOSANTS VISUELS///////*
+
+
+
+
 
 ///// template composant CARTE LIVRE CSS  ///////*/
 
@@ -39,6 +43,11 @@ p.summury {
   padding: 10px;
 }
 
+
+
+img.logo-nav {
+    width: 150px;
+}
 
 
 /* CHAMP DE SAISIE */

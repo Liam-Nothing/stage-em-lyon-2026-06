@@ -84,6 +84,8 @@ footer {
     padding: 3px;
 }
 
+/*---- css bouton interaction---*/
+
 button {
     background-color: var(--bouton);
     color: var(--primaire);
@@ -106,6 +108,28 @@ button.statut {
     color: var(--bouton);
     background-color: var(--primaire);
 }
+
+button:hover{
+    background-color: var(--primaire);
+    color: var(--bouton);
+    border-color: var(--bouton);
+}
+
+button:focus-visible{
+    background-color: var(--primaire);
+    color: var(--bouton);
+    border-color: var(--bouton);
+}
+
+button:disabled{
+    background-color: rgba(128, 128, 128, 0.709);
+    color: black;
+    border-color: black;
+    cursor: not-allowed;
+}
+
+
+
 
 .icon {
     max-width: 100%;
