@@ -3,7 +3,7 @@
 ## livres.json
 
 | Champ | Type | Obligatoire | 
-|---|---|---|---|
+|---|---|---|
 | id | string | oui |
 | titre | string | oui | 
 | auteur | string | oui |
@@ -16,6 +16,7 @@
 | note moyenne | number | oui |   
 
 ### Exemple dans le json
+```json
 {
     "id" : "livre-045",
     "titre" : "Le Crime de l'Orient-Express",
@@ -27,16 +28,15 @@
     "couverture du livre" : "https://encrypted-tbn0.gstatic.com/images q=tbn:ANd9GcSHnyIx5TC3r7IboaTMQ0fnt2PhhIcIbwnHgHhZnFaDOw&s=10",
     "serie" : "non",
     "note moyenne" : 4,8
-
 }
+```
 
-////////////////////
 
 
 ## utilisateur.json
 
 | Champ | Type | Obligatoire | 
-|---|---|---|---|
+|---|---|---|
 | id | string | oui |
 | pseudo | string | oui | 
 | biographie | string | oui |
@@ -47,7 +47,7 @@
 
 
 ### Exemple dans le json
-
+```json
 {
     "id": "user-456",
     "pseudo": "Chema-mystery",
@@ -57,14 +57,12 @@
     "stat livre en cours" : 3,
     "stat livre pile à lire" : 2,
 }
-
-
-////////////////
+```
 
 ## avis-utilisateur.json
 
 | Champ | Type | Obligatoire | 
-|---|---|---|---|
+|---|---|---|
 | id | string | oui |
 | note | number | oui | 
 | commentaire | string | oui |
@@ -74,7 +72,7 @@
 
 
 ## Exemple dans le json
-
+```json
 {
     "id": "user-067-comments",
     "note" : 4,
@@ -83,3 +81,4 @@
     "couverture" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmAWl-92plBYEMtusXWMXc_qgh_neL3qbl9y3sgAs8Vg&s=10",
     "pseudo-utilisateur":"lulu34",
 }
+```
