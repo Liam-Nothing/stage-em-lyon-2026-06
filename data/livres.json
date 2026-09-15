@@ -170,4 +170,82 @@
         "serie": "non",
         "noteMoyenne": 3.9
     }
+    ,
+    {
+        "id": "0015",
+        "titre": "L'Alchimiste",
+        "auteur": "Paulo Coelho",
+        "dateDePublication": "1988",
+        "genre": "Philosophie",
+        "resume": "Santiago, jeune berger andalou, part à la recherche d'un trésor et découvre le sens de sa propre légende personnelle.",
+        "nombreDePage": 190,
+        "couvertureLivre": "../assets/l'alchimiste.jpg",
+        "serie": "non",
+        "noteMoyenne": 4
+    }
+     ,
+    {
+        "id": "0016",
+        "titre": "L'As de cœur",
+        "auteur": "Morgane Moncomble",
+        "dateDePublication": "2022",
+        "genre": "Romance",
+        "resume": "Rose et Levi s'allient pour le Tournoi mondial de poker à Las Vegas, entre vengeance, secrets et attirance grandissante.",
+        "nombreDePage": 400,
+        "couvertureLivre": "../assets/l'asdecoeur.jpg",
+        "serie": "oui",
+        "noteMoyenne": 4.3
+    }
+     ,
+    {
+        "id": "0017",
+        "titre": "Hunger Games",
+        "auteur": "Suzanne Collins",
+        "dateDePublication": "2009",
+        "genre": "Dystopie",
+        "resume": "Katniss se porte volontaire pour sauver sa sœur et participe à un jeu télévisé mortel où des adolescents s'entretuent pour survivre.",
+        "nombreDePage": 400,
+        "couvertureLivre": "../assets/l'asdecoeur.jpg",
+        "serie": "oui",
+        "noteMoyenne": 4.2
+    }
+      ,
+    {
+        "id": "0018",
+        "titre": "Le Meilleur des mondes",
+        "auteur": "Aldous Huxley",
+        "dateDePublication": "1932",
+        "genre": "Dystopie",
+        "resume": "Dans une société où les êtres humains sont conçus et conditionnés en usine, un individu commence à douter de ce bonheur programmé.",
+        "nombreDePage": 250,
+        "couvertureLivre": "../assets/lemeilleurdesmondes.jpg",
+        "serie": "non",
+        "noteMoyenne": 4.1
+    }
+    ,
+    {
+        "id": "0019",
+        "titre": "Le Seigneur des Anneaux",
+        "auteur": "J.R.R. Tolkien",
+        "dateDePublication": "1954-1955",
+        "genre": "Fantasy",
+        "resume": "Frodon, jeune Hobbit, hérite malgré lui d'un anneau à la puissance infinie que Sauron veut récupérer pour dévaster le monde, et doit le détruire en Terre du Milieu.",
+        "nombreDePage": 1200,
+        "couvertureLivre": "../assets/leseigneurdesanneaux.jpg",
+        "serie": "oui",
+        "noteMoyenne": 4.4
+    }
+    ,
+    {
+        "id": "0020",
+        "titre": "Les Fourberies de Scapin",
+        "auteur": "Molière",
+        "dateDePublication": "1671",
+        "genre": "Comédie",
+        "resume": "Le valet rusé Scapin multiplie les stratagèmes pour aider deux jeunes gens à épouser celles qu'ils aiment, au nez de leurs pères.",
+        "nombreDePage": 100,
+        "couvertureLivre": "../assets/lesfourberiesdescapin.jpg",
+        "serie": "non",
+        "noteMoyenne": 3.9
+    }
 ]

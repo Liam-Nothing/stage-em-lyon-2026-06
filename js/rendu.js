@@ -31,10 +31,27 @@ grilleLivre.className = "grille-flex-wrap";
 
 console.log(grilleLivre);
 
+/// CARTE LIVRE INDEX
+
+
+
 let carteLivre = document.createElement("div");
+carteLivre.className = "div-couverture-colomn-index";
+grilleLivre.appendChild(carteLivre)
+
+
+let lienLivre = document.createElement("a");
+carteLivre.appendChild(lienLivre);
+console.log(carteLivre);
+
+let couvertureLivre = document.createElement("img");
+lienLivre.appendChild(couvertureLivre);
 
 
 
+let titreLivre = document.createElement("h5");
+carteLivre.appendChild(titreLivre)
+console.log(carteLivre);
 
 
 
@@ -55,26 +72,25 @@ fetch(LIVRES_DEMO)
         data.LIVRES_DEMO.forEach(element => {
             let carteLivre = document.createElement("div");
             carteLivre.className = "div-couverture-colomn-index";
-            grilleLivre.appendChild(carteLivre);
-            console.log(grilleLivre);
-            
-            
+            grilleLivre.appendChild(carteLivre)
+
 
             let lienLivre = document.createElement("a");
+            carteLivre.appendChild(lienLivre);
+            console.log(carteLivre);
+
             let couvertureLivre = document.createElement("img");
             lienLivre.appendChild(couvertureLivre);
-            couvertureLivre.className = "couverture card-fiche";
-            couvertureLivre.src = element["image-url"];
-            carteLivre.appendChild(carteLivre);
+
+
 
             let titreLivre = document.createElement("h5");
-            titreLivre.textContent = element.titre;
-            carteLivre.appendChild(titreLivre);
-
+            carteLivre.appendChild(titreLivre)
+            console.log(carteLivre);
           
             
         });
 
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => console.error('Error:', error))
 

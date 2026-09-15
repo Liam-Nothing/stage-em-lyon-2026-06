@@ -1,11 +1,164 @@
 [
     {
-        "id": "user-067-comments",
+        "id": "avis-001",
+        "note": 5,
+        "commentaire": "Un classique indémodable. Chaque relecture m'apporte quelque chose de nouveau, la profondeur psychologique de Julien Sorel est remarquable.",
+        "datePublicationCommentaire": "février 2026",
+        "couverture": "../assets/rouge et noir.png",
+        "idUtilisateur": "user-460",
+        "idLivre": "0001"
+    },
+    {
+        "id": "avis-002",
         "note": 4,
-        "commentaire": "Très rythmé et plein de twists, c’est le genre de livre qui donne envie de lire la suite immédiatement. L’ambiance “jeu d’héritage” fonctionne super bien.",
+        "commentaire": "Pas mon genre habituel mais je me suis laissée surprendre par l'ambition dévorante du personnage principal, c'est prenant.",
+        "datePublicationCommentaire": "mars 2026",
+        "couverture": "../assets/rouge et noir.png",
+        "idUtilisateur": "user-212",
+        "idLivre": "0001"
+    },
+    {
+        "id": "avis-003",
+        "note": 4,
+        "commentaire": "Très rythmé et plein de twists, c'est le genre de livre qui donne envie de lire la suite immédiatement. L'ambiance \"jeu d'héritage\" fonctionne super bien.",
         "datePublicationCommentaire": "juin 2026",
-        "couverture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmAWl-92plBYEMtusXWMXc_qgh_neL3qbl9y3sgAs8Vg&s=10",
-        "idUtilisateur": "lulu34",
-        "idLivre": "0-045"
+        "couverture": "../assets/inheritanceee-games.png",
+        "idUtilisateur": "user-456",
+        "idLivre": "0002"
+    },
+    {
+        "id": "avis-004",
+        "note": 5,
+        "commentaire": "Un coup de cœur absolu. J'ai adoré l'ambiance manoir mystérieux et les frères Hawthorne sont hyper attachants, j'ai englouti le tome en deux jours.",
+        "datePublicationCommentaire": "avril 2026",
+        "couverture": "../assets/inheritanceee-games.png",
+        "idUtilisateur": "user-212",
+        "idLivre": "0002"
+    },
+    {
+        "id": "avis-005",
+        "note": 4,
+        "commentaire": "Un thriller malin, les énigmes sont bien construites même si certains retournements se devinent un peu trop tôt.",
+        "datePublicationCommentaire": "mai 2026",
+        "couverture": "../assets/inheritanceee-games.png",
+        "idUtilisateur": "user-461",
+        "idLivre": "0002"
+    },
+    {
+        "id": "avis-006",
+        "note": 5,
+        "commentaire": "Glaçant et terriblement efficace. Ce roman devrait être lu par tous les lycéens, il montre à quel point on peut basculer vite dans le fanatisme de groupe.",
+        "datePublicationCommentaire": "septembre 2025",
+        "couverture": "../assets/vague.png",
+        "idUtilisateur": "user-456",
+        "idLivre": "0003"
+    },
+    {
+        "id": "avis-007",
+        "note": 4,
+        "commentaire": "Une expérience de pensée redoutable sur l'endoctrinement, écrite simplement mais qui frappe fort. Se lit en une soirée.",
+        "datePublicationCommentaire": "octobre 2025",
+        "couverture": "../assets/vague.png",
+        "idUtilisateur": "user-459",
+        "idLivre": "0003"
+    },
+    {
+        "id": "avis-008",
+        "note": 5,
+        "commentaire": "J'ai bien aimé ce livre, pas évident à lire mais quand on va au-delà de la première impression de lecture, on en apprécie un peu plus la profondeur.",
+        "datePublicationCommentaire": "janvier 2026",
+        "couverture": "../assets/madame bovary.png",
+        "idUtilisateur": "user-212",
+        "idLivre": "0005"
+    },
+    {
+        "id": "avis-009",
+        "note": 4,
+        "commentaire": "Flaubert dissèque l'ennui et les illusions d'Emma avec une précision chirurgicale. Une lecture exigeante mais marquante.",
+        "datePublicationCommentaire": "novembre 2025",
+        "couverture": "../assets/madame bovary.png",
+        "idUtilisateur": "user-460",
+        "idLivre": "0005"
+    },
+    {
+        "id": "avis-010",
+        "note": 3,
+        "commentaire": "Le style est magnifique mais j'ai trouvé le rythme assez lent, pas évident de s'attacher à Emma sur la durée.",
+        "datePublicationCommentaire": "décembre 2025",
+        "couverture": "../assets/madame bovary.png",
+        "idUtilisateur": "user-459",
+        "idLivre": "0005"
+    },
+    {
+        "id": "avis-011",
+        "note": 5,
+        "commentaire": "Jude et Cardan, quelle tension ! L'univers des Fæs est ultra riche et les enjeux de pouvoir à la cour tiennent en haleine du début à la fin.",
+        "datePublicationCommentaire": "juillet 2025",
+        "couverture": "../assets/prince cruel.png",
+        "idUtilisateur": "user-458",
+        "idLivre": "0006"
+    },
+    {
+        "id": "avis-012",
+        "note": 4,
+        "commentaire": "Une fantasy qui sort du lot, la relation amour-haine entre les deux héros est parfaitement dosée. J'ai dévoré ce tome.",
+        "datePublicationCommentaire": "août 2025",
+        "couverture": "../assets/prince cruel.png",
+        "idUtilisateur": "user-212",
+        "idLivre": "0006"
+    },
+    {
+        "id": "avis-013",
+        "note": 5,
+        "commentaire": "Un huis clos parfait, Agatha Christie manipule le lecteur de bout en bout et la résolution finale est un coup de maître.",
+        "datePublicationCommentaire": "mars 2025",
+        "couverture": "../assets/orient express.png",
+        "idUtilisateur": "user-456",
+        "idLivre": "0007"
+    },
+    {
+        "id": "avis-014",
+        "note": 4,
+        "commentaire": "Éclairant et parfois un peu dérangeant, on reconnaît immédiatement ces mécanismes d'influence dans son quotidien après cette lecture.",
+        "datePublicationCommentaire": "février 2025",
+        "couverture": "../assets/orient express.png",
+        "idUtilisateur": "user-461",
+        "idLivre": "0008"
+    },
+    {
+        "id": "avis-015",
+        "note": 4,
+        "commentaire": "Une dystopie efficace portée par une héroïne touchante, j'ai aimé la montée en puissance de Juliette au fil des chapitres.",
+        "datePublicationCommentaire": "avril 2025",
+        "couverture": "../assets/shatter me.png",
+        "idUtilisateur": "user-459",
+        "idLivre": "0009"
+    },
+    {
+        "id": "avis-016",
+        "note": 3,
+        "commentaire": "Le concept est intéressant mais j'ai eu du mal avec le style très fragmenté, ça casse un peu le rythme de lecture pour moi.",
+        "datePublicationCommentaire": "mai 2025",
+        "couverture": "../assets/shatter me.png",
+        "idUtilisateur": "user-458",
+        "idLivre": "0009"
+    },
+    {
+        "id": "avis-017",
+        "note": 5,
+        "commentaire": "Le tout premier tome reste magique à chaque relecture, la découverte de Poudlard donne toujours autant envie d'y être.",
+        "datePublicationCommentaire": "juin 2025",
+        "couverture": "../assets/harryy-potter.png",
+        "idUtilisateur": "user-458",
+        "idLivre": "0010"
+    },
+    {
+        "id": "avis-018",
+        "note": 5,
+        "commentaire": "Un incontournable, même en le relisant adulte on retrouve intact l'émerveillement de la première lecture.",
+        "datePublicationCommentaire": "juillet 2025",
+        "couverture": "../assets/harryy-potter.png",
+        "idUtilisateur": "user-461",
+        "idLivre": "0010"
     }
 ]
