@@ -1,4 +1,3 @@
-
 const LIVRES_DEMO = [
 
     {
@@ -98,16 +97,8 @@ console.log(rechercheLivreTitre(LIVRES_DEMO, "Le Prince Cruel"));
 
 //test fonction sort trier par année /////
 function triParTitre(livres) {
-    return[...livres].sort((a,b)=> a.titre.localCompare(b.titre));
-    
-}
-console.log(triParTitre(LIVRES_DEMO).map(livre=>livre.titre));
-
-
-
-
-
-
+    return [...livres].sort((a,b) => a.titre.localCompare(b.titre));
+} 
 
 
 
@@ -136,8 +127,3 @@ LIVRES_DEMO.forEach((livre) => {
 
   liste.appendChild(li);
 });
-
-
-
-
-

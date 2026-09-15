@@ -1,0 +1,56 @@
+[
+    {
+        "id": "user-456",
+        "pseudo": "Chema-mystery",
+        "biographie": "Mes genres préférés sont les romans policiers, les thrillers et les polars",
+        "dateCreationCompte": "juillet 2026",
+        "statLu": 7,
+        "statEnCours": 3,
+        "statPileALire": 2
+    },
+    {
+        "id": "user-212",
+        "pseudo": "Sissi98",
+        "biographie": "Passionnée de romance contemporaine, de young adult et de comédies romantiques légères",
+        "dateCreationCompte": "juin 2016",
+        "statLu": 280,
+        "statEnCours": 1,
+        "statPileALire": 10
+    },
+    {
+        "id": "user-458",
+        "pseudo": "Alice_au_pays_des_livres",
+        "biographie": "Fan inconditionnelle de fantasy épique, de sagas interminables et de cartes de mondes imaginaires",
+        "dateCreationCompte": "octobre 2024",
+        "statLu": 58,
+        "statEnCours": 1,
+        "statPileALire": 27
+    },
+    {
+        "id": "user-459",
+        "pseudo": "Nova_lit",
+        "biographie": "Adepte de science-fiction, de dystopies et de récits d'anticipation qui font réfléchir",
+        "dateCreationCompte": "janvier 2026",
+        "statLu": 19,
+        "statEnCours": 4,
+        "statPileALire": 9
+    },
+    {
+        "id": "user-460",
+        "pseudo": "Encre_et_Melancolie",
+        "biographie": "Amoureuse des classiques français, de la littérature du XIXe siècle et des drames psychologiques",
+        "dateCreationCompte": "juin 2023",
+        "statLu": 73,
+        "statEnCours": 1,
+        "statPileALire": 11
+    },
+    {
+        "id": "user-461",
+        "pseudo": "Lumen.reads",
+        "biographie": "Dévore les thrillers psychologiques, les récits de développement personnel et les biographies inspirantes",
+        "dateCreationCompte": "avril 2026",
+        "statLu": 12,
+        "statEnCours": 3,
+        "statPileALire": 6
+    }
+]

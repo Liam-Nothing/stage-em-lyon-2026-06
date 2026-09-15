@@ -1,26 +1,173 @@
 [
     {
-        "titre": "Prince Cruel",
-        "auteur": "Holly Black",
-        "genre": "Fantasy",
-        "resume": "Enlevée au monde des mortels lorsqu’elle n’était qu’une enfant, Jude vit parmi les Fæs, des créatures sublimes, immortelles… et cruelles. Mais être humaine à Terrafæ est un défi incessant. Et savoir manier l’épée, maîtriser les usages, se protéger des sortilèges, tout cela ne suffit pas. D’autant que Jude s’est fait un ennemi de choix : le Prince Cardan, héritier de la couronne. Pour gagner sa place à la cour, appartenir vraiment à cette terre de magie, Jude doit le défier, quelles qu’en soient les conséquences.",
-        "couverture": "https://m.media-amazon.com/images/I/81tmwelY-XL.jpg"
+        "id": "0001",
+        "titre": "Le Rouge et le Noir",
+        "auteur": "Stendhal",
+        "dateDePublication": "1830",
+        "genre": "Romance",
+        "resume": "Julien Sorel est le fils d'un charpentier de Verrières, un jeune homme intelligent, cultivé (il connaît le latin et la Bible par cœur) mais d'origine modeste. Fasciné par Napoléon et rêvant de gloire, il comprend que l'époque ne permet plus l'ascension par l'armée (le rouge) comme du temps de l'Empire, mais par l'Église (le noir). Il décide donc de dissimuler son ambition sous une façade de piété.",
+        "nombreDePage": 512,
+        "couvertureLivre": "../assets/rouge et noir.png",
+        "serie": "non",
+        "noteMoyenne": 4.3
     },
     {
+        "id": "0002",
+        "titre": "Inheritance Games : Inheritance Games - Tome 01",
+        "auteur": "Jennyfer Lynn Barness",
+        "dateDePublication": "2022",
+        "genre": "Thriller",
+        "resume": "Que feriez-vous si vous receviez l'héritage d'un inconnu milliardaire convoité par ses sulfureux petits-fils ? Avery Grambs, lycéenne sans histoire et sans le sou, rêve d'une bourse d'études pour entrer à l'université. Son destin bascule soudain quand Tobias Hawthorne, un célèbre milliardaire, lui lègue sa fortune. Cet argent tombe à pic, mais il y a un problème : Avery n'a jamais entendu parler de cet homme ! Pour toucher sa part d'héritage, elle doit néanmoins emménager dans la mystérieuse demeure des Hawthorne. Elle y côtoie les quatre petits-fils du défunt, tous aussi insondables que séduisants... et surtout bien décidés à l'empêcher de subtiliser leur dû !Happée par un tourbillon de manigances, d'énigmes et de trahisons, Avery va devoir se prêter à un inquiétant jeu de dupes qui pourrait bouleverser sa vie à jamais....",
+        "nombreDePage": 456,
+        "couvertureLivre": "../assets/inheritanceee-games.png",
+        "serie": "oui",
+        "noteMoyenne": 4
+    },
+    {
+        "id": "0003",
+        "titre": "La Vague",
+        "auteur": "Todd Strasser",
+        "dateDePublication": "1981",
+        "genre": "Thriller",
+        "resume": "Un professeur d'histoire, Ben Ross, donne un cours sur le nazisme et l'Allemagne hitlérienne. Ses élèves ont du mal à comprendre comment tout un peuple a pu suivre Hitler et fermer les yeux sur les atrocités commises. Pour leur faire ressentir concrètement ce mécanisme, le professeur décide de mener une expérience en classe. Il instaure un mouvement qu'il appelle La Vague, fondé sur trois principes : la discipline, la communauté, l'action. Les élèves doivent se tenir droits, se lever pour répondre, utiliser un salut particulier et un slogan commun. Au départ, cela ressemble à un jeu motivant : les élèves les plus faibles ou marginalisés se sentent enfin intégrés, l'ambiance de classe s'améliore, la cohésion grandit. Mais très vite, le mouvement dérape. Les élèves commencent à recruter de nouveaux membres, à exclure ceux qui refusent d'adhérer, voire à les harceler. Une hiérarchie se met en place, avec des gardes chargés de surveiller la loyauté des membres. Ce qui devait être une leçon devient un véritable engrenage totalitaire, échappant au contrôle du professeur lui-même. Face à l'ampleur du phénomène, Ben Ross décide de mettre fin à l'expérience de façon spectaculaire : il réunit tous les élèves en leur faisant croire qu'ils vont rencontrer le leader national du mouvement, puis leur révèle qu'il n'y a pas de leader — leur montrant ainsi, par l'exemple, à quel point ils ont été manipulables, exactement comme le peuple allemand sous le nazisme.",
+        "nombreDePage": 160,
+        "couvertureLivre": "../assets/vague.png",
+        "serie": "non",
+        "noteMoyenne": 4.6
+    },
+    {
+        "id": "0004",
+        "titre": "Orgueil & Préjugé",
+        "auteur": "Jane Austen",
+        "dateDePublication": "1813",
+        "genre": "Romance",
+        "resume": "Dans l'Angleterre géorgienne, la famille Bennet doit marier ses cinq filles pour assurer leur avenir. Elizabeth Bennet, vive et indépendante d'esprit, croise la route de Mr Darcy, un riche gentleman à l'orgueil apparent. Entre préjugés, quiproquos et rebondissements sociaux, les deux personnages vont devoir dépasser leurs a priori pour se comprendre et s'aimer",
+        "nombreDePage": 456,
+        "couvertureLivre": "../assets/orgueil.png",
+        "serie": "non",
+        "noteMoyenne": 4.3
+    },
+    {
+        "id": "0005",
+        "titre": "Madame Bovary",
+        "auteur": "Gustave Flaubert",
+        "dateDePublication": "1857",
+        "genre": "Roman",
+        "resume": "Emma Bovary rêve d'une vie romanesque, mais son mariage terne et ses adultères la mènent à la ruine.",
+        "nombreDePage": 450,
+        "couvertureLivre": "../assets/madame bovary.png",
+        "serie": "non",
+        "noteMoyenne": 3.7
+    },
+    {
+        "id": "0006",
+        "titre": "Le Prince Cruel",
+        "auteur": "Holly Black (traduction française de Leslie Damant-Jeandel)",
+        "dateDePublication": "22/04/2020",
+        "genre": "Fantasy",
+        "resume": "Jude a 17 ans et vit à la Haute Cour de Domelfe dans le royaume de Terrafæ. Enlevée au monde des mortels quand elle n'était qu'une enfant et élevée avec ses sœurs parmi les puissants, elle a appris à se protéger des sortilèges et à se battre à l'épée. Pourtant, elle subit jour après jour les moqueries et les insultes, car elle n'est qu'une humaine, vouée à la mort, dans un monde où règnent les Fæs, créatures sublimes, immortelles et cruelles. Personne ne la hait plus que le Prince Cardan, le plus jeune des héritiers de la couronne, qui semble décidé à lui nuire. Jude devra pourtant tout risquer pour gagner sa place à la cour",
+        "nombreDePage": 544,
+        "couvertureLivre": "../assets/prince cruel.png",
+        "serie": "oui",
+        "noteMoyenne": 4
+    },
+    {
+        "id": "0007",
+        "titre": "Le Crime de l'Orient-Express",
+        "auteur": "Agatha Christie",
+        "dateDePublication": "1934",
+        "genre": "Policier",
+        "resume": "Hercule Poirot enquête sur un meurtre à bord de l'Orient-Express, où chaque passager semble suspect.",
+        "nombreDePage": 250,
+        "couvertureLivre": "../assets/orient express.png",
+        "serie": "oui",
+        "noteMoyenne": 4.2
+    },
+    {
+        "id": "0008",
+        "titre": "Influence et Manipulation",
+        "auteur": "Robert Cialdini",
+        "dateDePublication": "2021",
+        "genre": "Psychologie",
+        "resume": "Cialdini dévoile six (sept dans la dernière édition) principes psychologiques exploités pour nous influencer au quotidien.",
+        "nombreDePage": 350,
+        "couvertureLivre": "../assets/orient express.png",
+        "serie": "non",
+        "noteMoyenne": 4.2
+    },
+    {
+        "id": "0009",
+        "titre": "Shatter Me",
+        "auteur": "Tahereh Mafi",
+        "dateDePublication": "2011",
+        "genre": "Dystopie",
+        "resume": "Juliette, dont le toucher est mortel, est emprisonnée puis recrutée par un régime totalitaire qui veut exploiter son pouvoir.",
+        "nombreDePage": 350,
+        "couvertureLivre": "../assets/shatter me.png",
+        "serie": "oui",
+        "noteMoyenne": 4
+    },
+    {
+        "id": "0010",
         "titre": "Harry Potter à l'école des sorciers",
-        "auteur": "J. K. Rowling",
+        "auteur": "J.K. Rowling",
+        "dateDePublication": "1997",
         "genre": "Fantasy",
-        "resume": "Le jour de ses onze ans, Harry Potter, un orphelin élevé par un oncle et une tante qui le détestent, voit son existence bouleversée. Un géant vient le chercher pour l'emmener à Poudlard, une école de sorcellerie ! Voler en balai, jeter des sorts, combattre les trolls : Harry se révèle un sorcier doué. Mais quel est le mystère qui l'entoure ? Et qui est l'effroyable V..., le mage dont personne n'ose prononcer le nom ? Amitié, surprises, dangers, scènes comiques, Harry découvre ses pouvoirs et la vie à Poudlard.",
-        "couverture": "https://cdn.cultura.com/cdn-cgi/image/width=830/media/pim/TITELIVE/74_9782070584628_1_75.jpg"
+        "resume": "Harry découvre qu'il est un sorcier et entre à Poudlard, où l'attend une aventure magique et périlleuse.",
+        "nombreDePage": 300,
+        "couvertureLivre": "../assets/harryy-potter.png",
+        "serie": "oui",
+        "noteMoyenne": 4.5
     },
     {
-        "titre": "Hunger Games",
-        "auteur": "Suzanne Collins",
-        "genre": "Science-fiction",
-        "resume": "Chaque année, depuis 74 ans, les Hunger Games ont lieu. Ils forcent vingt-quatre enfants issus des douze districts (un garçon et une fille) âgés de douze à dix-huit ans (qui sont choisis durant la cérémonie de la «Moisson ») à s'entre-tuer dans une arène. Ces Jeux s'ont organisés pour maintenir le joug du Capitole sur les districts. Ils ont été créés pour punir la rébellion engendrée par le district Treize. Katniss Everdeen est une adolescente de seize ans originaire du district Douze. L'année des 74es Hunger Games, sa petite sœur est tirée au sort à la cérémonie de la « Moisson ». Katniss se porte alors volontaire comme tribut pour prendre sa place et la sauver d'une mort certaine. Katniss décide de tout faire pour sortir vivante de l'arène, même si elle doit aller à l'encontre de ses propres limites. Mais quand un des tributs lui avoue l'affection qu'il a pour elle et qu'une autre se met à lui rappeler sa petite sœur, il lui devient difficile de comprendre comment survivre sans tuer ses « proches ».",
-        "couverture": "https://images.epagine.fr/690/9782266182690_1_75.jpg"
+        "id": "0011",
+        "titre": "Les Chroniques des Bridgerton",
+        "auteur": "Julia Quinn",
+        "dateDePublication": "2000-2013",
+        "genre": "Romance",
+        "resume": "Saga suivant les huit enfants Bridgerton dans le Londres de la Régence, chacun cherchant l'amour.",
+        "nombreDePage": 350,
+        "couvertureLivre": "../assets/bridgerton.png",
+        "serie": "oui",
+        "noteMoyenne": 4.1
+    }
+    ,
+    {
+        "id": "0012",
+        "titre": "Les Hauts de Hurle-Vent",
+        "auteur": "Emily Brontë",
+        "dateDePublication": "1847",
+        "genre": "Romance",
+        "resume": "Une histoire d'amour destructrice entre Cathy et Heathcliff hante le domaine isolé des Hauts de Hurle-Vent.",
+        "nombreDePage": 400,
+        "couvertureLivre": "../assets/hurle-vent.png",
+        "serie": "non",
+        "noteMoyenne": 4.1
+    }
+     ,
+    {
+        "id": "0013",
+        "titre": "Le Tour du monde en 80 jours",
+        "auteur": "Jules Verne",
+        "dateDePublication": "1872",
+        "genre": "Aventure",
+        "resume": "Phileas Fogg parie qu'il peut faire le tour du monde en 80 jours et se lance dans un périple mouvementé.",
+        "nombreDePage": 280,
+        "couvertureLivre": "../assets/hurle-vent.png",
+        "serie": "non",
+        "noteMoyenne": 4.1
+    }
+    ,
+    {
+        "id": "0014",
+        "titre": "Pierre et Jean",
+        "auteur": "Guy de Maupassant",
+        "dateDePublication": "1888",
+        "genre": "Roman réaliste",
+        "resume": "Deux frères voient leur relation se briser après un héritage qui révèle un lourd secret de famille.",
+        "nombreDePage": 200,
+        "couvertureLivre": "../assets/Pierre-et-Jean.jpg",
+        "serie": "non",
+        "noteMoyenne": 3.9
     }
 ]
-
-
-

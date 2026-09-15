@@ -1,6 +1,10 @@
 
+// fonction filtre par genre //
 function filtrerGenre(livre,genre) {
     return livre.filter(livre=> livre.genre ===genre);
 }
 
-console.log(filtrerGenre(LIVRES_DEMO,"Romance"));
+// fonction tri par note //
+function trierParNote(livres) {
+    return [...livres].sort((a, b) => a.noteMoyenne - b.noteMoyenne);
+}
