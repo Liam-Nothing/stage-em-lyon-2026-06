@@ -106,5 +106,9 @@ function creerCarteLivre(grilleLivre, livre) {
   titreLivre.textContent = livre.titre;
   carteLivre.appendChild(titreLivre);
 
+  let auteurLivre = document.createElement("p");
+  auteurLivre.textContent = livre.auteur;
+  carteLivre.appendChild(auteurLivre)
+
   return carteLivre;
 }
