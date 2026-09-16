@@ -46,7 +46,7 @@ p.summury {
 
 
 img.logo-nav {
-    width: 150px;
+  width: 150px;
 }
 
 
@@ -140,14 +140,9 @@ img.logo-nav {
   justify-content: center;
 }
 
-/* img.couverture.card-fiche {
-  max-width: 100%;
-  height: auto;
-}*/
-
-.div-couverture-colomn.img{
-    width: 324px;
-    height: 381px;
+.div-couverture-colomn.img {
+  width: 324px;
+  height: 381px;
 }
 
 
@@ -169,7 +164,6 @@ legend {
 .note-etoile {
   display: flex;
   flex-direction: row-reverse;
-  gap: 0.25rem;
   justify-content: flex-end;
 }
 
@@ -182,6 +176,11 @@ legend {
   font-size: 1.8rem;
   color: #ccc;
   cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 0.5em;
+  height: 2em;
+  overflow: hidden;
 }
 
 .note-etoile input:checked~label,
@@ -193,6 +192,21 @@ legend {
 .note-etoile input:focus-visible+label {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
+}
+
+.note-etoile label::before {
+  content: "★";
+  position: absolute;
+  top: 0;
+  width: 1em;
+}
+
+.note-etoile label.demi-gauche::before {
+  left: 0;
+}
+
+.note-etoile label.demi-droite::before {
+  left: -0.5em;
 }
 
 /* template avis utilisateur CSS////*/

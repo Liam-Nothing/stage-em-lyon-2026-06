@@ -17,17 +17,18 @@ nav{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 15px;
+    padding: 20px;
 }
 
 .div-lien-nav {
     display: flex;
     flex-direction: row;
-    gap: 9px;
+    gap: 30px;
+    padding: 10px 15px;
 }
 
 .lien {
-    width: 30px;
+    width: 35px;
 }
 
 
@@ -35,6 +36,7 @@ nav{
 
 footer {
     background-color: var(--bouton);
+    color: var(--primaire);
 }
 
 .div-signature {
@@ -78,10 +80,8 @@ footer {
 .div-footer {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
-    gap: 45px;
-    padding: 3px;
+    gap: 100px;
 }
 
 /*---- css bouton interaction---*/
@@ -128,12 +128,9 @@ button:disabled{
     cursor: not-allowed;
 }
 
-
-
-
 .icon {
     max-width: 100%;
-    width: 100px;
+    width: 75px;
     height: auto;
 }
 

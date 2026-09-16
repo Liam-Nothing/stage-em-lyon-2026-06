@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
     <header>
         <nav>
             <a href="../index-accueil/index.html">
-                <img class="logo-nav"src="../assets/livrio-logo.png"alt="logo-site">
+                <img class="logo-nav div-lien-nav" src="../assets/livrio-logo.png" alt="logo-site">
             </a>
             <div class="div-lien-nav">
                 <a href="../index-accueil/index.html">
@@ -34,10 +34,8 @@
         <section>
             <div class="div-row container fil-activite">
 
-                <div class="div-couverture-colomn">
-                    <img class="couverture card"
-                        src="../assets/harryy-potter.png"
-                        alt="couverture-livre">
+                <div class="div-couverture-colomn" id="contenu-livre">
+                    <img class="couverture card" src="../assets/harryy-potter.png" alt="couverture-livre">
                     <button>Ajouter <img src="../assets/bouton.svg" alt=""></button>
                     <div class="note-row">
                         <p>4,5</p>
@@ -47,21 +45,37 @@
                     <div class="formulaire-note">
                         <fieldset>
                             <legend>Ma note</legend>
+
                             <div class="note-etoile">
-                                <input type="radio" id="etoile5" name="note" value="5">
-                                <label for="etoile5" title="5 étoiles">★</label>
+                                <input type="radio" id="etoile-5" name="note" value="5">
+                                <label class="demi-droite" for="etoile-5" title="5 étoiles"></label>
 
-                                <input type="radio" id="etoile4" name="note" value="4">
-                                <label for="etoile4" title="4 étoiles">★</label>
+                                <input type="radio" id="etoile-4-5" name="note" value="4.5">
+                                <label class="demi-gauche" for="etoile-4-5" title="4,5 étoiles"></label>
 
-                                <input type="radio" id="etoile3" name="note" value="3">
-                                <label for="etoile3" title="3 étoiles">★</label>
+                                <input type="radio" id="etoile-4" name="note" value="4">
+                                <label class="demi-droite" for="etoile-4" title="4 étoiles"></label>
 
-                                <input type="radio" id="etoile2" name="note" value="2">
-                                <label for="etoile2" title="2 étoiles">★</label>
+                                <input type="radio" id="etoile-3-5" name="note" value="3.5">
+                                <label class="demi-gauche" for="etoile-3-5" title="3,5 étoiles"></label>
 
-                                <input type="radio" id="etoile1" name="note" value="1">
-                                <label for="etoile1" title="1 étoiles">★</label>
+                                <input type="radio" id="etoile-3" name="note" value="3">
+                                <label class="demi-droite" for="etoile-3" title="3 étoiles"></label>
+
+                                <input type="radio" id="etoile-2-5" name="note" value="2.5">
+                                <label class="demi-gauche" for="etoile-2-5" title="2,5 étoiles"></label>
+
+                                <input type="radio" id="etoile-2" name="note" value="2">
+                                <label class="demi-droite" for="etoile-2" title="2 étoiles"></label>
+
+                                <input type="radio" id="etoile-1-5" name="note" value="1.5">
+                                <label class="demi-gauche" for="etoile-1-5" title="1,5 étoiles"></label>
+
+                                <input type="radio" id="etoile-1" name="note" value="1">
+                                <label class="demi-droite" for="etoile-1" title="1 étoile"></label>
+
+                                <input type="radio" id="etoile-0-5" name="note" value="0.5">
+                                <label class="demi-gauche" for="etoile-0-5" title="0,5 étoile"></label>
                             </div>
                         </fieldset>
                     </div>
@@ -112,19 +126,20 @@
     </main>
     <footer>
         <div class="div-footer container">
-            <div class="logo-rs-colomn">
-                <img src="../assets/logo.png" alt="">
-                <div class="lien-reseaux-sociaux-row">
-                    <a href=""><img class="icon" src="../assets/facebook.svg" alt="icône-facebook"></a>
-                    <a href=""><img class="icon" src="../assets/instagram.svg" alt="icône-instagram"></a>
-                    <a href=""><img class="icon" src="../assets/x.svg" alt="icône-x"></a>
+            <div>
+                <div class="contact-us">
+                    <h4>CONTACTEZ-NOUS</h4>
+                    <p>livrio@gmail.com</p>
+                    <p>04 56 78 90 34</p>
                 </div>
-            </div>
-
-            <div class="contact-us">
-                <h4>CONTACTEZ-NOUS</h4>
-                <p>livrio@gmail.com</p>
-                <p>04 56 78 90 34</p>
+                <div class="logo-rs-colomn">
+                    <img src="../assets/logo.png" alt="">
+                    <div class="lien-reseaux-sociaux-row">
+                        <a href=""><img class="icon" src="../assets/facebook.svg" alt="icône-facebook"></a>
+                        <a href=""><img class="icon" src="../assets/instagram.svg" alt="icône-instagram"></a>
+                        <a href=""><img class="icon" src="../assets/x.svg" alt="icône-x"></a>
+                    </div>
+                </div>
             </div>
 
             <div class="subscribe">
@@ -135,13 +150,14 @@
                 <input type="text" id="email">
                 <button type="submit">Envoyer</button>
             </div>
+
         </div>
         <div class="div-signature">
             <p>Stage - septembre 2026</p>
         </div>
     </footer>
-<script src="../js/donnees.js"></script>
-<script src="../js/livre.js"></script>
+    <script src="../js/donnees.js"></script>
+    <script src="../js/livre.js"></script>
 </body>
 
 </html>
