@@ -179,7 +179,7 @@ legend {
   position: relative;
   display: inline-block;
   width: 0.5em;
-  height: 2em;
+  height: 1.5em;
   overflow: hidden;
 }
 
@@ -207,6 +207,15 @@ legend {
 
 .note-etoile label.demi-droite::before {
   left: -0.5em;
+}
+
+.etoile-icon {
+  width: 25px;
+}
+
+.demie {
+  width: 15px;
+  height: 24px;
 }
 
 /* template avis utilisateur CSS////*/
