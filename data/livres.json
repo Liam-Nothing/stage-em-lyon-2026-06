@@ -91,7 +91,7 @@
         "genre": "Psychologie",
         "resume": "Cialdini dévoile six (sept dans la dernière édition) principes psychologiques exploités pour nous influencer au quotidien.",
         "nombreDePage": 350,
-        "couvertureLivre": "../assets/orient express.png",
+        "couvertureLivre": "../assets/influence.png",
         "serie": "non",
         "noteMoyenne": 4.2
     },
@@ -153,7 +153,7 @@
         "genre": "Aventure",
         "resume": "Phileas Fogg parie qu'il peut faire le tour du monde en 80 jours et se lance dans un périple mouvementé.",
         "nombreDePage": 280,
-        "couvertureLivre": "../assets/hurle-vent.png",
+        "couvertureLivre": "../assets/tour du monde.png",
         "serie": "non",
         "noteMoyenne": 4.1
     }
@@ -205,7 +205,7 @@
         "genre": "Dystopie",
         "resume": "Katniss se porte volontaire pour sauver sa sœur et participe à un jeu télévisé mortel où des adolescents s'entretuent pour survivre.",
         "nombreDePage": 400,
-        "couvertureLivre": "../assets/l'asdecoeur.jpg",
+        "couvertureLivre": "../assets/hunger games.png",
         "serie": "oui",
         "noteMoyenne": 4.2
     }
