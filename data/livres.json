@@ -63,7 +63,7 @@
         "id": "0006",
         "titre": "Le Prince Cruel",
         "auteur": "Holly Black (traduction française de Leslie Damant-Jeandel)",
-        "dateDePublication": "22/04/2020",
+        "dateDePublication": "2020",
         "genre": "Fantasy",
         "resume": "Jude a 17 ans et vit à la Haute Cour de Domelfe dans le royaume de Terrafæ. Enlevée au monde des mortels quand elle n'était qu'une enfant et élevée avec ses sœurs parmi les puissants, elle a appris à se protéger des sortilèges et à se battre à l'épée. Pourtant, elle subit jour après jour les moqueries et les insultes, car elle n'est qu'une humaine, vouée à la mort, dans un monde où règnent les Fæs, créatures sublimes, immortelles et cruelles. Personne ne la hait plus que le Prince Cardan, le plus jeune des héritiers de la couronne, qui semble décidé à lui nuire. Jude devra pourtant tout risquer pour gagner sa place à la cour",
         "nombreDePage": 544,
@@ -130,8 +130,7 @@
         "couvertureLivre": "../assets/bridgerton.png",
         "serie": "oui",
         "noteMoyenne": 4.1
-    }
-    ,
+    },
     {
         "id": "0012",
         "titre": "Les Hauts de Hurle-Vent",
@@ -143,8 +142,7 @@
         "couvertureLivre": "../assets/hurle-vent.png",
         "serie": "non",
         "noteMoyenne": 4.1
-    }
-     ,
+    },
     {
         "id": "0013",
         "titre": "Le Tour du monde en 80 jours",
@@ -156,8 +154,7 @@
         "couvertureLivre": "../assets/tour du monde.png",
         "serie": "non",
         "noteMoyenne": 4.1
-    }
-    ,
+    },
     {
         "id": "0014",
         "titre": "Pierre et Jean",
@@ -169,8 +166,7 @@
         "couvertureLivre": "../assets/Pierre-et-Jean.jpg",
         "serie": "non",
         "noteMoyenne": 3.9
-    }
-    ,
+    },
     {
         "id": "0015",
         "titre": "L'Alchimiste",
@@ -182,8 +178,7 @@
         "couvertureLivre": "../assets/l'alchimiste.jpg",
         "serie": "non",
         "noteMoyenne": 4
-    }
-     ,
+    },
     {
         "id": "0016",
         "titre": "L'As de cœur",
@@ -195,8 +190,7 @@
         "couvertureLivre": "../assets/l'asdecoeur.jpg",
         "serie": "oui",
         "noteMoyenne": 4.3
-    }
-     ,
+    },
     {
         "id": "0017",
         "titre": "Hunger Games",
@@ -208,8 +202,7 @@
         "couvertureLivre": "../assets/hunger games.png",
         "serie": "oui",
         "noteMoyenne": 4.2
-    }
-      ,
+    },
     {
         "id": "0018",
         "titre": "Le Meilleur des mondes",
@@ -221,8 +214,7 @@
         "couvertureLivre": "../assets/lemeilleurdesmondes.jpg",
         "serie": "non",
         "noteMoyenne": 4.1
-    }
-    ,
+    },
     {
         "id": "0019",
         "titre": "Le Seigneur des Anneaux",
@@ -234,8 +226,7 @@
         "couvertureLivre": "../assets/leseigneurdesanneaux.jpg",
         "serie": "oui",
         "noteMoyenne": 4.4
-    }
-    ,
+    },
     {
         "id": "0020",
         "titre": "Les Fourberies de Scapin",

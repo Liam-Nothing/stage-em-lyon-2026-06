@@ -2,6 +2,7 @@
     {
         "id": "avis-001",
         "note": 5,
+        "pseudo" : "Sissi98",
         "commentaire": "Un classique indémodable. Chaque relecture m'apporte quelque chose de nouveau, la profondeur psychologique de Julien Sorel est remarquable.",
         "datePublicationCommentaire": "février 2026",
         "couverture": "../assets/rouge et noir.png",

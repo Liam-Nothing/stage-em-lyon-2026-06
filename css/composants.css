@@ -41,9 +41,12 @@
 p.summury {
   background-color: #FFFCF7;
   padding: 10px;
+
 }
 
-
+.div-infos-colomn {
+  width: 600px;
+}
 
 img.logo-nav {
   width: 150px;

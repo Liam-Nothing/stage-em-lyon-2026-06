@@ -57,3 +57,6 @@ function remplirFicheLivre(livre) {
 
   document.querySelector(".valeur-note").textContent = livre.noteMoyenne;
 }
+
+// Lancement
+initLivre();

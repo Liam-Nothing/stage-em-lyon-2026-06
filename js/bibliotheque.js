@@ -23,7 +23,7 @@ function creerCarteLivre(grilleLivre, livre) {
   grilleLivre.appendChild(carteLivre);
 
   let lienLivre = document.createElement("a");
-  lienLivre.href = `livre.html?id=${livre.id}`;
+  lienLivre.href = `../fiche-livre/livre.html?id=${livre.id}`;
   carteLivre.appendChild(lienLivre);
 
   let couvertureLivre = document.createElement("img");
