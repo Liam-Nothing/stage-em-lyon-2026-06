@@ -86,3 +86,26 @@
     "idLivre":"0-045"
 }
 ```
+
+
+
+### Mes notes 
+
+| Champ | Type | Obligatoire | 
+|---|---|---|
+| titre | string | oui |
+    | maNote | string | oui | 
+    | monCommentaire | string | oui |
+
+
+### Exemple
+```json
+
+{
+    "mesNotes":{
+        "Shatter Me" : {
+            "maNote": 4,
+            "monCommentaire":"Je l'ai lu en 3 jours, l'intrigue est très intéressante, je recommande"
+        }
+    }
+}
