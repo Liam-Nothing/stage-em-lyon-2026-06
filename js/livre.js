@@ -6,14 +6,10 @@ async function initLivre() {
   let id = parametres.get("id");
   console.log("id lu dans l'URL :", id);
 
-  const notes = lireNotes();
-    const noteExistante = notes[id];
-    if (noteExistante !== undefined) {
-        const inputACcocher = document.querySelector(`input[name="note"][value="${noteExistante}"]`);
-        if (inputACcocher) {
-            inputACcocher.checked = true;
-        }
-    }
+
+
+
+
 
   const inputsEtoiles = document.querySelectorAll('input[name="note"]');
 
@@ -23,10 +19,6 @@ async function initLivre() {
       enregistrerNote(id, note);
     });
   });
-
-  
-
-
 
 
 
