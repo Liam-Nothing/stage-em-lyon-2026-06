@@ -1,12 +1,6 @@
 
-
-
-
 let grilleLivre = document.querySelector(".grille-flex-wrap");
-
-
 grilleLivre = document.querySelector(".grille-flex-wrap");
-
 
 document.addEventListener("DOMContentLoaded", async () => {
   let grilleLivre = document.querySelector(".grille-flex-wrap");
@@ -31,13 +25,22 @@ function creerCarteLivre(grilleLivre, livre) {
   couvertureLivre.alt = livre.titre;
   lienLivre.appendChild(couvertureLivre);
 
+  /*const mesNotes = lireNotes();
+  if (livre.id in mesNotes) {
+    let badgeNote = document.createElement("img");
+    badgeNote.className = "badge-note-perso";
+    badgeNote.src = "../assets/badge-note.svg";
+    badgeNote.alt = `noté ${mesNotes[livre.id]}/5 par vous`;
+    carteLivre.appendChild(badgeNote);
+  }*/
+
   let titreLivre = document.createElement("h5");
   titreLivre.textContent = livre.titre;
   carteLivre.appendChild(titreLivre);
 
   let auteurLivre = document.createElement("p");
   auteurLivre.textContent = livre.auteur;
-  carteLivre.appendChild(auteurLivre)
+  carteLivre.appendChild(auteurLivre);
 
   return carteLivre;
 }

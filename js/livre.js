@@ -6,6 +6,31 @@ async function initLivre() {
   let id = parametres.get("id");
   console.log("id lu dans l'URL :", id);
 
+  const notes = lireNotes();
+    const noteExistante = notes[id];
+    if (noteExistante !== undefined) {
+        const inputACcocher = document.querySelector(`input[name="note"][value="${noteExistante}"]`);
+        if (inputACcocher) {
+            inputACcocher.checked = true;
+        }
+    }
+
+  const inputsEtoiles = document.querySelectorAll('input[name="note"]');
+
+  inputsEtoiles.forEach(input => {
+    input.addEventListener('change', () => {
+      const note = parseFloat(input.value);
+      enregistrerNote(id, note);
+    });
+  });
+
+  
+
+
+
+
+
+
   // Étape 2 : gérer le cas "id absent"
   if (id === null) {
     afficherErreur();
@@ -60,3 +85,6 @@ function remplirFicheLivre(livre) {
 
 // Lancement
 initLivre();
+
+
+
