@@ -47,7 +47,6 @@ async function initAvis() {
     // Étape 1 : lire l'id dans l'URL
     let parametresAvis = new URLSearchParams(window.location.search);
     let idLivre = parametresAvis.get("id");
-    console.log("id lu dans l'URL :", idLivre);
 
     // Étape 2 : gérer le cas "id absent"
     if (idLivre === null) {
@@ -60,6 +59,7 @@ async function initAvis() {
 
     // Étape 4 : chercher l'avis correspondant à l'id
     let avisFiltres = avisDuLivre(aviss, idLivre);
+
 
     // Étape 6 : afficher l'avis trouvé
     afficherAvisDuLivre(aviss, idLivre);
@@ -102,3 +102,12 @@ function remplirFicheAvis(avis, modele) {
 }
 
 initAvis();
+
+//fonction pour calculer la note moyenne des avis
+function calculerNoteMoyenne(avisLivre) {
+    if (avisLivre.length === 0) {
+        return null;
+    }
+    const somme = avisLivre.reduce((total, unAvis) => total + unAvis.note, 0);
+    return Math.round((somme / avisLivre.length) * 10) / 10;
+}
