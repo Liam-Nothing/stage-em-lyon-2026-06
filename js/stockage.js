@@ -1,7 +1,7 @@
 
 /// FONCTION lireNotes ///////
 
-const mesNotes = {
+/*const mesNotes = {
     "mesNotes": {
         "0003": {
             "titre": "La Vague",
@@ -14,11 +14,12 @@ const mesNotes = {
             "monCommentaire": "L'histoire est très intéressante, je recommande"
         }
     }
-};
+};*/
 
 JSON.stringify(mesNotes);
 
 localStorage.setItem("mesNotes", JSON.stringify(mesNotes));
+
 
 function lireNotes() {
     try {
@@ -40,6 +41,9 @@ function enregistrerNote(idLivre, maNote) {
 
 }
 
+
+///// 3. LANCER L'AFFICHAGE AU CHARGEMENT //////
+//afficherNoteExistante(idLivre);
 
 ///FONCTION supprimerNote ////
 

@@ -94,6 +94,10 @@ img.logo-nav {
   background: var(--bg);
 }
 
+input[type="text"] {
+    background-color: #ffffffab;
+}
+
 /* Bouton pour effacer, visible seulement quand il y a du texte */
 .search-bar .clear-btn {
   position: absolute;

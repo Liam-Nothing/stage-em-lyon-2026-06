@@ -111,3 +111,29 @@ function calculerNoteMoyenne(avisLivre) {
     const somme = avisLivre.reduce((total, unAvis) => total + unAvis.note, 0);
     return Math.round((somme / avisLivre.length) * 10) / 10;
 }
+
+
+//// FONCTION NORMALISER LE TEXTE ////
+
+function normaliser(texte) {
+    return texte
+    .toLowerCase()
+    .normalize ('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+    
+}
+
+//// FONCTION CHERCHERLIVRE() /////
+
+function chercherLivres(livres, requete) {
+    const requeteNormalisee = normaliser(requete);
+
+    return livres.filter(livre=> {
+        const titreNormalise = normaliser(livre.titre);
+        const auteurNormalise = normaliser(livre.auteur);
+
+        return titreNormalise.includes(requeteNormalisee) || auteurNormalise.includes(requeteNormalisee);
+    });
+}
+
+
