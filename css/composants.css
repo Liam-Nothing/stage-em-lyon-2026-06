@@ -92,10 +92,11 @@ img.logo-nav {
   border-color: var(--border-focus);
   box-shadow: 0 0 0 3px var(--ring-focus);
   background: var(--bg);
+  background-color: #ffffffab;
 }
 
 input[type="text"] {
-    background-color: #ffffffab;
+  background-color: #ffffffab;
 }
 
 /* Bouton pour effacer, visible seulement quand il y a du texte */
@@ -237,4 +238,13 @@ article {
 
 time {
   text-align: end;
+}
+
+.badge-ma-note {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
 }

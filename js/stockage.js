@@ -14,11 +14,11 @@
             "monCommentaire": "L'histoire est très intéressante, je recommande"
         }
     }
-};*/
+};
 
 JSON.stringify(mesNotes);
 
-localStorage.setItem("mesNotes", JSON.stringify(mesNotes));
+localStorage.setItem("mesNotes", JSON.stringify(mesNotes));*/
 
 
 function lireNotes() {

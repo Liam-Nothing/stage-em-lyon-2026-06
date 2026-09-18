@@ -71,7 +71,7 @@ function avisDuLivre(aviss, idLivre) {
 
 function afficherAvisDuLivre(avis, idLivre) {
     const conteneur = document.querySelector(".div-avis");
-    const modele = conteneur.querySelector("article"); // on le récupère AVANT
+    const modele = conteneur.querySelector("article"); 
     const avisFiltres = avisDuLivre(avis, idLivre);
 
     conteneur.querySelectorAll("article").forEach(a => a.remove());
@@ -101,7 +101,9 @@ function remplirFicheAvis(avis, modele) {
     return fiche;
 }
 
-initAvis();
+if (document.querySelector(".div-avis")) {
+  initAvis();
+}
 
 //fonction pour calculer la note moyenne des avis
 function calculerNoteMoyenne(avisLivre) {
@@ -137,3 +139,43 @@ function chercherLivres(livres, requete) {
 }
 
 
+///FONCTION AFFICHERLIVRE /////
+
+function afficherLivres(livres) {
+  const grilleLivre = document.querySelector(".grille-flex-wrap");
+  grilleLivre.innerHTML = ""; // on vide la grille avant de la remplir
+
+  livres.forEach(livre => {
+    creerCarteLivre(grilleLivre, livre);
+
+  });
+}
+
+////// FONCTON AFFICHER ETAT VIDE //////
+
+function afficherEtatVide() {
+  const grilleLivre = document.querySelector(".grille-flex-wrap");
+  grilleLivre.innerHTML = `<p class="etat-vide">Aucun résultat trouvé</p>`;
+}
+
+
+let livres = [];
+
+const champRecherche = document.querySelector(".search-bar input");
+
+document.addEventListener("DOMContentLoaded", async () => {
+  livres = await chargerLivres();
+  afficherLivres(livres);
+});
+
+
+champRecherche.addEventListener("input", () => {
+  const requete = champRecherche.value;
+  const resultats = chercherLivres(livres, requete);
+
+  if (resultats.length === 0) {
+    afficherEtatVide();
+  } else {
+    afficherLivres(resultats);
+  }
+});

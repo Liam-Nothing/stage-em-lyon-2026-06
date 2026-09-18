@@ -1,15 +1,4 @@
 
-let grilleLivre = document.querySelector(".grille-flex-wrap");
-grilleLivre = document.querySelector(".grille-flex-wrap");
-
-document.addEventListener("DOMContentLoaded", async () => {
-  let grilleLivre = document.querySelector(".grille-flex-wrap");
-  let livres = await chargerLivres();
-
-  livres.forEach(livre => {
-    creerCarteLivre(grilleLivre, livre);
-  });
-});
 
 function creerCarteLivre(grilleLivre, livre) {
   let carteLivre = document.createElement("div");
@@ -25,13 +14,14 @@ function creerCarteLivre(grilleLivre, livre) {
   couvertureLivre.alt = livre.titre;
   lienLivre.appendChild(couvertureLivre);
 
-  /*const mesNotes = lireNotes();
-  if (livre.id in mesNotes) {
+  /*const maNote = notes[livre.id];
+  if (maNote !== undefined) {
     let badgeNote = document.createElement("img");
-    badgeNote.className = "badge-note-perso";
-    badgeNote.src = "../assets/badge-note.svg";
-    badgeNote.alt = `noté ${mesNotes[livre.id]}/5 par vous`;
-    carteLivre.appendChild(badgeNote);
+    badgeNote.className = "badge-ma-note";
+    badgeNote.src = "../assets/badge.svg";
+    badgeNote.alt = "Livre noté";
+    badgeNote.title = `Ma note : ${maNote}/5`;
+    lienLivre.appendChild(badgeNote);
   }*/
 
   let titreLivre = document.createElement("h5");
