@@ -1,14 +1,27 @@
 
 // fonction filtre par genre //
-function filtrerGenre(livre, genre) {
-    return livre.filter(livre => livre.genre === genre);
+function filtrerParGenre(livres, genre) {
+    if (genre === "tous") {
+        return [...livres];
+    }
+    return livres.filter(livre => livre.genre === genre);
 }
 
 
-// fonction tri par note //
-function trierParNote(livres) {
-    return [...livres].sort((a, b) => a.noteMoyenne - b.noteMoyenne);
+// fonction tri livre //
+function trierLivres(livres, critere) {
+    switch (critere) {
+        case "note-desc":
+            return [...livres].sort((a, b) => b.noteMoyenne - a.noteMoyenne);
+        case "titre-az":
+            return [...livres].sort((a, b) => a.titre.localeCompare(b.titre));
+        case "annee-desc":
+            return [...livres].sort((a, b) => b.dateDePublication - a.dateDePublication);
+        default:
+            return [...livres];
+    }
 }
+
 
 
 // fonction charger JSON //
@@ -71,7 +84,7 @@ function avisDuLivre(aviss, idLivre) {
 
 function afficherAvisDuLivre(avis, idLivre) {
     const conteneur = document.querySelector(".div-avis");
-    const modele = conteneur.querySelector("article"); 
+    const modele = conteneur.querySelector("article");
     const avisFiltres = avisDuLivre(avis, idLivre);
 
     conteneur.querySelectorAll("article").forEach(a => a.remove());
@@ -102,7 +115,7 @@ function remplirFicheAvis(avis, modele) {
 }
 
 if (document.querySelector(".div-avis")) {
-  initAvis();
+    initAvis();
 }
 
 //fonction pour calculer la note moyenne des avis
@@ -119,10 +132,10 @@ function calculerNoteMoyenne(avisLivre) {
 
 function normaliser(texte) {
     return texte
-    .toLowerCase()
-    .normalize ('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
-    
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+
 }
 
 //// FONCTION CHERCHERLIVRE() /////
@@ -130,7 +143,7 @@ function normaliser(texte) {
 function chercherLivres(livres, requete) {
     const requeteNormalisee = normaliser(requete);
 
-    return livres.filter(livre=> {
+    return livres.filter(livre => {
         const titreNormalise = normaliser(livre.titre);
         const auteurNormalise = normaliser(livre.auteur);
 
@@ -142,40 +155,112 @@ function chercherLivres(livres, requete) {
 ///FONCTION AFFICHERLIVRE /////
 
 function afficherLivres(livres) {
-  const grilleLivre = document.querySelector(".grille-flex-wrap");
-  grilleLivre.innerHTML = ""; // on vide la grille avant de la remplir
+    const grilleLivre = document.querySelector(".grille-flex-wrap");
+    grilleLivre.innerHTML = ""; // on vide la grille avant de la remplir
 
-  livres.forEach(livre => {
-    creerCarteLivre(grilleLivre, livre);
+    livres.forEach(livre => {
+        creerCarteLivre(grilleLivre, livre);
 
-  });
+    });
 }
 
 ////// FONCTON AFFICHER ETAT VIDE //////
 
 function afficherEtatVide() {
-  const grilleLivre = document.querySelector(".grille-flex-wrap");
-  grilleLivre.innerHTML = `<p class="etat-vide">Aucun résultat trouvé</p>`;
+    const grilleLivre = document.querySelector(".grille-flex-wrap");
+    grilleLivre.innerHTML = `<p class="etat-vide">Aucun résultat trouvé</p>`;
+
+    grilleLivre.querySelector(".btn-reinitialiser").addEventListener("click", () => {
+        champRecherche.value = "";
+        selectGenre.value = "tous";
+        selectTri.selectedIndex = 0;
+        rafraichirBibliotheque();
+    });
 }
 
+function rafraichirBibliotheque() {
+    const requete = champRecherche.value;
+    const genre = selectGenre.value;
+    const critere = selectTri.value;
+
+    let resultats = chercherLivres(livres, requete);
+    resultats = filtrerParGenre(resultats, genre);
+    resultats = trierLivres(resultats, critere);
+
+    if (resultats.length === 0) {
+        afficherEtatVide();
+    } else {
+        afficherLivres(resultats);
+    }
+}
 
 let livres = [];
 
 const champRecherche = document.querySelector(".search-bar input");
+const selectGenre = document.getElementById("select-genre");
+const selectTri = document.getElementById("select-tri");
+
+
+
 
 document.addEventListener("DOMContentLoaded", async () => {
-  livres = await chargerLivres();
-  afficherLivres(livres);
+    livres = await chargerLivres();
+    afficherLivres(livres);
 });
 
 
 champRecherche.addEventListener("input", () => {
-  const requete = champRecherche.value;
-  const resultats = chercherLivres(livres, requete);
+    const requete = champRecherche.value;
+    const resultats = chercherLivres(livres, requete);
 
-  if (resultats.length === 0) {
-    afficherEtatVide();
-  } else {
-    afficherLivres(resultats);
-  }
+    if (resultats.length === 0) {
+        afficherEtatVide();
+    } else {
+        afficherLivres(resultats);
+    }
 });
+
+
+
+
+function initialiserFiltres(livres) {
+    // Genre
+
+    const optionTous = document.createElement("option");
+    optionTous.value = "tous";
+    optionTous.textContent = "Tous";
+    selectGenre.appendChild(optionTous);
+
+    const genresUniques = [...new Set(livres.map(livre => livre.genre))];
+    genresUniques.forEach(genre => {
+        const option = document.createElement("option");
+        option.value = genre;
+        option.textContent = genre;
+        selectGenre.appendChild(option);
+    });
+
+    // Tri
+    const criteres = [
+        { valeur: "note-desc", texte: "Note décroissante" },
+        { valeur: "titre-az", texte: "Titre de A à Z" },
+        { valeur: "annee-desc", texte: "Année décroissante" }
+    ];
+    criteres.forEach(critere => {
+        const option = document.createElement("option");
+        option.value = critere.valeur;
+        option.textContent = critere.texte;
+        selectTri.appendChild(option);
+    });
+}
+
+async function initialiser() {
+    livres = await chargerLivres();
+    initialiserFiltres(livres);
+    rafraichirBibliotheque();
+}
+
+champRecherche.addEventListener("input", rafraichirBibliotheque);
+selectGenre.addEventListener("change", rafraichirBibliotheque);
+selectTri.addEventListener("change", rafraichirBibliotheque);
+
+initialiser();
