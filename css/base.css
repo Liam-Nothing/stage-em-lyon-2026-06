@@ -13,10 +13,6 @@ body{
     background-color: var(--primaire);
 }
 
-main{
-    max-width: 1200px;
-}
-
 
 /*////// styles titre ////// */
 

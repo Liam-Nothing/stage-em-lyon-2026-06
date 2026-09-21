@@ -25,7 +25,6 @@
 .div-row {
   display: flex;
   flex-direction: row;
-  width: 1080px;
 }
 
 .infos-row {
@@ -132,6 +131,7 @@ input[type="text"] {
   align-items: center;
   justify-content: center;
   gap: 7px;
+  position: relative;
 }
 
 .grille-flex-wrap {
@@ -222,18 +222,153 @@ legend {
   height: 24px;
 }
 
+
+/* LISTE DEROULANTE */
+.shelf {
+  position: relative;
+  display: inline-block;
+}
+
+/* Bouton (libellé + séparateur + flèche) */
+.shelf__trigger {
+  display: inline-flex;
+  align-items: stretch;
+  padding: 0;
+  border: 1px solid var(--secondaire-bouton);
+  border-radius: 6px;
+  background: var(--bouton);
+  color: var(--card);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.shelf__trigger:hover,
+.shelf__trigger[aria-expanded="true"] {
+  background: var(--secondaire-bouton);
+}
+
+.shelf__trigger:focus-visible,
+.shelf__item:focus-visible {
+  outline: 2px solid var(--bouton);
+  outline-offset: 2px;
+}
+
+.shelf__label {
+  padding: 0.6rem 1.1rem;
+  white-space: nowrap;
+}
+
+.shelf__arrow {
+  display: grid;
+  place-items: center;
+  padding: 0 0.7rem;
+  border-left: 1px solid var(--secondaire-bouton);
+}
+
+.shelf__arrow svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.15s ease;
+}
+
+.shelf__trigger[aria-expanded="true"] .shelf__arrow svg {
+  transform: rotate(180deg);
+}
+
+/* Menu */
+.shelf__menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 10;
+  min-width: 100%;
+  width: max-content;
+  margin: 0;
+  padding: 0.35rem 0;
+  list-style: none;
+  background: var(--card);
+  border: 1px solid var(--bordure);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(69, 22, 30, 0.12);
+}
+
+.shelf__menu[hidden] {
+  display: none;
+}
+
+.shelf__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1rem;
+  color: var(--text);
+  font-size: 0.92rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.shelf__item:hover,
+.shelf__item:focus {
+  background: var(--primaire);
+  outline: none;
+}
+
+.shelf__item:focus-visible {
+  outline: 2px solid var(--bouton);
+  outline-offset: -2px;
+}
+
+/* Coche sur l'élément choisi */
+.shelf__check {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  color: var(--bouton);
+  visibility: hidden;
+}
+
+.shelf__item[aria-checked="true"] .shelf__check {
+  visibility: visible;
+}
+
+.shelf__item[aria-checked="true"] {
+  font-weight: 600;
+}
+
+.shelf__separator {
+  height: 1px;
+  margin: 0.35rem 0;
+  background: var(--bordure);
+}
+
+.shelf__item--action {
+  color: var(--bouton);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .shelf__trigger,
+  .shelf__arrow svg {
+    transition: none;
+  }
+}
+
+
 /* template avis utilisateur CSS////*/
 
 article {
   width: fit-content;
   background-color: var(--card);
-  padding: 25px;
+  padding: 20px;
   border: 1px solid var(--bordure);
   display: flex;
   flex-direction: column;
   gap: 3px;
   border-radius: 5px;
-  max-width: 500px;
+  max-width: 370px;
 }
 
 time {
@@ -241,7 +376,7 @@ time {
 }
 
 .badge-ma-note {
-  position: absolute;
+  position: relative;
   top: 6px;
   right: 6px;
   width: 22px;

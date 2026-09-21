@@ -13,7 +13,8 @@ Il sera également possible d’attribuer un “statut” au livre en l’ajouta
 La fonction de Donner une note et/ou un avis sera possible dans le cas où le livre a été ajouté avec le statut “lu” (car nous considérons que nous pouvons donner un avis
 ou une critique à partir du moment où on a lu le livre.
 
-## Le lien Figma: https://www.figma.com/design/wFrio5qgGwLiBODek7WZPL/Stage-EM-Lyon-09?node-id=0-1&t=6QHQIbwU8OCj1kYV-1
+## Les liens Figma: 
+ 1) https://www.figma.com/design/wFrio5qgGwLiBODek7WZPL/Stage-EM-Lyon-09?node-id=0-1&t=6QHQIbwU8OCj1kYV-1
 
 ## La liste du hors périmètre, ce qu’on ne fera pas :  
 -  ajouter actualité de la lecture (calendrier des sorties par mois, derniers prix littéraire)

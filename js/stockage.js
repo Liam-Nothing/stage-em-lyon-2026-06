@@ -1,7 +1,7 @@
 
 /// FONCTION lireNotes ///////
 
-/*const mesNotes = {
+/*let mesNotes = {
     "mesNotes": {
         "0003": {
             "titre": "La Vague",

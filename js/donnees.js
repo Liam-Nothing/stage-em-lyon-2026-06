@@ -264,3 +264,46 @@ selectGenre.addEventListener("change", rafraichirBibliotheque);
 selectTri.addEventListener("change", rafraichirBibliotheque);
 
 initialiser();
+
+
+
+/* TRIER PAR DATE AVIS */
+const tris = {
+    "annee-desc": (a, b) => b.dateDePublication - a.dateDePublication,
+    "annee-asc": (a, b) => a.dateDePublication - b.dateDePublication,
+}
+
+function trierDateAvis(avis, critere) {
+    const copie = [...avis];
+    return tris[critere] ? copie.sort(tris[critere]) : copie;
+}
+
+/* CRÉER UNE DATE (mois en cours, au format AAAA-MM) */
+function dateActuelle() {
+    return new Date().toISOString().slice(0, 7); // "2026-08"
+}
+
+/* AFFICHER UNE DATE ("2026-08" -> "août 2026") */
+function formaterDate(date) {
+    return new Date(date).toLocaleDateString("fr-FR", {
+        month: "long",
+        year: "numeric",
+        timeZone: "UTC"
+    });
+}
+
+/* TRIER PAR DATE AVIS */
+function trierDateAvis(avis, critere) {
+    const copie = [...avis];
+    return critere === "annee-desc"
+        ? copie.sort((a, b) => b.dateDePublication.localeCompare(a.dateDePublication))
+        : copie;
+}
+
+const texte = new Date(date).toLocaleDateString("fr-FR", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC"
+});
+
+return texte.charAt(0).toUpperCase() + texte.slice(1);
