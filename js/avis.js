@@ -173,3 +173,7 @@ function initEtagere(root) {
         if (isOpen() && !root.contains(e.target)) close();
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.shelf').forEach(initEtagere);
+});

@@ -54,6 +54,34 @@ async function chargerAvis() {
     return chargerDonnees("../data/avis.json");
 }
 
+/* TRIER AVIS DU PLUS RECENT AU PLUS ANCIEN */
+const MOIS_FR = {
+    janvier: "01", février: "02", mars: "03", avril: "04",
+    mai: "05", juin: "06", juillet: "07", août: "08",
+    septembre: "09", octobre: "10", novembre: "11", décembre: "12"
+};
+
+function parserDateFrancaise(dateTexte) {
+    const [jour, moisTexte, annee] = dateTexte.split(" ");
+    const mois = MOIS_FR[moisTexte.toLowerCase()];
+    return new Date(`${annee}-${mois}-${jour.padStart(2, "0")}`);
+}
+
+function formaterDateJJMMAAAA(dateTexte) {
+    return parserDateFrancaise(dateTexte).toLocaleDateString("fr-FR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        timeZone: "UTC"
+    });
+}
+
+function trierAvisParDate(avis) {
+    const copie = [...avis];
+    return copie.sort((a, b) =>
+        parserDateFrancaise(b.datePublicationCommentaire) - parserDateFrancaise(a.datePublicationCommentaire)
+    );
+}
 
 // fonction AVIS 
 async function initAvis() {
@@ -82,17 +110,36 @@ function avisDuLivre(aviss, idLivre) {
     return aviss.filter(unAvis => unAvis.idLivre === idLivre);
 }
 
+/* AVIS ETAT VIDE */
+function afficherEtatVideAvis(conteneur) {
+    conteneur.innerHTML = `
+        <div class="etat-vide-avis">
+            <p>Aucun avis pour ce livre</p>
+            <p>Soyez le premier ou la première à partager votre lecture.</p>
+        </div>
+    `;
+}
+
 function afficherAvisDuLivre(avis, idLivre) {
     const conteneur = document.querySelector(".div-avis");
     const modele = conteneur.querySelector("article");
+    
     const avisFiltres = avisDuLivre(avis, idLivre);
+    const avisTries = trierAvisParDate(avisFiltres);
 
     conteneur.querySelectorAll("article").forEach(a => a.remove());
 
-    avisFiltres.forEach(unAvis => {
+    if (avisFiltres.length === 0) {
+        afficherEtatVideAvis(conteneur);
+        return;
+    }
+
+    avisTries.forEach(unAvis => { 
         conteneur.appendChild(remplirFicheAvis(unAvis, modele));
     });
 }
+
+
 
 function remplirFicheAvis(avis, modele) {
     const fiche = modele.cloneNode(true);
@@ -125,6 +172,49 @@ function calculerNoteMoyenne(avisLivre) {
     }
     const somme = avisLivre.reduce((total, unAvis) => total + unAvis.note, 0);
     return Math.round((somme / avisLivre.length) * 10) / 10;
+}
+
+/* AFFICHER ERREUR */
+function afficherErreurAvis(champ, resultat) {
+    champ.classList.toggle("champ-erreur", !resultat.valide);
+
+    let messageErreur = champ.parentElement.querySelector(".message-erreur");
+
+    if (!resultat.valide) {
+        if (!messageErreur) {
+            messageErreur = document.createElement("p");
+            messageErreur.className = "message-erreur";
+            champ.after(messageErreur);
+        }
+        messageErreur.textContent = resultat.message;
+    } else if (messageErreur) {
+        messageErreur.remove();
+    }
+}
+
+function initFormulaireAvis() {
+    const form = document.querySelector(".div-formulaire-avis form");
+    if (!form) return;
+
+    form.addEventListener("submit", (evenement) => {
+        evenement.preventDefault();
+
+        const champTexte = form.querySelector("#message-avis");
+        const champNote = form.querySelector('input[name="note"]:checked');
+        const note = champNote ? Number(champNote.value) : null;
+
+        const resultat = validerAvis(champTexte.value, note);
+        afficherErreurAvis(champTexte, resultat);
+
+        if (resultat.valide) {
+            // envoi / ajout de l'avis
+            form.reset();
+        }
+    });
+}
+
+if (document.querySelector(".div-formulaire-avis")) {
+    initFormulaireAvis();
 }
 
 
@@ -264,46 +354,3 @@ selectGenre.addEventListener("change", rafraichirBibliotheque);
 selectTri.addEventListener("change", rafraichirBibliotheque);
 
 initialiser();
-
-
-
-/* TRIER PAR DATE AVIS */
-const tris = {
-    "annee-desc": (a, b) => b.dateDePublication - a.dateDePublication,
-    "annee-asc": (a, b) => a.dateDePublication - b.dateDePublication,
-}
-
-function trierDateAvis(avis, critere) {
-    const copie = [...avis];
-    return tris[critere] ? copie.sort(tris[critere]) : copie;
-}
-
-/* CRÉER UNE DATE (mois en cours, au format AAAA-MM) */
-function dateActuelle() {
-    return new Date().toISOString().slice(0, 7); // "2026-08"
-}
-
-/* AFFICHER UNE DATE ("2026-08" -> "août 2026") */
-function formaterDate(date) {
-    return new Date(date).toLocaleDateString("fr-FR", {
-        month: "long",
-        year: "numeric",
-        timeZone: "UTC"
-    });
-}
-
-/* TRIER PAR DATE AVIS */
-function trierDateAvis(avis, critere) {
-    const copie = [...avis];
-    return critere === "annee-desc"
-        ? copie.sort((a, b) => b.dateDePublication.localeCompare(a.dateDePublication))
-        : copie;
-}
-
-const texte = new Date(date).toLocaleDateString("fr-FR", {
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC"
-});
-
-return texte.charAt(0).toUpperCase() + texte.slice(1);
