@@ -140,3 +140,38 @@ button:disabled{
     color: var(--primaire);
     border-radius: 5px;
 }
+
+
+
+/*-- STYLE FORMULAIRE AVIS ----*/
+
+li.champ-saisie {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.div-button-form {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    gap: 12px;
+}
+.div-formulaire-avis {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background-color: var(--card);
+    padding: 40px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
