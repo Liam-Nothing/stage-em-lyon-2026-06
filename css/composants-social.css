@@ -82,3 +82,87 @@
     color: var(--secondaire-text);
     font-size: 13px;
 }
+
+/* --- Avis (profil) --- */
+.carte-avis {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.carte-avis img {
+    width: 60px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.carte-avis .ligne-note-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.carte-avis .note {
+    font-weight: bold;
+}
+
+/* --- Amies (profil) --- */
+.liste-amies .div-couverture-colomn-index {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 140px;
+}
+
+.liste-amies .div-couverture-colomn-index img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.liste-amies-actuelles,
+.liste-amies-recommandees {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.div-couverture-colomn-index {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 140px;
+}
+
+.div-couverture-colomn-index img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.div-couverture-colomn-index button {
+    margin-top: 0.5rem;
+    padding: 0.4rem 1rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.bouton-retirer {
+    background-color: #eee;
+    color: #333;
+}
+
+.bouton-ajouter {
+    background-color: #333;
+    color: #fff;
+}

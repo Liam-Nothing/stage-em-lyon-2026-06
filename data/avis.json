@@ -2,12 +2,12 @@
     {
         "id": "avis-001",
         "note": 5,
-        "pseudo" : "Encre_et_Melancolie",
+        "pseudo" : "Chema-mystery",
+        "photoProfil": "../assets/pp1.jpg",
         "commentaire": "Un classique indémodable. Chaque relecture m'apporte quelque chose de nouveau, la profondeur psychologique de Julien Sorel est remarquable.",
         "datePublicationCommentaire": "12 février 2026",
         "couverture": "../assets/rouge et noir.png",
-        "photoProfil": "../assets/pp1.jpg",
-        "idUtilisateur": "user-460",
+        "idUtilisateur": "user-456",
         "idLivre": "0001"
     },
     {
@@ -83,11 +83,11 @@
     {
         "id": "avis-009",
         "note": 4,
-        "pseudo": "Encre_et_Melancolie",
+        "pseudo": "Lumen.reads",
         "commentaire": "Flaubert dissèque l'ennui et les illusions d'Emma avec une précision chirurgicale. Une lecture exigeante mais marquante.",
         "datePublicationCommentaire": "11 novembre 2025",
         "couverture": "../assets/madame bovary.png",
-        "idUtilisateur": "user-460",
+        "idUtilisateur": "user-461",
         "idLivre": "0005"
     },
     {

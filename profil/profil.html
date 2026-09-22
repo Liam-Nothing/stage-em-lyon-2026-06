@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,12 @@
     <link rel="stylesheet" href="../css/mise-en-page.css">
     <link rel="stylesheet" href="../css/base.css">
 </head>
+
 <body>
     <header>
         <nav>
             <a href="../index-accueil/index.html">
-                <img class="logo-nav div-lien-nav"src="../assets/livrio-logo.png"alt="logo-site">
+                <img class="logo-nav div-lien-nav" src="../assets/livrio-logo.png" alt="logo-site">
             </a>
             <div class="div-lien-nav">
                 <a href="../index-accueil/index.html">
@@ -26,20 +28,20 @@
                     <img class="lien" src="../assets/profile.svg" alt="icône-profil">
                 </a>
             </div>
-    
+
         </nav>
     </header>
     <main>
         <section class="container">
             <div class="div-photo">
-                <img src="" alt="image-profil">
-                <h1>Salut Cheima!</h1>
+                <img src="" alt="image-profil" class="photo-profil">
+                <h1 class="pseudo"></h1>
             </div>
         </section>
-        <section class="div-row container">
+        <section class="div-row container fil-activite">
             <div>
                 <h2>Biographie</h2>
-                <p class="biographie">Mes genres préférés sont les romans policiers, les thrillers et les polars.</p>
+                <p class="biographie"></p>
             </div>
             <div>
                 <h2>Ce mois-ci...</h2>
@@ -62,27 +64,21 @@
         <section class="div-row container">
             <div>
                 <h2>Mes activités</h2>
-                <div>
-                    <article>
-                        <div>
-                            <p>Une intrigue fun et pleine de mystère, parfaite pour ceux qui aiment les puzzles et les secrets de famille. Avery est une héroïne attachante.</p>
-                            <p>lu en septembre 2026</p>
-                        </div>
-                        <img src="" alt="couverture livre">
-                    </article>
+                <div class="liste-avis">
+                    <!-- les avis en JS -->
                 </div>
             </div>
+        </section>
+        <section class="div-row container">
             <div>
-                <h2>Mes messages</h2>
-                <div>
-                    <article>
-                        <img src="" alt="">
-                        <div>
-                            <h4>Zeepay</h4>
-                            <p>Hey whats up?</p>
-                        </div>
-                        <p>15 min</p>
-                    </article>
+                <h2>Mes amies</h2>
+                <div class="grille-flex-wrap liste-amies-actuelles">
+                    <!-- amies actuelles générées en JS -->
+                </div>
+
+                <h2>Profils recommandés</h2>
+                <div class="grille-flex-wrap liste-amies-recommandees">
+                    <!-- profils recommandés générés en JS -->
                 </div>
             </div>
         </section>
@@ -118,7 +114,9 @@
             <p>Stage - septembre 2026</p>
         </div>
     </footer>
+    <script src="../js/amis.js"></script>
     <script src="../js/profil.js"></script>
     <script src="../js/donnees.js"></script>
 </body>
+
 </html>

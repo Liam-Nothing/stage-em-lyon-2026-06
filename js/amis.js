@@ -38,3 +38,8 @@ function retirerAmie(id) {
     const nouvelleListe = listeAmies.filter(a => a !== id);
     localStorage.setItem("amis", JSON.stringify(nouvelleListe));
 }
+
+
+////FONCTION AFFICHER CARTE AMIE ///
+
+

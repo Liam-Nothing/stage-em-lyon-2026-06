@@ -4,6 +4,8 @@
         "pseudo": "Chema-mystery",
         "biographie": "Mes genres préférés sont les romans policiers, les thrillers et les polars",
         "dateCreationCompte": "juillet 2026",
+        "photoProfil": "../assets/pp1.jpg",
+        "amis": ["user-212"],
         "statLu": 7,
         "statEnCours": 3,
         "statPileALire": 2
@@ -13,6 +15,8 @@
         "pseudo": "Sissi98",
         "biographie": "Passionnée de romance contemporaine, de young adult et de comédies romantiques légères",
         "dateCreationCompte": "juin 2016",
+        "photoProfil": "../assets/pp2.jpg",
+        "amis": ["user-456", "user-460"],
         "statLu": 280,
         "statEnCours": 1,
         "statPileALire": 10
@@ -22,6 +26,8 @@
         "pseudo": "Alice_au_pays_des_livres",
         "biographie": "Fan inconditionnelle de fantasy épique, de sagas interminables et de cartes de mondes imaginaires",
         "dateCreationCompte": "octobre 2024",
+        "photoProfil": "../assets/pp3.jpg",
+        "amis": [],
         "statLu": 58,
         "statEnCours": 1,
         "statPileALire": 27
@@ -31,16 +37,19 @@
         "pseudo": "Nova_lit",
         "biographie": "Adepte de science-fiction, de dystopies et de récits d'anticipation qui font réfléchir",
         "dateCreationCompte": "janvier 2026",
+        "photoProfil": "../assets/pp4.jpg",
+        "amis": ["user-461", "user-212", "user-460", "user-458"],
         "statLu": 19,
         "statEnCours": 4,
         "statPileALire": 9
     },
     {
         "id": "user-460",
-        "photoProfil": "../assets/pp1.jpg",
         "pseudo": "Encre_et_Melancolie",
         "biographie": "Amoureuse des classiques français, de la littérature du XIXe siècle et des drames psychologiques",
         "dateCreationCompte": "juin 2023",
+        "photoProfil": "../assets/pp5.jpg",
+        "amis": ["user-456"],
         "statLu": 73,
         "statEnCours": 1,
         "statPileALire": 11
@@ -50,6 +59,8 @@
         "pseudo": "Lumen.reads",
         "biographie": "Dévore les thrillers psychologiques, les récits de développement personnel et les biographies inspirantes",
         "dateCreationCompte": "avril 2026",
+        "photoProfil": "../assets/pp6.jpg",
+        "amis": ["user-458", "user-212", "user-456"],
         "statLu": 12,
         "statEnCours": 3,
         "statPileALire": 6

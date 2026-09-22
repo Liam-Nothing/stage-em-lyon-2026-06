@@ -1,85 +1,227 @@
 // --- Fiche profil ---
 
 async function initProfil() {
-  // Étape 1 : lire l'id dans l'URL
   let parametres = new URLSearchParams(window.location.search);
   let id = parametres.get("id");
   console.log("id lu dans l'URL :", id);
 
-  // Étape 2 : gérer le cas "id absent"
   if (id === null) {
     afficherErreur();
     return;
   }
 
-  // Étape 3 : charger les profils depuis le JSON
-  let amis = await chargerUtilisateurs();
+  let utilisateurs = await chargerUtilisateurs();
+  let avis = await chargerAvis();
 
-  // Étape 4 : chercher le profil correspondant à l'id
-  let ami = trouverUtilisateur(amis, id);
+  let utilisateur = trouverUtilisateur(utilisateurs, id);
 
-  // Étape 5 : gérer le cas "id inconnu"
-  if (ami === undefined) {
+  if (utilisateur === undefined) {
     afficherErreur();
     return;
   }
 
-  // Étape 6 : afficher le profil trouvé
-  remplirFicheProfil(ami);
+  remplirFicheProfil(utilisateur, avis, utilisateurs);
 }
 
 async function chargerUtilisateurs() {
-    return chargerDonnees("../data/utilisateurs.json");
+  return chargerDonnees("../data/utilisateurs.json");
 }
 
-function trouverUtilisateur(amis, id) {
-  return amis.find(ami => ami.id === id);
+async function chargerAvis() {
+  return chargerDonnees("../data/avis.json");
+}
+
+function trouverUtilisateur(utilisateurs, id) {
+  return utilisateurs.find(u => u.id === id);
 }
 
 function afficherErreur() {
-  document.querySelector(".div-row.container.fil-activite").innerHTML = `
+  document.querySelector("main").innerHTML = `
     <p>Profil introuvable.</p>
     <a href="../profil/profil.html">Retour à ton profil</a>
   `;
 }
 
-function afficherProfils(amis) {
-    const grilleProfil = document.querySelector(".grille-flex-wrap");
-    grilleProfil.innerHTML = "";
-    
-    amis.forEach(ami => {
-        creerCarteProfil(grilleProfil, ami); 
-    });
+function remplirFicheProfil(utilisateur, tousLesAvis, tousLesUtilisateurs) {
+  document.querySelector(".photo-profil").src = utilisateur.photoProfil;
+  document.querySelector(".pseudo").textContent = `Salut ${utilisateur.pseudo}!`;
+  document.querySelector(".biographie").textContent = utilisateur.biographie;
+
+  let avisDeCetUtilisateur = tousLesAvis.filter(a => a.idUtilisateur === utilisateur.id);
+  afficherAvis(avisDeCetUtilisateur);
+
+  afficherListesAmies(utilisateur, tousLesUtilisateurs);
 }
 
-function creerCarteProfil(grilleProfil, ami) {
+function afficherAvis(listeAvis) {
+  const conteneurAvis = document.querySelector(".liste-avis");
+  conteneurAvis.innerHTML = "";
+
+  if (listeAvis.length === 0) {
+    conteneurAvis.innerHTML = "<p>Aucun avis pour le moment.</p>";
+    return;
+  }
+
+  listeAvis.forEach(avis => {
+    creerCarteAvis(conteneurAvis, avis);
+  });
+}
+
+function creerCarteAvis(conteneur, avis) {
+  let article = document.createElement("article");
+  article.className = "carte-avis";
+  conteneur.appendChild(article);
+
+  let texteZone = document.createElement("div");
+  article.appendChild(texteZone);
+
+  let commentaire = document.createElement("p");
+  commentaire.textContent = avis.commentaire;
+  texteZone.appendChild(commentaire);
+
+  let ligneNoteDate = document.createElement("p");
+  ligneNoteDate.className = "ligne-note-date";
+  texteZone.appendChild(ligneNoteDate);
+
+  let note = document.createElement("span");
+  note.className = "note";
+  note.textContent = `★ ${avis.note}/5`;
+  ligneNoteDate.appendChild(note);
+
+  let date = document.createElement("span");
+  date.textContent = `lu en ${avis.datePublicationCommentaire}`;
+  ligneNoteDate.appendChild(date);
+
+  let couverture = document.createElement("img");
+  couverture.src = avis.couverture;
+  couverture.alt = "couverture livre";
+  article.appendChild(couverture);
+
+  return article;
+}
+
+function afficherListesAmies(utilisateur, tousLesUtilisateurs) {
+  let idsAmis = [...(utilisateur.amis || [])];
+
+  function rafraichirListes() {
+    let amisActuels = idsAmis
+      .map(id => trouverUtilisateur(tousLesUtilisateurs, id))
+      .filter(a => a !== undefined);
+
+    let recommandes = tousLesUtilisateurs
+      .filter(u => u.id !== utilisateur.id && !idsAmis.includes(u.id))
+      .slice(0, 4);
+
+    afficherCartesAmis(".liste-amies-actuelles", amisActuels, "retirer", (idAmi) => {
+      idsAmis = idsAmis.filter(id => id !== idAmi);
+      rafraichirListes();
+    });
+
+    afficherCartesAmis(".liste-amies-recommandees", recommandes, "ajouter", (idAmi) => {
+      idsAmis.push(idAmi);
+      rafraichirListes();
+    });
+  }
+
+  rafraichirListes();
+}
+
+function afficherCartesAmis(selecteur, listeUtilisateurs, typeBouton, surClicBouton) {
+  const conteneur = document.querySelector(selecteur);
+  conteneur.innerHTML = "";
+
+  if (listeUtilisateurs.length === 0) {
+    conteneur.innerHTML = typeBouton === "retirer"
+      ? "<p>Aucune ami pour le moment.</p>"
+      : "<p>Aucune recommandation pour le moment.</p>";
+    return;
+  }
+
+  listeUtilisateurs.forEach(personne => {
+    creerCarteProfil(conteneur, personne, typeBouton, surClicBouton);
+  });
+}
+
+function creerCarteProfil(conteneur, personne, typeBouton, surClicBouton) {
   let carteProfil = document.createElement("div");
   carteProfil.className = "div-couverture-colomn-index";
-  grilleProfil.appendChild(carteProfil);
+  conteneur.appendChild(carteProfil);
 
   let lienProfil = document.createElement("a");
-  lienProfil.href = `../profil/profil.html?id=${ami.id}`;
+  lienProfil.href = `../profil/profil.html?id=${personne.id}`;
   carteProfil.appendChild(lienProfil);
 
-  /*let couvertureLivre = document.createElement("img");
-  couvertureLivre.src = livre.couvertureLivre;
-  couvertureLivre.alt = livre.titre;
-  lienLivre.appendChild(couvertureLivre);*/
+  let photo = document.createElement("img");
+  photo.src = personne.photoProfil;
+  photo.alt = personne.pseudo;
+  lienProfil.appendChild(photo);
 
   let pseudo = document.createElement("h5");
-  pseudo.textContent = ami.pseudo;
+  pseudo.textContent = personne.pseudo;
   carteProfil.appendChild(pseudo);
 
   let biographie = document.createElement("p");
-  biographie.textContent = ami.biographie;
+  biographie.textContent = personne.biographie;
   carteProfil.appendChild(biographie);
+
+
+  let bouton = document.createElement("button");
+  /*localStorage.setItem("amis",JSON.stringify(amisActuels));
+
+  // État initial du bouton selon personne.estAmie
+  if (personne.estAmie) {
+    bouton.textContent = "Retirer";
+    bouton.className = "bouton-retirer";
+  } else {
+    bouton.textContent = "Ajouter en ami";
+    bouton.className = "bouton-ajouter";
+  }
+
+  // Bascule au clic
+  bouton.addEventListener("click", () => {
+
+    if (personne.estAmie) {
+      retirerAmie(personne.id);      // 🔥 branchement de TA fonction
+      personne.estAmie = false;
+      bouton.textContent = "Ajouter en ami";
+      bouton.className = "bouton-ajouter";
+    } else {
+      ajouterAmie(personne.id);      // 🔥 branchement de TA fonction
+      personne.estAmie = true;
+      bouton.textContent = "Retirer";
+      bouton.className = "bouton-retirer";
+    }
+
+    console.log("amis =", localStorage.getItem("amis"));
+  });*/
+
+  if (typeBouton === "retirer") {
+    bouton.textContent = "Retirer";
+    bouton.className = "bouton-retirer";
+  } else {
+    bouton.textContent = "Ajouter en ami";
+    bouton.className = "bouton-ajouter";
+  }
+ 
+  //bouton.addEventListener("click", () => surClicBouton(personne.id));
+  
+  // Bascule au clic
+  bouton.addEventListener("click", () => {
+    surClicBouton(personne); // 🔥 on passe l'objet entier
+    // Mise à jour visuelle
+    if (personne.estAmie) {
+      bouton.textContent = "Retirer";
+      bouton.className = "bouton-retirer";
+    } else {
+      bouton.textContent = "Ajouter en ami";
+      bouton.className = "bouton-ajouter";
+    }
+  });
+
+  carteProfil.appendChild(bouton);
 
   return carteProfil;
 }
 
-function remplirFicheProfil(ami) {
-  document.querySelector(".pseudo").textContent = ami.pseudo;
-  document.querySelector(".biographie").textContent = ami.biographie;
-}
-
+// Déclenchement au chargement de la page
 document.addEventListener("DOMContentLoaded", initProfil);

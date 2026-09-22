@@ -145,7 +145,7 @@ function remplirFicheAvis(avis, modele) {
     const fiche = modele.cloneNode(true);
 
     const imgAvatar = fiche.querySelector(".img-avatar");
-    imgAvatar.src = avis.photoProfil;
+    imgAvatar.src = avis.photoProfil; 
     imgAvatar.alt = `photo de profil de ${avis.pseudo}`;
 
     const img = fiche.querySelector("img");
@@ -174,7 +174,7 @@ function calculerNoteMoyenne(avisLivre) {
     return Math.round((somme / avisLivre.length) * 10) / 10;
 }
 
-/* AFFICHER ERREUR */
+// /* AFFICHER ERREUR *
 function afficherErreurAvis(champ, resultat) {
     champ.classList.toggle("champ-erreur", !resultat.valide);
 
