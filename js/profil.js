@@ -6,8 +6,7 @@ async function initProfil() {
   console.log("id lu dans l'URL :", id);
 
   if (id === null) {
-    afficherErreur();
-    return;
+    id = "user-456"; 
   }
 
   let utilisateurs = await chargerUtilisateurs();
@@ -46,6 +45,10 @@ function remplirFicheProfil(utilisateur, tousLesAvis, tousLesUtilisateurs) {
   document.querySelector(".photo-profil").src = utilisateur.photoProfil;
   document.querySelector(".pseudo").textContent = `Salut ${utilisateur.pseudo}!`;
   document.querySelector(".biographie").textContent = utilisateur.biographie;
+
+  document.querySelector(".stat-lu").textContent = utilisateur.statLu;
+  document.querySelector(".stat-en-cours").textContent = utilisateur.statEnCours;
+  document.querySelector(".stat-pile-a-lire").textContent = utilisateur.statPileALire;
 
   let avisDeCetUtilisateur = tousLesAvis.filter(a => a.idUtilisateur === utilisateur.id);
   afficherAvis(avisDeCetUtilisateur);
