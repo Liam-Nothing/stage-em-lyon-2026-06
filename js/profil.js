@@ -104,7 +104,10 @@ function creerCarteAvis(conteneur, avis) {
 }
 
 function afficherListesAmies(utilisateur, tousLesUtilisateurs) {
-  let idsAmis = [...(utilisateur.amis || [])];
+  const cleStockage = `amis-${utilisateur.id}`;
+
+  // Étape 1 : charger la liste depuis localStorage, sinon utiliser celle du JSON comme départ
+  let idsAmis = chargerAmisDepuisStockage(cleStockage, utilisateur.amis || []);
 
   function rafraichirListes() {
     let amisActuels = idsAmis
@@ -117,16 +120,39 @@ function afficherListesAmies(utilisateur, tousLesUtilisateurs) {
 
     afficherCartesAmis(".liste-amies-actuelles", amisActuels, "retirer", (idAmi) => {
       idsAmis = idsAmis.filter(id => id !== idAmi);
+      sauvegarderAmis(cleStockage, idsAmis);
       rafraichirListes();
     });
 
     afficherCartesAmis(".liste-amies-recommandees", recommandes, "ajouter", (idAmi) => {
       idsAmis.push(idAmi);
+      sauvegarderAmis(cleStockage, idsAmis);
       rafraichirListes();
     });
   }
 
   rafraichirListes();
+}
+
+function chargerAmisDepuisStockage(cle, listeParDefaut) {
+  try {
+    let donneesStockees = localStorage.getItem(cle);
+    if (donneesStockees === null) {
+      return [...listeParDefaut];
+    }
+    return JSON.parse(donneesStockees);
+  } catch (erreur) {
+    console.error("Erreur de lecture du localStorage :", erreur);
+    return [...listeParDefaut];
+  }
+}
+
+function sauvegarderAmis(cle, idsAmis) {
+  try {
+    localStorage.setItem(cle, JSON.stringify(idsAmis));
+  } catch (erreur) {
+    console.error("Erreur d'écriture dans le localStorage :", erreur);
+  }
 }
 
 function afficherCartesAmis(selecteur, listeUtilisateurs, typeBouton, surClicBouton) {
@@ -167,37 +193,7 @@ function creerCarteProfil(conteneur, personne, typeBouton, surClicBouton) {
   biographie.textContent = personne.biographie;
   carteProfil.appendChild(biographie);
 
-
   let bouton = document.createElement("button");
-  /*localStorage.setItem("amis",JSON.stringify(amisActuels));
-
-  // État initial du bouton selon personne.estAmie
-  if (personne.estAmie) {
-    bouton.textContent = "Retirer";
-    bouton.className = "bouton-retirer";
-  } else {
-    bouton.textContent = "Ajouter en ami";
-    bouton.className = "bouton-ajouter";
-  }
-
-  // Bascule au clic
-  bouton.addEventListener("click", () => {
-
-    if (personne.estAmie) {
-      retirerAmie(personne.id);      // 🔥 branchement de TA fonction
-      personne.estAmie = false;
-      bouton.textContent = "Ajouter en ami";
-      bouton.className = "bouton-ajouter";
-    } else {
-      ajouterAmie(personne.id);      // 🔥 branchement de TA fonction
-      personne.estAmie = true;
-      bouton.textContent = "Retirer";
-      bouton.className = "bouton-retirer";
-    }
-
-    console.log("amis =", localStorage.getItem("amis"));
-  });*/
-
   if (typeBouton === "retirer") {
     bouton.textContent = "Retirer";
     bouton.className = "bouton-retirer";
@@ -205,26 +201,10 @@ function creerCarteProfil(conteneur, personne, typeBouton, surClicBouton) {
     bouton.textContent = "Ajouter en ami";
     bouton.className = "bouton-ajouter";
   }
- 
-  //bouton.addEventListener("click", () => surClicBouton(personne.id));
-  
-  // Bascule au clic
-  bouton.addEventListener("click", () => {
-    surClicBouton(personne); // 🔥 on passe l'objet entier
-    // Mise à jour visuelle
-    if (personne.estAmie) {
-      bouton.textContent = "Retirer";
-      bouton.className = "bouton-retirer";
-    } else {
-      bouton.textContent = "Ajouter en ami";
-      bouton.className = "bouton-ajouter";
-    }
-  });
-
+  bouton.addEventListener("click", () => surClicBouton(personne.id)); 
   carteProfil.appendChild(bouton);
 
   return carteProfil;
-}
+}  
 
-// Déclenchement au chargement de la page
 document.addEventListener("DOMContentLoaded", initProfil);
