@@ -17,7 +17,6 @@ async function listerUtilisatrices() {
 
     return resultat;
 }
-<<<<<<< HEAD
 
 
 //// FONCTION AJOUTER AMIE ///
@@ -41,53 +40,5 @@ function retirerAmie(id) {
 }
 
 
-////FONCTION CONSTRUIRE FIL ///
-
-async function construireFil() {
-    // Liste des amies (issue de js/amis.js)
-    const utilisatrices = await listerUtilisatrices();
-    const amies = utilisatrices.filter(u => u.estAmie);
-    const idsAmies = amies.map(a => a.id);
-
-    // Sources : JSON + localStorage
-    const avisJSON = await chargerAvis();
-    const avisLocalJSON = localStorage.getItem("avisLocaux");
-    const avisLocaux = avisLocalJSON ? JSON.parse(avisLocalJSON) : [];
-
-    const toutesLesEntrees = [...avisJSON, ...avisLocaux];
-
-    const evenementsNotes = [];
-    const evenementsAvis = [];
-
-    // Passe 1 : les notes chiffrées
-    for (const entree of toutesLesEntrees) {
-        if (idsAmies.includes(entree.idUtilisateur) && entree.note != null) {
-            evenementsNotes.push({
-                type: "note",
-                idAmie: entree.idUtilisateur,
-                idLivre: entree.idLivre,
-                date: entree.datePublicationCommentaire
-            });
-        }
-    }
-
-    // Passe 2 : les avis écrits
-    for (const entree of toutesLesEntrees) {
-        if (idsAmies.includes(entree.idUtilisateur) && entree.commentaire) {
-            evenementsAvis.push({
-                type: "avis",
-                idAmie: entree.idUtilisateur,
-                idLivre: entree.idLivre,
-                date: entree.datePublicationCommentaire
-            });
-        }
-    }
-
-    // Fusion finale
-    return [...evenementsNotes, ...evenementsAvis];
-}
 
 
-
-=======
->>>>>>> 6bf0dc9b535d5f4c2c56e7898376995462b30a8e

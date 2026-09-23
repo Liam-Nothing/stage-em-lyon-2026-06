@@ -46,10 +46,12 @@ async function chargerLivres() {
     return chargerDonnees("../data/livres.json");
 }
 
+// fonction charger utilisateurs
 async function chargerUtilisateurs() {
     return chargerDonnees("../data/utilisateurs.json");
 }
 
+// fonction charger avis
 async function chargerAvis() {
     return chargerDonnees("../data/avis.json");
 }
