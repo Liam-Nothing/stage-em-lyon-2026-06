@@ -17,6 +17,7 @@ async function listerUtilisatrices() {
 
     return resultat;
 }
+<<<<<<< HEAD
 
 
 //// FONCTION AJOUTER AMIE ///
@@ -88,3 +89,5 @@ async function construireFil() {
 
 
 
+=======
+>>>>>>> 6bf0dc9b535d5f4c2c56e7898376995462b30a8e
