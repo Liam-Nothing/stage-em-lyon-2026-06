@@ -1,6 +1,6 @@
 
 
-////FONCTION CONSTRUIRE FIL ///
+/////////FONCTION CONSTRUIRE FIL ///
 
 
 async function construireFil(idUtilisateurCourant) {
@@ -74,3 +74,132 @@ async function construireFil(idUtilisateurCourant) {
 
 
 
+
+
+//// FONCTION CREER UNE CARTE EVENEMENT /////
+
+
+
+let fil = document.getElementById("fil");
+let pseudo = document.createElement("p");
+pseudo.textContent = "pseudo d'un user";
+console.log(pseudo);
+
+fil.appendChild(pseudo);
+
+
+
+
+
+
+/*function creerCarteEvenement(evenement) {
+
+    let carte = document.createElement("div");
+    carte.className = "carte-evenement";
+
+    // Ligne pseudo + date
+    let lignePseudoDate = document.createElement("div");
+    lignePseudoDate.className = "pseudo-date";
+
+    let pseudo = document.createElement("span");
+    pseudo.className = "pseudo";
+    pseudo.textContent = evenement.pseudo;
+
+    let date = document.createElement("span");
+    date.className = "date";
+    date.textContent = evenement.date;
+
+    lignePseudoDate.appendChild(pseudo);
+    lignePseudoDate.appendChild(date);
+
+    // Titre du livre
+    let titreLivre = document.createElement("div");
+    titreLivre.className = "titre-livre";
+    titreLivre.textContent = evenement.titreLivre; 
+
+    // Note
+    let note = document.createElement("div");
+    note.className = "note";
+    note.textContent = `Note : ${evenement.note}/5 ⭐`;
+
+    // Commentaire
+    let commentaire = document.createElement("p");
+    commentaire.className = "commentaire";
+    commentaire.textContent = evenement.commentaire; 
+
+    // Assemblage final
+    carte.appendChild(lignePseudoDate);
+    carte.appendChild(titreLivre);
+    carte.appendChild(note);
+    carte.appendChild(commentaire);
+
+    return carte;
+}*/
+
+
+
+
+
+async function afficherFil(idUtilisateurCourant) {
+
+    // 1. Récupérer les événements
+    let evenements = await construireFil(idUtilisateurCourant);
+    console.log("Événements reçus :", evenements);
+
+    // 2. Sélectionner le conteneur
+    let conteneurFil = document.getElementById("fil");
+
+    if (!conteneurFil) {
+        console.error("Impossible de trouver .fil-d'actu dans le DOM");
+        return;
+    }
+
+    // 3. Vider le conteneur
+    conteneurFil.innerHTML = "";
+
+    // 4. Créer une carte pour chaque événement
+    evenements.forEach(evenement => {
+
+        let carte = document.createElement("div");
+        carte.className = "carte-evenement";
+
+        // Ligne pseudo + date
+        let lignePseudoDate = document.createElement("div");
+        lignePseudoDate.className = "pseudo-date";
+
+        let pseudo = document.createElement("span");
+        pseudo.className = "pseudo";
+        pseudo.textContent = evenement.pseudo;
+
+        const date = document.createElement("span");
+        date.className = "date";
+        date.textContent = evenement.date;
+
+        lignePseudoDate.appendChild(pseudo);
+        lignePseudoDate.appendChild(date);
+
+        // Titre du livre
+        const titreLivre = document.createElement("div");
+        titreLivre.className = "titre-livre";
+        titreLivre.textContent = evenement.titreLivre;
+
+        // Note
+        const note = document.createElement("div");
+        note.className = "note";
+        note.textContent = `Note : ${evenement.note}/5 ⭐`;
+
+        // Commentaire
+        const commentaire = document.createElement("p");
+        commentaire.className = "commentaire";
+        commentaire.textContent = evenement.commentaire;
+
+        // Assemblage final
+        carte.appendChild(lignePseudoDate);
+        carte.appendChild(titreLivre);
+        carte.appendChild(note);
+        carte.appendChild(commentaire);
+
+        // Ajouter la carte au fil
+        conteneurFil.appendChild(carte);
+    });
+}

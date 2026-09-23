@@ -83,3 +83,5 @@ function getFilAffiche(evenements, idUtilisateurCourant) {
 
   return evenementsLimites;
 }
+
+
