@@ -40,53 +40,6 @@ function retirerAmie(id) {
 }
 
 
-////FONCTION CONSTRUIRE FIL ///
-
-async function construireFil() {
-    // Liste des amies (issue de js/amis.js)
-    const utilisatrices = await listerUtilisatrices();
-    const amies = utilisatrices.filter(u => u.estAmie);
-    const idsAmies = amies.map(a => a.id);
-
-    // Sources : JSON + localStorage
-    const avisJSON = await chargerAvis();
-    const avisLocalJSON = localStorage.getItem("avisLocaux");
-    const avisLocaux = avisLocalJSON ? JSON.parse(avisLocalJSON) : [];
-
-    const toutesLesEntrees = [...avisJSON, ...avisLocaux];
-
-    const evenementsNotes = [];
-    const evenementsAvis = [];
-
-    // Passe 1 : les notes chiffrées
-    for (const entree of toutesLesEntrees) {
-        if (idsAmies.includes(entree.idUtilisateur) && entree.note != null) {
-            evenementsNotes.push({
-                type: "note",
-                idAmie: entree.idUtilisateur,
-                idLivre: entree.idLivre,
-                date: entree.datePublicationCommentaire
-            });
-        }
-    }
-
-    // Passe 2 : les avis écrits
-    for (const entree of toutesLesEntrees) {
-        if (idsAmies.includes(entree.idUtilisateur) && entree.commentaire) {
-            evenementsAvis.push({
-                type: "avis",
-                idAmie: entree.idUtilisateur,
-                idLivre: entree.idLivre,
-                date: entree.datePublicationCommentaire
-            });
-        }
-    }
-
-    // Fusion finale
-    return [...evenementsNotes, ...evenementsAvis];
-}
-
-
 ////FONCTION MESSAGE ERREUR////
 /*function afficherPasDamies() {
   document.querySelector("main").innerHTML = `
@@ -117,7 +70,7 @@ function afficherFilVide(amis, evenements) {
 
 
 ////FONCTION TRIER PAR DATE/////
-/*function getFilAffiche(evenements, idUtilisateurCourant) {
+function getFilAffiche(evenements, idUtilisateurCourant) {
   const evenementsSansUtilisateurCourant = evenements.filter(
     (evenement) => evenement.userId !== idUtilisateurCourant
   );
@@ -129,4 +82,4 @@ function afficherFilVide(amis, evenements) {
   const evenementsLimites = evenementsTries.slice(0, 30);
 
   return evenementsLimites;
-}*/
+}
