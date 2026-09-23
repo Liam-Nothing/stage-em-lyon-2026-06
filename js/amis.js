@@ -19,25 +19,71 @@ async function listerUtilisatrices() {
 }
 
 
+//// FONCTION AJOUTER AMIE ///
+function ajouterAmie(id) {
+    const amisJSON = localStorage.getItem("amis");
+    const listeAmies = amisJSON ? JSON.parse (amisJSON) : [];
 
-function afficherPasDamies() {
-  document.querySelector("main").innerHTML = `
-    <p>Ton fil est vide pour l'instant.</p>
-    <p>Ajoute des amies pour voir leurs notes et avis apparaître ici.</p>
-    <a href="../amis/ajouter.html">Ajouter une amie</a>
-  `;
+    if (!listeAmies.includes(id)) {
+        listeAmies.push(id);
+        localStorage.setItem("amis", JSON.stringify(listeAmies));
+    }
 }
 
-function afficherPasActivite() {
-  document.querySelector("main").innerHTML = `
-    <p>Rien de nouveau pour le moment.</p>
-    <p>Tes amies n'ont pas encore partagé de note ou d'avis. Reviens un peu plus tard.</p>
-  `;
+////FONCTION RETIRER AMIE ///
+function retirerAmie(id) {
+    const amisJSON = localStorage.getItem("amis");
+    const listeAmies = amisJSON ? JSON.parse(amisJSON) : [];
+    
+    const nouvelleListe = listeAmies.filter(a => a !== id);
+    localStorage.setItem("amis", JSON.stringify(nouvelleListe));
 }
 
-function afficherFilVide(amis, evenements) {
-  if (evenements.length > 0) return;
-  amis.length === 0 ? afficherPasDamies() : afficherPasActivite();
+
+////FONCTION CONSTRUIRE FIL ///
+
+async function construireFil() {
+    // Liste des amies (issue de js/amis.js)
+    const utilisatrices = await listerUtilisatrices();
+    const amies = utilisatrices.filter(u => u.estAmie);
+    const idsAmies = amies.map(a => a.id);
+
+    // Sources : JSON + localStorage
+    const avisJSON = await chargerAvis();
+    const avisLocalJSON = localStorage.getItem("avisLocaux");
+    const avisLocaux = avisLocalJSON ? JSON.parse(avisLocalJSON) : [];
+
+    const toutesLesEntrees = [...avisJSON, ...avisLocaux];
+
+    const evenementsNotes = [];
+    const evenementsAvis = [];
+
+    // Passe 1 : les notes chiffrées
+    for (const entree of toutesLesEntrees) {
+        if (idsAmies.includes(entree.idUtilisateur) && entree.note != null) {
+            evenementsNotes.push({
+                type: "note",
+                idAmie: entree.idUtilisateur,
+                idLivre: entree.idLivre,
+                date: entree.datePublicationCommentaire
+            });
+        }
+    }
+
+    // Passe 2 : les avis écrits
+    for (const entree of toutesLesEntrees) {
+        if (idsAmies.includes(entree.idUtilisateur) && entree.commentaire) {
+            evenementsAvis.push({
+                type: "avis",
+                idAmie: entree.idUtilisateur,
+                idLivre: entree.idLivre,
+                date: entree.datePublicationCommentaire
+            });
+        }
+    }
+
+    // Fusion finale
+    return [...evenementsNotes, ...evenementsAvis];
 }
 
 

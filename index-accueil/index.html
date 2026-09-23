@@ -34,41 +34,48 @@
     <main>
         <section>
             <div class="container">
-                <div class="search-bar">
-                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8" />
-                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    </svg>
-                    <input type="text" placeholder="Rechercher..." aria-label="Rechercher">
-                    <button type="button" class="clear-btn" aria-label="Effacer la recherche"
-                        onclick="this.previousElementSibling.value='';this.previousElementSibling.focus();this.style.display='none'">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round">
-                            <line x1="18" y1="6" x2="6" y2="18" />
-                            <line x1="6" y1="6" x2="18" y2="18" />
+                <div class="div-fil-d'actu">
+                    <h2 class="titre-fild'actu">Fil d'actualité</h2>
+                    <div class="fil-d'actu">
+                        <p>carte actu</p>
+                    </div>
+                </div>
+                <div class="div-recherche-livres">
+                    <h2>Trouvez votre prochaine lecture !</h2>
+                    <div class="search-bar">
+                        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
                         </svg>
-                    </button>
+                        <input type="text" placeholder="Rechercher..." aria-label="Rechercher">
+                        <button type="button" class="clear-btn" aria-label="Effacer la recherche"
+                            onclick="this.previousElementSibling.value='';this.previousElementSibling.focus();this.style.display='none'">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div>
+                        <label for="select-genre">Filtrer par genre</label>
+                        <select id="select-genre" name="genre">
+                            <!-- rempli en JS -->
+                        </select>
+                    </div>
+    
+                    <div>
+                        <label for="select-tri">Trier par</label>
+                        <select id="select-tri" name="tri">
+                            <!-- rempli en JS -->
+                        </select>
+                    </div>
+                    <div class="container">
+                        <div class="grille-flex-wrap"></div>
+                    </div>
                 </div>
-                <div>
-                    <label for="select-genre">Filtrer par genre</label>
-                    <select id="select-genre" name="genre">
-                        <!-- rempli en JS -->
-                    </select>
-                </div>
-
-                <div>
-                    <label for="select-tri">Trier par</label>
-                    <select id="select-tri" name="tri">
-                        <!-- rempli en JS -->
-                    </select>
-                </div>
-            </div>
         </section>
-        <div class="container">
-            <div class="grille-flex-wrap"></div>
-        </div>
-        <section>
     </main>
     <footer>
         <div class="div-footer container">

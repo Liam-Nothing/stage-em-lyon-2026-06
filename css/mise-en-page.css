@@ -175,3 +175,24 @@ form {
     justify-content: center;
     gap: 12px;
 }
+
+
+/*//// INDEX.HTML ///////*/
+
+.div-fil-d\'actu {
+   /* background-color: var(--bouton);*/
+    width: 320px;
+}
+
+.div-recherche-livres {
+    width: 800px;
+}
+  
+.fil-d\'actu {
+    background-color: var(--bouton);
+    height: 400px;
+}
+
+h2.titre-fild\'actu {
+    text-align: center;
+}
