@@ -70,7 +70,7 @@ function afficherFilVide(amis, evenements) {
 
 
 ////FONCTION TRIER PAR DATE/////
-/*function getFilAffiche(evenements, idUtilisateurCourant) {
+function getFilAffiche(evenements, idUtilisateurCourant) {
   const evenementsSansUtilisateurCourant = evenements.filter(
     (evenement) => evenement.userId !== idUtilisateurCourant
   );
@@ -82,4 +82,4 @@ function afficherFilVide(amis, evenements) {
   const evenementsLimites = evenementsTries.slice(0, 30);
 
   return evenementsLimites;
-}*/
+}
