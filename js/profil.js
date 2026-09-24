@@ -3,7 +3,6 @@
 async function initProfil() {
   let parametres = new URLSearchParams(window.location.search);
   let id = parametres.get("id");
-  console.log("id lu dans l'URL :", id);
 
   if (id === null) {
     id = "user-456"; 
@@ -106,7 +105,7 @@ function creerCarteAvis(conteneur, avis) {
 function afficherListesAmies(utilisateur, tousLesUtilisateurs) {
   const cleStockage = `amis-${utilisateur.id}`;
 
-  // Étape 1 : charger la liste depuis localStorage, sinon utiliser celle du JSON comme départ
+
   let idsAmis = chargerAmisDepuisStockage(cleStockage, utilisateur.amis || []);
 
   function rafraichirListes() {

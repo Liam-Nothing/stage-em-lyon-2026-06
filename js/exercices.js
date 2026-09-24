@@ -76,8 +76,6 @@ function titreMajuscule(livre) {
     return livre.map(livre=> livre.titre.toUpperCase());
 }
 
-console.log(titreMajuscule(LIVRES_DEMO));
-
 
 //test fonction filtre genre /////
 
@@ -85,14 +83,11 @@ function filtrerGenre(livre,genre) {
     return livre.filter(livre=> livre.genre ===genre);
 }
 
-console.log(filtrerGenre(LIVRES_DEMO,"Romance"));
-
 
 //test fonction recherche par titre de livre /////
 function rechercheLivreTitre(livre, titre) {
     return livre.find(livre => livre.titre === titre);
 }
-console.log(rechercheLivreTitre(LIVRES_DEMO, "Le Prince Cruel"));
 
 
 //test fonction sort trier par année /////

@@ -2,7 +2,7 @@
     {
         "id": "avis-001",
         "note": 5,
-        "pseudo" : "Chema-mystery",
+        "pseudo": "Chema-mystery",
         "photoProfil": "../assets/pp1.jpg",
         "commentaire": "Un classique indémodable. Chaque relecture m'apporte quelque chose de nouveau, la profondeur psychologique de Julien Sorel est remarquable.",
         "datePublicationCommentaire": "12 février 2026",

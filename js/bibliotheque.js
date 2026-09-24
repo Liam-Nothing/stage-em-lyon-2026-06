@@ -1,5 +1,5 @@
 
-
+/// FONCTION CREER CARTE LIVRE ///
 function creerCarteLivre(grilleLivre, livre) {
   let carteLivre = document.createElement("div");
   carteLivre.className = "div-couverture-colomn-index";

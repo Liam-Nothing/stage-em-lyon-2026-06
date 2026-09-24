@@ -41,7 +41,6 @@ function creerCarteLivre(grilleLivre, livre) {
 
 
 ////JE CREE LA FONCTION QUI VA ME PERMETTRE DE CREER AUTANT DE CARD QU'IL Y A DE LIVRES ////
-
 fetch(LIVRES_DEMO)
     .then(response => {
         if (!response.ok) {

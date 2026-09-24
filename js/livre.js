@@ -1,6 +1,5 @@
 
 // --- Gestion des notes en localStorage ---
-
 function lireNotes() {
     try {
         const texte = localStorage.getItem("mesNotes");
@@ -11,15 +10,14 @@ function lireNotes() {
     }
 }
 
-
 function enregistrerNote(idLivre, maNote) {
     const notes = lireNotes();
     notes[idLivre] = maNote;
     localStorage.setItem("mesNotes", JSON.stringify(notes));
 }
 
-// --- Fiche livre ---
 
+// --- Fiche livre ---
 async function initLivre() {
   // Étape 1 : lire l'id dans l'URL
   let parametres = new URLSearchParams(window.location.search);
@@ -78,10 +76,12 @@ function afficherNoteExistante(idLivre) {
   }
 }
 
+
 // Cherche un livre par son id dans le tableau de livres
 function trouverLivre(livres, id) {
   return livres.find(livre => livre.id === id);
 }
+
 
 // Affiche le message d'erreur avec un lien de retour
 function afficherErreur() {
@@ -90,6 +90,7 @@ function afficherErreur() {
     <a href="../library/library.html">Retour à la bibliothèque</a>
   `;
 }
+
 
 // Remplit la page avec les infos du livre trouvé
 function remplirFicheLivre(livre) {
