@@ -1,7 +1,6 @@
 /*//// COMPOSANTS VISUELS///////*
 
 ///// template composant CARTE LIVRE CSS  ///////*/
-
 .couverture {
   width: 280px;
 }
@@ -49,7 +48,6 @@ img.logo-nav {
 
 
 /* CHAMP DE SAISIE */
-
 .search-bar {
   position: relative;
   width: 100%;
@@ -97,6 +95,7 @@ img.logo-nav {
 input[type="text"] {
   background-color: #ffffffab;
 }
+
 
 /* Bouton pour effacer, visible seulement quand il y a du texte */
 .search-bar .clear-btn {
@@ -150,9 +149,7 @@ input[type="text"] {
 }
 
 
-
 /*//// template formulaire noter un livre CSS //////*/
-
 fieldset {
   border: 1px solid var(--bordure);
   border-radius: 8px;
@@ -229,6 +226,7 @@ legend {
   display: inline-block;
 }
 
+
 /* Bouton (libellé + séparateur + flèche) */
 .shelf__trigger {
   display: inline-flex;
@@ -278,6 +276,7 @@ legend {
   transform: rotate(180deg);
 }
 
+
 /* Menu */
 .shelf__menu {
   position: absolute;
@@ -321,6 +320,7 @@ legend {
   outline-offset: -2px;
 }
 
+
 /* Coche sur l'élément choisi */
 .shelf__check {
   width: 14px;
@@ -358,7 +358,6 @@ legend {
 
 
 /* template avis utilisateur CSS////*/
-
 article {
   width: fit-content;
   background-color: var(--card);
@@ -409,6 +408,7 @@ time {
   margin: 0;
 }
 
+
 /* ERREUR AVIS */
 .champ-erreur {
   border-color: var(--erreur) !important;
@@ -457,6 +457,7 @@ time {
   margin-right: 0.35em;
 }
 
+
 /* --- Variante information --- */
 .message--info {
   background-color: #e8f0fe;
@@ -475,6 +476,7 @@ time {
   font-family: Georgia, "Times New Roman", serif;
 }
 
+
 /* --- Variante succès --- */
 .message--succes {
   background-color: #e6f4ea;
@@ -490,6 +492,7 @@ time {
 .message--succes .message__icone::before {
   content: "\2713";
 }
+
 
 /* --- Variante erreur --- */
 .message--erreur {

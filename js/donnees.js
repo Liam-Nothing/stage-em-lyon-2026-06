@@ -112,6 +112,7 @@ function avisDuLivre(aviss, idLivre) {
     return aviss.filter(unAvis => unAvis.idLivre === idLivre);
 }
 
+
 /* AVIS ETAT VIDE */
 function afficherEtatVideAvis(conteneur) {
     conteneur.innerHTML = `
@@ -167,6 +168,7 @@ if (document.querySelector(".div-avis")) {
     initAvis();
 }
 
+
 //fonction pour calculer la note moyenne des avis
 function calculerNoteMoyenne(avisLivre) {
     if (avisLivre.length === 0) {
@@ -175,6 +177,7 @@ function calculerNoteMoyenne(avisLivre) {
     const somme = avisLivre.reduce((total, unAvis) => total + unAvis.note, 0);
     return Math.round((somme / avisLivre.length) * 10) / 10;
 }
+
 
 // /* AFFICHER ERREUR *
 function afficherErreurAvis(champ, resultat) {
@@ -276,8 +279,8 @@ function normaliser(texte) {
 
 }
 
-//// FONCTION CHERCHERLIVRE() /////
 
+//// FONCTION CHERCHERLIVRE() /////
 function chercherLivres(livres, requete) {
     const requeteNormalisee = normaliser(requete);
 
@@ -291,7 +294,6 @@ function chercherLivres(livres, requete) {
 
 
 ///FONCTION AFFICHERLIVRE /////
-
 function afficherLivres(livres) {
     const grilleLivre = document.querySelector(".grille-flex-wrap");
     grilleLivre.innerHTML = ""; // on vide la grille avant de la remplir
@@ -302,8 +304,8 @@ function afficherLivres(livres) {
     });
 }
 
-////// FONCTON AFFICHER ETAT VIDE //////
 
+////// FONCTON AFFICHER ETAT VIDE //////
 function afficherEtatVide() {
     const grilleLivre = document.querySelector(".grille-flex-wrap");
     grilleLivre.innerHTML = `<p class="etat-vide">Aucun résultat trouvé</p>`;
@@ -339,8 +341,6 @@ const selectGenre = document.getElementById("select-genre");
 const selectTri = document.getElementById("select-tri");
 
 
-
-
 document.addEventListener("DOMContentLoaded", async () => {
     livres = await chargerLivres();
     afficherLivres(livres);
@@ -359,11 +359,9 @@ champRecherche.addEventListener("input", () => {
 });
 
 
-
-
 function initialiserFiltres(livres) {
-    // Genre
 
+    // Genre
     const optionTous = document.createElement("option");
     optionTous.value = "tous";
     optionTous.textContent = "Tous";

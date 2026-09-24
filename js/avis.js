@@ -1,7 +1,5 @@
 
-//// FONCTION VALIDER AVIS (pour le formulaire////
-
-
+//// FONCTION VALIDER AVIS (pour le formulaire)////
 const LONGUEUR_MIN = 10;
 const LONGUEUR_MAX = 100;
 
@@ -34,28 +32,11 @@ function validerAvis(texte, note) {
 
 
 
-
-/*let avis = [{
-    "avis": {
-        "0002": {
-            "pseudo": "Chema-mystery",
-            "commentaire": "Très rythmé et plein de twists, c'est le genre de livre qui donne envie de lire la suite immédiatement. L'ambiance \"jeu d'héritage\" fonctionne super bien.",
-            "datePublicationCommentaire": "juin 2026",
-        }
-    }
-}
-]*/
-
-//JSON.stringify(avis);
-//localStorage.setItem("avis", JSON.stringify(avis));
-;
-
 //// FONCTION LIRE AVIS : fusionne data/avis.json et le localStorage ////
-
 async function lireAvis(idLivre) {
     let avisJson = [];
     try {
-        const reponse = await fetch("../data/avis.json"); // "../data/avis.json" si ta page est dans un sous-dossier
+        const reponse = await fetch("../data/avis.json"); 
         avisJson = await reponse.json();
     } catch (erreur) {
         console.warn("../data/avis.json illisible :", erreur.message);
@@ -73,7 +54,6 @@ async function lireAvis(idLivre) {
 
 
 //// FONCTION AFFICHER AVIS ////
-
 async function afficherAvis(idLivre) {
     const conteneur = document.querySelector(".liste-avis");
     conteneur.innerHTML = "";
@@ -89,7 +69,6 @@ async function afficherAvis(idLivre) {
 
 
 //// FONCTION ENREGISTRER AVIS ////
-
 function enregistrerAvis(idLivre, commentaire) {
     let avis = [];
     try {
@@ -99,7 +78,7 @@ function enregistrerAvis(idLivre, commentaire) {
     }
 
     avis.push({
-        pseudo: "moi", // à remplacer par le pseudo de l'utilisateur courant
+        pseudo: "moi",
         idLivre: idLivre,
         commentaire: commentaire,
         datePublicationCommentaire: new Date().toISOString()
@@ -109,14 +88,7 @@ function enregistrerAvis(idLivre, commentaire) {
 }
 
 
-
-
-
-
-
-
-// LISTE DEROULANTE //
-// ---- Menu déroulant d'étagère ----
+// MENU/LISTE DEROULANTE //
 function initEtagere(root) {
     const trigger = root.querySelector('.shelf__trigger');
     const label = root.querySelector('.shelf__label');
