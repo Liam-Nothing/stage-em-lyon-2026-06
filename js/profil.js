@@ -49,6 +49,9 @@ function remplirFicheProfil(utilisateur, tousLesAvis, tousLesUtilisateurs) {
   document.querySelector(".stat-en-cours").textContent = utilisateur.statEnCours;
   document.querySelector(".stat-pile-a-lire").textContent = utilisateur.statPileALire;
 
+  // L'en-tête est rempli : on remplace son squelette par le vrai contenu
+  masquerSquelette("profil-entete");
+
   let avisDeCetUtilisateur = tousLesAvis.filter(a => a.idUtilisateur === utilisateur.id);
   afficherAvis(avisDeCetUtilisateur);
 

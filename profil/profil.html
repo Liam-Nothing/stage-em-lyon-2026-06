@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="../css/mise-en-page.css">
     <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/squelette.css">
 </head>
 
 <body>
@@ -33,6 +34,42 @@
     </header>
     <main>
         <div class="container-profil">
+
+            <!-- Squelette de chargement : affiché pendant le fetch d'utilisateurs.json, masqué ensuite -->
+            <div id="squelette-profil-entete">
+                <section class="container">
+                    <div class="div-photo squelette-colonne" style="align-items:center;">
+                        <div class="squelette-bloc squelette-bloc--rond" style="width:120px;height:120px;"></div>
+                        <div class="squelette-bloc squelette-bloc--texte" style="width:180px;height:1.6em;"></div>
+                    </div>
+                </section>
+                <section class="div-row container fil-activite">
+                    <div class="squelette-colonne">
+                        <div class="squelette-bloc squelette-bloc--texte" style="width:120px;height:1.2em;"></div>
+                        <div class="squelette-bloc squelette-bloc--texte" style="width:95%;"></div>
+                        <div class="squelette-bloc squelette-bloc--texte" style="width:80%;"></div>
+                    </div>
+                    <div class="squelette-colonne">
+                        <div class="squelette-bloc squelette-bloc--texte" style="width:150px;height:1.2em;"></div>
+                        <div class="div-row" style="gap:20px;">
+                            <div class="squelette-colonne" style="align-items:center;">
+                                <div class="squelette-bloc squelette-bloc--texte" style="width:40px;height:1.5em;"></div>
+                                <div class="squelette-bloc squelette-bloc--texte" style="width:70px;"></div>
+                            </div>
+                            <div class="squelette-colonne" style="align-items:center;">
+                                <div class="squelette-bloc squelette-bloc--texte" style="width:40px;height:1.5em;"></div>
+                                <div class="squelette-bloc squelette-bloc--texte" style="width:70px;"></div>
+                            </div>
+                            <div class="squelette-colonne" style="align-items:center;">
+                                <div class="squelette-bloc squelette-bloc--texte" style="width:40px;height:1.5em;"></div>
+                                <div class="squelette-bloc squelette-bloc--texte" style="width:70px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="contenu-profil-entete" hidden>
             <section class="container">
                 <div class="div-photo">
                     <img src="" alt="image-profil" class="photo-profil">
@@ -62,11 +99,25 @@
                     </div>
                 </div>
             </section>
+            </div>
             <section class="div-row container fil-activite">
                 <div>
                     <h2>Mes activités</h2>
                     <div class="liste-avis">
-                        <!-- les avis en JS -->
+                        <article class="carte-avis">
+                            <div class="squelette-colonne" style="flex:1;">
+                                <div class="squelette-bloc squelette-bloc--texte" style="width:90%;"></div>
+                                <div class="squelette-bloc squelette-bloc--texte" style="width:60%;"></div>
+                            </div>
+                            <div class="squelette-bloc" style="width:60px;height:80px;"></div>
+                        </article>
+                        <article class="carte-avis">
+                            <div class="squelette-colonne" style="flex:1;">
+                                <div class="squelette-bloc squelette-bloc--texte" style="width:85%;"></div>
+                                <div class="squelette-bloc squelette-bloc--texte" style="width:50%;"></div>
+                            </div>
+                            <div class="squelette-bloc" style="width:60px;height:80px;"></div>
+                        </article>
                     </div>
                 </div>
             </section>
@@ -74,12 +125,34 @@
                 <div>
                     <h2>Mes amies</h2>
                     <div class="grille-flex-wrap liste-amies-actuelles">
-                        <!-- amis actuels générées en JS -->
+                        <div class="div-couverture-colomn-index">
+                            <div class="squelette-bloc squelette-bloc--rond" style="width:80px;height:80px;"></div>
+                            <div class="squelette-bloc squelette-bloc--texte" style="width:80px;"></div>
+                        </div>
+                        <div class="div-couverture-colomn-index">
+                            <div class="squelette-bloc squelette-bloc--rond" style="width:80px;height:80px;"></div>
+                            <div class="squelette-bloc squelette-bloc--texte" style="width:80px;"></div>
+                        </div>
                     </div>
 
                     <h2>Profils recommandés</h2>
                     <div class="grille-flex-wrap liste-amies-recommandees">
-                        <!-- profils recommandés générés en JS -->
+                        <div class="div-couverture-colomn-index">
+                            <div class="squelette-bloc squelette-bloc--rond" style="width:80px;height:80px;"></div>
+                            <div class="squelette-bloc squelette-bloc--texte" style="width:80px;"></div>
+                        </div>
+                        <div class="div-couverture-colomn-index">
+                            <div class="squelette-bloc squelette-bloc--rond" style="width:80px;height:80px;"></div>
+                            <div class="squelette-bloc squelette-bloc--texte" style="width:80px;"></div>
+                        </div>
+                        <div class="div-couverture-colomn-index">
+                            <div class="squelette-bloc squelette-bloc--rond" style="width:80px;height:80px;"></div>
+                            <div class="squelette-bloc squelette-bloc--texte" style="width:80px;"></div>
+                        </div>
+                        <div class="div-couverture-colomn-index">
+                            <div class="squelette-bloc squelette-bloc--rond" style="width:80px;height:80px;"></div>
+                            <div class="squelette-bloc squelette-bloc--texte" style="width:80px;"></div>
+                        </div>
                     </div>
                 </div>
         </div>
@@ -115,6 +188,7 @@
             <p>Stage - septembre 2026</p>
         </div>
     </footer>
+    <script src="../js/squelette.js"></script>
     <script src="../js/profil.js"></script>
     <script src="../js/donnees.js"></script>
 </body>

@@ -36,3 +36,5 @@ function creerCarteLivre(grilleLivre, livre) {
 
   return carteLivre;
 }
+
+initialiser();

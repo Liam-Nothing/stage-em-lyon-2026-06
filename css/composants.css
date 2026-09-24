@@ -3,6 +3,8 @@
 ///// template composant CARTE LIVRE CSS  ///////*/
 .couverture {
   width: 280px;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
 }
 
 .div-couverture-colomn {

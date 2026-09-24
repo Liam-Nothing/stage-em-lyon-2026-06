@@ -23,21 +23,39 @@ function trierLivres(livres, critere) {
 }
 
 
-
 // fonction charger JSON //
 async function chargerDonnees(chemin) {
     try {
         const reponse = await fetch(chemin);
 
+        // Réponse HTTP en erreur (404, 500, etc.)
         if (!reponse.ok) {
             throw new Error(`Statut ${reponse.status} en tentant de charger "${chemin}"`);
         }
 
-        return await reponse.json();
+        // JSON malformé : .json() lève une erreur si le parsing échoue
+        try {
+            return await reponse.json();
+        } catch (erreurParsing) {
+            throw new Error(`Le fichier "${chemin}" ne contient pas un JSON valide`);
+        }
+
     } catch (erreur) {
-        console.error(`Chargement impossible pour "${chemin}" :`, erreur.message);
-        return [];
+        const message = `Chargement impossible pour "${chemin}" : ${erreur.message}`;
+        console.error(message);
+        afficherErreurChargement(message);
+        return null;
     }
+}
+
+// Affiche un message visible dans la page plutôt que de la laisser blanche
+function afficherErreurChargement(message) {
+    const conteneur = document.getElementById("contenu") || document.body;
+    const alerte = document.createElement("div");
+    alerte.className = "erreur-chargement";
+    alerte.setAttribute("role", "alert");
+    alerte.textContent = `⚠️ ${message}`;
+    conteneur.prepend(alerte);
 }
 
 
@@ -126,7 +144,7 @@ function afficherEtatVideAvis(conteneur) {
 function afficherAvisDuLivre(avis, idLivre) {
     const conteneur = document.querySelector(".div-avis");
     const modele = conteneur.querySelector("article");
-    
+
     const avisFiltres = avisDuLivre(avis, idLivre);
     const avisTries = trierAvisParDate(avisFiltres);
 
@@ -137,7 +155,7 @@ function afficherAvisDuLivre(avis, idLivre) {
         return;
     }
 
-    avisTries.forEach(unAvis => { 
+    avisTries.forEach(unAvis => {
         conteneur.appendChild(remplirFicheAvis(unAvis, modele));
     });
 }
@@ -148,7 +166,7 @@ function remplirFicheAvis(avis, modele) {
     const fiche = modele.cloneNode(true);
 
     const imgAvatar = fiche.querySelector(".img-avatar");
-    imgAvatar.src = avis.photoProfil; 
+    imgAvatar.src = avis.photoProfil;
     imgAvatar.alt = `photo de profil de ${avis.pseudo}`;
 
     const img = fiche.querySelector("img");
@@ -186,20 +204,20 @@ function afficherErreurAvis(champ, resultat) {
     } else {
         champ.classList.add("champ-erreur");
     }
- 
+
     let message = champ.parentElement.querySelector(".message");
- 
+
     if (message) {
         const bonneVariante = resultat.valide
             ? message.classList.contains("message--succes")
             : message.classList.contains("message--erreur");
- 
+
         if (!bonneVariante) {
             message.remove();
             message = null;
         }
     }
- 
+
     let classeVariante, role, prefixeTexte;
     if (resultat.valide) {
         classeVariante = "message--succes";
@@ -215,30 +233,30 @@ function afficherErreurAvis(champ, resultat) {
         message = document.createElement("div");
         message.className = "message " + classeVariante;
         message.setAttribute("role", role);
- 
+
         const icone = document.createElement("span");
         icone.className = "message__icone";
         icone.setAttribute("aria-hidden", "true");
- 
+
         const prefixe = document.createElement("span");
         prefixe.className = "message__prefixe";
         prefixe.textContent = prefixeTexte;
- 
+
         const contenu = document.createElement("span");
         contenu.className = "message__contenu";
- 
+
         const texte = document.createElement("p");
         texte.className = "message__texte";
         texte.appendChild(prefixe);
         texte.appendChild(document.createTextNode(" "));
         texte.appendChild(contenu);
- 
+
         message.appendChild(icone);
         message.appendChild(texte);
- 
+
         champ.after(message);
     }
- 
+
     const contenu = message.querySelector(".message__contenu");
     contenu.textContent = resultat.message;
 }
@@ -296,11 +314,15 @@ function chercherLivres(livres, requete) {
 ///FONCTION AFFICHERLIVRE /////
 function afficherLivres(livres) {
     const grilleLivre = document.querySelector(".grille-flex-wrap");
-    grilleLivre.innerHTML = ""; // on vide la grille avant de la remplir
+    grilleLivre.innerHTML = "";
+
+    if (!livres || livres.length === 0) {
+        afficherEtatVide();
+        return;
+    }
 
     livres.forEach(livre => {
         creerCarteLivre(grilleLivre, livre);
-
     });
 }
 
@@ -308,20 +330,20 @@ function afficherLivres(livres) {
 ////// FONCTON AFFICHER ETAT VIDE //////
 function afficherEtatVide() {
     const grilleLivre = document.querySelector(".grille-flex-wrap");
-    grilleLivre.innerHTML = `<p class="etat-vide">Aucun résultat trouvé</p>`;
+    grilleLivre.innerHTML = `
+        <p class="etat-vide">Aucun résultat trouvé.</p>
+    `;
+}
 
-    grilleLivre.querySelector(".btn-reinitialiser").addEventListener("click", () => {
-        champRecherche.value = "";
-        selectGenre.value = "tous";
-        selectTri.selectedIndex = 0;
-        rafraichirBibliotheque();
-    });
+function afficherErreurChargement(message) {
+    const grilleLivre = document.querySelector(".grille-flex-wrap");
+    grilleLivre.innerHTML = `<p class="erreur-chargement" role="alert">⚠️ ${message}</p>`;
 }
 
 function rafraichirBibliotheque() {
-    const requete = champRecherche.value;
-    const genre = selectGenre.value;
-    const critere = selectTri.value;
+    const requete = champRecherche ? champRecherche.value : "";
+    const genre = selectGenre ? selectGenre.value : "tous";
+    const critere = selectTri ? selectTri.value : null;
 
     let resultats = chercherLivres(livres, requete);
     resultats = filtrerParGenre(resultats, genre);
@@ -341,13 +363,13 @@ const selectGenre = document.getElementById("select-genre");
 const selectTri = document.getElementById("select-tri");
 
 
-document.addEventListener("DOMContentLoaded", async () => {
+/*document.addEventListener("DOMContentLoaded", async () => {
     livres = await chargerLivres();
     afficherLivres(livres);
-});
+});*/
 
 
-champRecherche.addEventListener("input", () => {
+/*champRecherche.addEventListener("input", () => {
     const requete = champRecherche.value;
     const resultats = chercherLivres(livres, requete);
 
@@ -356,47 +378,55 @@ champRecherche.addEventListener("input", () => {
     } else {
         afficherLivres(resultats);
     }
-});
+});*/
 
 
 function initialiserFiltres(livres) {
 
     // Genre
-    const optionTous = document.createElement("option");
-    optionTous.value = "tous";
-    optionTous.textContent = "Tous";
-    selectGenre.appendChild(optionTous);
+    if (selectGenre) {
+        const optionTous = document.createElement("option");
+        optionTous.value = "tous";
+        optionTous.textContent = "Tous";
+        selectGenre.appendChild(optionTous);
 
-    const genresUniques = [...new Set(livres.map(livre => livre.genre))];
-    genresUniques.forEach(genre => {
-        const option = document.createElement("option");
-        option.value = genre;
-        option.textContent = genre;
-        selectGenre.appendChild(option);
-    });
+        const genresUniques = [...new Set(livres.map(livre => livre.genre))];
+        genresUniques.forEach(genre => {
+            const option = document.createElement("option");
+            option.value = genre;
+            option.textContent = genre;
+            selectGenre.appendChild(option);
+        });
+    }
 
     // Tri
-    const criteres = [
-        { valeur: "note-desc", texte: "Note décroissante" },
-        { valeur: "titre-az", texte: "Titre de A à Z" },
-        { valeur: "annee-desc", texte: "Année décroissante" }
-    ];
-    criteres.forEach(critere => {
-        const option = document.createElement("option");
-        option.value = critere.valeur;
-        option.textContent = critere.texte;
-        selectTri.appendChild(option);
-    });
+    if (selectTri) {
+        const criteres = [
+            { valeur: "note-desc", texte: "Note décroissante" },
+            { valeur: "titre-az", texte: "Titre de A à Z" },
+            { valeur: "annee-desc", texte: "Année décroissante" }
+        ];
+        criteres.forEach(critere => {
+            const option = document.createElement("option");
+            option.value = critere.valeur;
+            option.textContent = critere.texte;
+            selectTri.appendChild(option);
+        });
+    }
 }
 
 async function initialiser() {
     livres = await chargerLivres();
+
+    if (livres === null) {
+        afficherErreurChargement("Impossible de charger la bibliothèque. Réessaie plus tard.");
+        return;
+    }
+
     initialiserFiltres(livres);
     rafraichirBibliotheque();
 }
 
-champRecherche.addEventListener("input", rafraichirBibliotheque);
-selectGenre.addEventListener("change", rafraichirBibliotheque);
-selectTri.addEventListener("change", rafraichirBibliotheque);
-
-initialiser();
+if (champRecherche) champRecherche.addEventListener("input", rafraichirBibliotheque);
+if (selectGenre) selectGenre.addEventListener("change", rafraichirBibliotheque);
+if (selectTri) selectTri.addEventListener("change", rafraichirBibliotheque);
