@@ -178,20 +178,66 @@ function calculerNoteMoyenne(avisLivre) {
 
 // /* AFFICHER ERREUR *
 function afficherErreurAvis(champ, resultat) {
-    champ.classList.toggle("champ-erreur", !resultat.valide);
-
-    let messageErreur = champ.parentElement.querySelector(".message-erreur");
-
-    if (!resultat.valide) {
-        if (!messageErreur) {
-            messageErreur = document.createElement("p");
-            messageErreur.className = "message-erreur";
-            champ.after(messageErreur);
-        }
-        messageErreur.textContent = resultat.message;
-    } else if (messageErreur) {
-        messageErreur.remove();
+    if (resultat.valide) {
+        champ.classList.remove("champ-erreur");
+    } else {
+        champ.classList.add("champ-erreur");
     }
+ 
+    let message = champ.parentElement.querySelector(".message");
+ 
+    if (message) {
+        const bonneVariante = resultat.valide
+            ? message.classList.contains("message--succes")
+            : message.classList.contains("message--erreur");
+ 
+        if (!bonneVariante) {
+            message.remove();
+            message = null;
+        }
+    }
+ 
+    let classeVariante, role, prefixeTexte;
+    if (resultat.valide) {
+        classeVariante = "message--succes";
+        role = "status";
+        prefixeTexte = "Succès —";
+    } else {
+        classeVariante = "message--erreur";
+        role = "alert";
+        prefixeTexte = "Erreur —";
+    }
+
+    if (!message) {
+        message = document.createElement("div");
+        message.className = "message " + classeVariante;
+        message.setAttribute("role", role);
+ 
+        const icone = document.createElement("span");
+        icone.className = "message__icone";
+        icone.setAttribute("aria-hidden", "true");
+ 
+        const prefixe = document.createElement("span");
+        prefixe.className = "message__prefixe";
+        prefixe.textContent = prefixeTexte;
+ 
+        const contenu = document.createElement("span");
+        contenu.className = "message__contenu";
+ 
+        const texte = document.createElement("p");
+        texte.className = "message__texte";
+        texte.appendChild(prefixe);
+        texte.appendChild(document.createTextNode(" "));
+        texte.appendChild(contenu);
+ 
+        message.appendChild(icone);
+        message.appendChild(texte);
+ 
+        champ.after(message);
+    }
+ 
+    const contenu = message.querySelector(".message__contenu");
+    contenu.textContent = resultat.message;
 }
 
 function initFormulaireAvis() {

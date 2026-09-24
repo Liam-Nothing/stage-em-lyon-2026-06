@@ -3,19 +3,31 @@
 
 
 const LONGUEUR_MIN = 10;
-const LONGUEUR_MAX = 1000;
+const LONGUEUR_MAX = 100;
 
 function refus(message) {
     return { valide: false, message };
 }
 
 function validerAvis(texte, note) {
-    const contenu = typeof texte === "string" ? texte.trim() : "";
+    let contenu = "";
+    if (typeof texte === "string") {
+        contenu = texte.trim();
+    }
+
     const taille = contenu.length;
 
-    if (taille === 0) return refus("Saisie vide : parlez de votre lecture");
-    if (taille < LONGUEUR_MIN) return refus(`Saisie trop courte : elle doit contenir au moins ${LONGUEUR_MIN} caractères`);
-    if (taille > LONGUEUR_MAX) return refus(`Saisie trop longue : elle ne doit pas dépasser ${LONGUEUR_MAX} caractères`);
+    if (taille === 0) {
+        return refus("Saisie vide : parlez de votre lecture");
+    }
+
+    if (taille < LONGUEUR_MIN) {
+        return refus("Saisie trop courte : elle doit contenir au moins " + LONGUEUR_MIN + " caractères");
+    }
+
+    if (taille > LONGUEUR_MAX) {
+        return refus("Saisie trop longue : elle ne doit pas dépasser " + LONGUEUR_MAX + " caractères");
+    }
 
     return { valide: true, message: "Saisie correcte" };
 }
