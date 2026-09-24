@@ -280,3 +280,22 @@ select#select-tri {
     flex-direction: column;
     gap: 5px;
 }
+
+
+
+/*//// CSS PROFIL ////*/
+
+.container-profil {
+    display: flex;
+    flex-direction: column; /* passe en colonne */
+    flex-wrap: wrap;        /* autorise le retour à la ligne */
+    width: 100%;            /* ne dépasse jamais */
+    max-width: 100%;        /* sécurité */
+    gap: 16px;              /* réduit l’espace */
+}
+
+.container-profil img,
+.container-profil .photo-profil {
+    max-width: 100%;
+    height: auto;
+}
