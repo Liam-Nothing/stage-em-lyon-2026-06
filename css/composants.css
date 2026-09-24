@@ -171,6 +171,7 @@ legend {
 .note-etoile input {
   position: absolute;
   opacity: 0;
+  animation: star-pop 120ms ease-out;
 }
 
 .note-etoile label {
@@ -182,17 +183,20 @@ legend {
   width: 0.5em;
   height: 1.5em;
   overflow: hidden;
+  animation: star-pop 120ms ease-out;
 }
 
 .note-etoile input:checked~label,
 .note-etoile label:hover,
 .note-etoile label:hover~label {
   color: #f5a623;
+  animation: star-pop 120ms ease-out;
 }
 
 .note-etoile input:focus-visible+label {
   outline: 2px solid #2563eb;
   outline-offset: 2px;
+  animation: star-pop 120ms ease-out;
 }
 
 .note-etoile label::before {
@@ -200,23 +204,28 @@ legend {
   position: absolute;
   top: 0;
   width: 1em;
+  animation: star-pop 120ms ease-out;
 }
 
 .note-etoile label.demi-gauche::before {
   left: 0;
+  animation: star-pop 120ms ease-out;
 }
 
 .note-etoile label.demi-droite::before {
   left: -0.5em;
+  animation: star-pop 120ms ease-out;
 }
 
 .etoile-icon {
   width: 25px;
+  animation: star-pop 120ms ease-out;
 }
 
 .demie {
   width: 15px;
   height: 24px;
+  animation: star-pop 120ms ease-out;
 }
 
 
@@ -368,6 +377,8 @@ article {
   gap: 3px;
   border-radius: 5px;
   max-width: 370px;
+  animation: card-appear 250ms ease-out;
+
 }
 
 time {

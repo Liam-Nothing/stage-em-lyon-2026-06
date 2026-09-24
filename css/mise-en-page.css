@@ -116,10 +116,13 @@ button:hover{
     border-color: var(--bouton);
 }
 
-button:focus-visible{
+button:active{
     background-color: var(--primaire);
     color: var(--bouton);
     border-color: var(--bouton);
+    animation: button-press 120ms ease-out;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 120ms ease-out;
 }
 
 button:disabled{
@@ -154,6 +157,9 @@ li.champ-saisie {
     flex-direction: row;
     width: fit-content;
     gap: 12px;
+    animation: button-press 120ms ease-out;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 120ms ease-out;
 }
 
 .div-formulaire-avis {
@@ -213,6 +219,8 @@ h2.titre-fil-dactu {
     text-align: center;
 }
 
+
+
 .carte-avis {
     display: flex;
     align-items: flex-start;
@@ -221,7 +229,13 @@ h2.titre-fil-dactu {
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    animation: card-appear 250ms ease-out;
 }
+
+
+
+
+
 
 .carte-photo-profil {
     width: 50px;

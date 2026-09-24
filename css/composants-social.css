@@ -157,14 +157,28 @@
     border-radius: 20px;
     cursor: pointer;
     font-size: 0.85rem;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    animation: button-press 120ms ease-out;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 120ms ease-out;
 }
 
-.bouton-retirer {
-    background-color: #eee;
-    color: #333;
+.bouton-retirer:active {
+    background-color: var(--primaire);
+    color: var(--bouton);
+    border-color: var(--bouton);
+    animation: button-press 200ms ease-out;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 200ms ease-out;
 }
 
-.bouton-ajouter {
-    background-color: #333;
-    color: #fff;
+
+
+.bouton-ajouter:active {
+    background-color: var(--primaire);
+    color: var(--bouton);
+    border-color: var(--bouton);
+    animation: button-press 200ms ease-out;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 200ms ease-out;
 }
