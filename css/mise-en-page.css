@@ -177,12 +177,26 @@ form {
 
 
 /*//// INDEX.HTML ///////*/
-.div-fil-d\'actu {
-    width: 320px;
+
+/*///// CSS FIL D'ACTUALITE //////*/
+
+.div-fil-dactu {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #eae3d2a1;
+    padding: 9px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-radius: 5px;
 }
 
 .div-recherche-livres {
     width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
   
 .fil-dactu {
@@ -192,15 +206,74 @@ form {
     display: flex;
     flex-direction: column;
     gap: 14px;
+    border-radius: 5px;
 }
 
-h2.titre-fild\'actu {
+h2.titre-fil-dactu {
     text-align: center;
 }
 
 .carte-avis {
-    background-color: var(--card);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background-color: #fdfbf7;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.carte-photo-profil {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.carte-pseudo {
+    font-weight: bold;
+    color: #6b2a38;
+    margin: 0 0 5px 0;
+}
+
+.carte-date {
+    font-size: 0.85em;
+    color: #777;
+    margin: 0 0 10px 0;
+}
+
+.carte-commentaire {
+    margin: 0;
+}
+
+.carte-titre-livre {
+    font-weight: bold;
+    margin: 0 0 4px 0;
+}
+
+
+/*//// CSS RECHERCHER LIVRES /////*/
+
+select#select-genre {
+    background-color: var(--bouton);
+    border-color: var(--bordure);
+    padding: 5px;
+    color: var(--primaire);
+    border-radius: 5px;
+}
+
+select#select-tri {
+    background-color: var(--bouton);
+    border-color: var(--bordure);
+    padding: 5px;
+    color: var(--primaire);
+    border-radius: 5px;
+}
+
+.div-filtrage {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
