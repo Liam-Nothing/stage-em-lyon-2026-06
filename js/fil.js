@@ -1,8 +1,5 @@
 
-
 /////////FONCTION CONSTRUIRE FIL ///
-
-
 async function construireFil(idUtilisateurCourant) {
 
     // 1. Charger les utilisateurs
@@ -73,25 +70,21 @@ async function construireFil(idUtilisateurCourant) {
 
 
 
-
-
-
-
 ///////// AFFICHER LE FIL D'ACTUALITÉ /////////
-
-
-///////// AFFICHER LE FIL D'ACTUALITÉ /////////
-
 async function afficherFil(idUtilisateurCourant) {
 
     // 1. Récupérer la div où mettre les cartes
     const conteneurFil = document.getElementById("fil");
-    conteneurFil.innerHTML = "";
 
     // 2. Récupérer les événements, les utilisateurs et les livres
+    // (le squelette de chargement reste affiché dans #fil pendant ces fetch)
     const evenements = await construireFil(idUtilisateurCourant);
     const utilisateurs = await chargerUtilisateurs();
     const livres = await chargerLivres();
+
+    // On ne vide le conteneur qu'une fois les données prêtes,
+    // ce qui remplace le squelette par le vrai contenu (ou le message vide).
+    conteneurFil.innerHTML = "";
 
     // 3. Si aucun événement, afficher un message
     if (evenements.length === 0) {
@@ -161,13 +154,6 @@ async function afficherFil(idUtilisateurCourant) {
 afficherFil(1);
 
 
-
-
-
-
-
-
-
 /*async function afficherFil(idUtilisateurCourant) {
 
     // 1. Récupérer la div où mettre les cartes
@@ -223,5 +209,3 @@ afficherFil(1);
 // Lancer l'affichage au chargement de la page
 // Remplace 1 par l'id de ton utilisateur courant
 afficherFil(1);*/
-
-

@@ -1,4 +1,3 @@
-
 // --- Gestion des notes en localStorage ---
 function lireNotes() {
     try {
@@ -42,11 +41,14 @@ async function initLivre() {
     return;
   }
 
-  // Étape 6 : afficher le livre trouvé
+  // Étape 6 : afficher le livre trouvé, puis remplacer le squelette par le vrai contenu
   remplirFicheLivre(livre);
 
   // Étape 7 : brancher le composant d'étoiles sur ce livre
   initFormulaireNote(id);
+
+  // Étape 8 : les données sont affichées, on peut retirer le squelette
+  masquerSquelette("fiche-livre");
 }
 
 // Branche les étoiles : relit la note existante et enregistre au changement
@@ -85,7 +87,10 @@ function trouverLivre(livres, id) {
 
 // Affiche le message d'erreur avec un lien de retour
 function afficherErreur() {
-  document.querySelector(".div-row.container.fil-activite").innerHTML = `
+  // Le squelette ne doit pas tourner indéfiniment si le livre est introuvable
+  masquerSquelette("fiche-livre");
+
+  document.querySelector(".div-row.fil-activite").innerHTML = `
     <p>Livre introuvable.</p>
     <a href="../library/library.html">Retour à la bibliothèque</a>
   `;

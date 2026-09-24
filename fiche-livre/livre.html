@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="../css/mise-en-page.css">
     <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/squelette.css">
 </head>
 
 <body>
@@ -32,148 +33,187 @@
     </header>
     <main>
         <section class="container">
-            <div class="div-row fil-activite">
 
-                <div class="div-couverture-colomn" id="contenu-livre">
-                    <img class="couverture card couvertureImg" src="" alt="couverture-livre">
-                    <div class="shelf" id="etagere">
-                        <button class="shelf__trigger" type="button" aria-haspopup="menu" aria-expanded="false"
-                            aria-controls="etagere-menu">
-                            <span class="shelf__label">À lire</span>
-                            <span class="shelf__arrow" aria-hidden="true">
-                                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M2 4.5 6 8.5l4-4" />
-                                </svg>
-                            </span>
-                        </button>
-
-                        <ul class="shelf__menu" id="etagere-menu" role="menu" hidden>
-                            <li class="shelf__item" role="menuitemradio" aria-checked="true" tabindex="-1"
-                                data-value="a-lire">
-                                <svg class="shelf__check" viewBox="0 0 14 14" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="m2.5 7.5 3 3 6-7" />
-                                </svg>
-                                À lire
-                            </li>
-                            <li class="shelf__item" role="menuitemradio" aria-checked="false" tabindex="-1"
-                                data-value="en-cours">
-                                <svg class="shelf__check" viewBox="0 0 14 14" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="m2.5 7.5 3 3 6-7" />
-                                </svg>
-                                En cours de lecture
-                            </li>
-                            <li class="shelf__item" role="menuitemradio" aria-checked="false" tabindex="-1"
-                                data-value="lu">
-                                <svg class="shelf__check" viewBox="0 0 14 14" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="m2.5 7.5 3 3 6-7" />
-                                </svg>
-                                Lu
-                            </li>
-                            <li class="shelf__item" role="menuitemradio" aria-checked="false" tabindex="-1"
-                                data-value="abandonne">
-                                <svg class="shelf__check" viewBox="0 0 14 14" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="m2.5 7.5 3 3 6-7" />
-                                </svg>
-                                Abandonné
-                            </li>
-                        </ul>
+            <!-- Squelette de chargement : affiché pendant le fetch de livres.json, masqué ensuite -->
+            <div id="squelette-fiche-livre">
+                <div class="div-row fil-activite">
+                    <div class="div-couverture-colomn">
+                        <div class="squelette-bloc" style="width:280px;height:420px;"></div>
+                        <div class="squelette-bloc" style="width:110px;height:38px;border-radius:20px;"></div>
+                        <div class="squelette-bloc squelette-bloc--texte" style="width:150px;"></div>
                     </div>
-
-                    <p id="sortie" aria-live="polite"></p>
-                    <div class="note-row">
-                        <p class="valeur-note"></p>
-                        <div>
-                            <img class="etoile-icon" src="../assets/etoile.svg" alt="etoile">
-                            <img class="etoile-icon" src="../assets/etoile.svg" alt="etoile">
-                            <img class="etoile-icon" src="../assets/etoile.svg" alt="etoile">
-                            <img class="etoile-icon" src="../assets/etoile.svg" alt="etoile">
-                            <img class="demie" src="../assets/demie etoile.svg" alt="etoile">
+                </div>
+                <div class="div-infos-colomn squelette-colonne">
+                    <div class="squelette-bloc squelette-bloc--texte" style="width:60%;height:1.6em;"></div>
+                    <div class="squelette-bloc squelette-bloc--texte" style="width:30%;height:1.2em;"></div>
+                    <div class="squelette-bloc squelette-bloc--texte" style="width:100%;"></div>
+                    <div class="squelette-bloc squelette-bloc--texte" style="width:100%;"></div>
+                    <div class="squelette-bloc squelette-bloc--texte" style="width:90%;"></div>
+                    <div class="squelette-bloc squelette-bloc--texte" style="width:30%;height:1.2em;"></div>
+                    <div class="squelette-bloc squelette-bloc--texte" style="width:40%;"></div>
+                    <div class="squelette-bloc squelette-bloc--texte" style="width:35%;"></div>
+                    <div class="squelette-bloc squelette-bloc--texte" style="width:25%;"></div>
+                    <div class="squelette-bloc squelette-bloc--texte" style="width:20%;"></div>
+                    <div class="squelette-bloc squelette-bloc--texte" style="width:35%;height:1.2em;"></div>
+                    <div class="squelette-ligne">
+                        <div class="squelette-bloc squelette-bloc--rond" style="width:50px;height:50px;flex-shrink:0;">
                         </div>
-                    </div>
-                    <a href="">2,345 avis</a>
-
-                    <div class="formulaire-note">
-                        <fieldset>
-                            <legend>Ma note</legend>
-
-                            <div class="note-etoile">
-                                <input type="radio" id="etoile-5" name="note" value="5">
-                                <label class="demi-droite" for="etoile-5" title="5 étoiles"></label>
-
-                                <input type="radio" id="etoile-4-5" name="note" value="4.5">
-                                <label class="demi-gauche" for="etoile-4-5" title="4,5 étoiles"></label>
-
-                                <input type="radio" id="etoile-4" name="note" value="4">
-                                <label class="demi-droite" for="etoile-4" title="4 étoiles"></label>
-
-                                <input type="radio" id="etoile-3-5" name="note" value="3.5">
-                                <label class="demi-gauche" for="etoile-3-5" title="3,5 étoiles"></label>
-
-                                <input type="radio" id="etoile-3" name="note" value="3">
-                                <label class="demi-droite" for="etoile-3" title="3 étoiles"></label>
-
-                                <input type="radio" id="etoile-2-5" name="note" value="2.5">
-                                <label class="demi-gauche" for="etoile-2-5" title="2,5 étoiles"></label>
-
-                                <input type="radio" id="etoile-2" name="note" value="2">
-                                <label class="demi-droite" for="etoile-2" title="2 étoiles"></label>
-
-                                <input type="radio" id="etoile-1-5" name="note" value="1.5">
-                                <label class="demi-gauche" for="etoile-1-5" title="1,5 étoiles"></label>
-
-                                <input type="radio" id="etoile-1" name="note" value="1">
-                                <label class="demi-droite" for="etoile-1" title="1 étoile"></label>
-
-                                <input type="radio" id="etoile-0-5" name="note" value="0.5">
-                                <label class="demi-gauche" for="etoile-0-5" title="0,5 étoile"></label>
-                            </div>
-                        </fieldset>
+                        <div class="squelette-colonne" style="flex:1;">
+                            <div class="squelette-bloc squelette-bloc--texte" style="width:70%;"></div>
+                            <div class="squelette-bloc squelette-bloc--texte" style="width:90%;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="div-infos-colomn">
-                <h2 class="titre-livre"></h2>
-                <h3>Résumé</h3>
-                <p class="summury"></p>
-                <h3>A propos</h3>
-                <div class="infos-row ">
-                    <p>Auteur : </p>
-                    <p class="valeur-auteur"></p>
-                </div>
-                <div class="infos-row">
-                    <p>Date de publication : </p>
-                    <p class="valeur-date"></p>
-                </div>
-                <div class="infos-row">
-                    <p>Genre : </p>
-                    <p class="valeur-genre"></p>
-                </div>
-                <div class="infos-row">
-                    <p>Nombre de page : </p>
-                    <p class="valeur-pages"></p>
-                </div>
-                <div class="infos-row">
-                    <p>Série : </p>
-                    <p class="valeur-serie"></p>
-                </div>
-                <div class="div-avis">
-                    <h3>Avis des lecteurs</h3>
-                    <div class="liste-avis"></div>
-                    <article>
-                        <div>
-                            <img class="img-avatar" src="" alt="photo profil">
-                            <img class="img-etoiles" alt="note">
+            <div id="contenu-fiche-livre" hidden>
+                <div class="div-row fil-activite">
+
+                    <div class="div-couverture-colomn" id="contenu-livre">
+                        <img class="couverture card couvertureImg" src="" alt="couverture-livre">
+                        <div class="shelf" id="etagere">
+                            <button class="shelf__trigger" type="button" aria-haspopup="menu" aria-expanded="false"
+                                aria-controls="etagere-menu">
+                                <span class="shelf__label">À lire</span>
+                                <span class="shelf__arrow" aria-hidden="true">
+                                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 4.5 6 8.5l4-4" />
+                                    </svg>
+                                </span>
+                            </button>
+
+                            <ul class="shelf__menu" id="etagere-menu" role="menu" hidden>
+                                <li class="shelf__item" role="menuitemradio" aria-checked="true" tabindex="-1"
+                                    data-value="a-lire">
+                                    <svg class="shelf__check" viewBox="0 0 14 14" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="m2.5 7.5 3 3 6-7" />
+                                    </svg>
+                                    À lire
+                                </li>
+                                <li class="shelf__item" role="menuitemradio" aria-checked="false" tabindex="-1"
+                                    data-value="en-cours">
+                                    <svg class="shelf__check" viewBox="0 0 14 14" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="m2.5 7.5 3 3 6-7" />
+                                    </svg>
+                                    En cours de lecture
+                                </li>
+                                <li class="shelf__item" role="menuitemradio" aria-checked="false" tabindex="-1"
+                                    data-value="lu">
+                                    <svg class="shelf__check" viewBox="0 0 14 14" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="m2.5 7.5 3 3 6-7" />
+                                    </svg>
+                                    Lu
+                                </li>
+                                <li class="shelf__item" role="menuitemradio" aria-checked="false" tabindex="-1"
+                                    data-value="abandonne">
+                                    <svg class="shelf__check" viewBox="0 0 14 14" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="m2.5 7.5 3 3 6-7" />
+                                    </svg>
+                                    Abandonné
+                                </li>
+                            </ul>
                         </div>
-                        <p class="valeur-pseudo"></p>
-                        <p></p>
-                        <time datetime="2026-07"></time>
-                    </article>
+
+                        <p id="sortie" aria-live="polite"></p>
+                        <div class="note-row">
+                            <p class="valeur-note"></p>
+                            <div>
+                                <img class="etoile-icon" src="../assets/etoile.svg" alt="etoile">
+                                <img class="etoile-icon" src="../assets/etoile.svg" alt="etoile">
+                                <img class="etoile-icon" src="../assets/etoile.svg" alt="etoile">
+                                <img class="etoile-icon" src="../assets/etoile.svg" alt="etoile">
+                                <img class="demie" src="../assets/demie etoile.svg" alt="etoile">
+                            </div>
+                        </div>
+                        <a href="">2,345 avis</a>
+
+                        <div class="formulaire-note">
+                            <fieldset>
+                                <legend>Ma note</legend>
+
+                                <div class="note-etoile">
+                                    <input type="radio" id="etoile-5" name="note" value="5">
+                                    <label class="demi-droite" for="etoile-5" title="5 étoiles"></label>
+
+                                    <input type="radio" id="etoile-4-5" name="note" value="4.5">
+                                    <label class="demi-gauche" for="etoile-4-5" title="4,5 étoiles"></label>
+
+                                    <input type="radio" id="etoile-4" name="note" value="4">
+                                    <label class="demi-droite" for="etoile-4" title="4 étoiles"></label>
+
+                                    <input type="radio" id="etoile-3-5" name="note" value="3.5">
+                                    <label class="demi-gauche" for="etoile-3-5" title="3,5 étoiles"></label>
+
+                                    <input type="radio" id="etoile-3" name="note" value="3">
+                                    <label class="demi-droite" for="etoile-3" title="3 étoiles"></label>
+
+                                    <input type="radio" id="etoile-2-5" name="note" value="2.5">
+                                    <label class="demi-gauche" for="etoile-2-5" title="2,5 étoiles"></label>
+
+                                    <input type="radio" id="etoile-2" name="note" value="2">
+                                    <label class="demi-droite" for="etoile-2" title="2 étoiles"></label>
+
+                                    <input type="radio" id="etoile-1-5" name="note" value="1.5">
+                                    <label class="demi-gauche" for="etoile-1-5" title="1,5 étoiles"></label>
+
+                                    <input type="radio" id="etoile-1" name="note" value="1">
+                                    <label class="demi-droite" for="etoile-1" title="1 étoile"></label>
+
+                                    <input type="radio" id="etoile-0-5" name="note" value="0.5">
+                                    <label class="demi-gauche" for="etoile-0-5" title="0,5 étoile"></label>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="div-infos-colomn">
+                    <h2 class="titre-livre"></h2>
+                    <h3>Résumé</h3>
+                    <p class="summury"></p>
+                    <h3>A propos</h3>
+                    <div class="infos-row ">
+                        <p>Auteur : </p>
+                        <p class="valeur-auteur"></p>
+                    </div>
+                    <div class="infos-row">
+                        <p>Date de publication : </p>
+                        <p class="valeur-date"></p>
+                    </div>
+                    <div class="infos-row">
+                        <p>Genre : </p>
+                        <p class="valeur-genre"></p>
+                    </div>
+                    <div class="infos-row">
+                        <p>Nombre de page : </p>
+                        <p class="valeur-pages"></p>
+                    </div>
+                    <div class="infos-row">
+                        <p>Série : </p>
+                        <p class="valeur-serie"></p>
+                    </div>
+                    <div class="div-avis">
+                        <h3>Avis des lecteurs</h3>
+                        <div class="liste-avis"></div>
+                        <article>
+                            <div>
+                                <img class="img-avatar" src="" alt="photo profil">
+                                <img class="img-etoiles" alt="note">
+                            </div>
+                            <p class="valeur-pseudo"></p>
+                            <p></p>
+                            <time datetime="2026-07"></time>
+                        </article>
+                    </div>
                 </div>
             </div>
 
@@ -268,6 +308,7 @@
             <p>Stage - septembre 2026</p>
         </div>
     </footer>
+    <script src="../js/squelette.js"></script>
     <script src="../js/donnees.js"></script>
     <script src="../js/livre.js"></script>
     <script src="../js/stockage.js"></script>
