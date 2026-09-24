@@ -1,11 +1,18 @@
 
 /// FONCTION lireNotes ///////
 function lireNotes() {
+    const texte = localStorage.getItem("mesNotes");
+
+    // Clé absente : valeur par défaut, pas besoin de parser
+    if (texte === null) {
+        return {};
+    }
+
     try {
-        const texte = localStorage.getItem("mesNotes");
-        return JSON.parse(texte) || {};
+        return JSON.parse(texte);
     } catch (erreur) {
         console.warn("Contenu de 'mesNotes' illisible, réinitialisation :", erreur.message);
+        localStorage.removeItem("mesNotes");
         return {};
     }
 }
@@ -18,7 +25,6 @@ function enregistrerNote(idLivre, maNote) {
     localStorage.setItem("mesNotes", JSON.stringify(notes));
 
 }
-
 
 
 ///FONCTION supprimerNote ////
