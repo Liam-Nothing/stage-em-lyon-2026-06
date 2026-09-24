@@ -179,7 +179,7 @@ form {
 
 /*//// INDEX.HTML ///////*/
 
-.div-fil-d\'actu {
+.div-fil-dactu {
    /* background-color: var(--bouton);*/
     width: 320px;
 }
@@ -188,16 +188,25 @@ form {
     width: 800px;
 }
   
-.fil-d\'actu {
+.fil-dactu {
     background-color: var(--bouton);
-    height: 400px;
+    height: fit-content;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
 h2.titre-fild\'actu {
     text-align: center;
 }
 
-
+.carte-avis {
+    background-color: var(--card);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
 
 
 
