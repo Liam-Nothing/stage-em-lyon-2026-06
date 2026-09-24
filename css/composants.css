@@ -419,3 +419,90 @@ time {
   font-size: 13px;
   margin: 6px 0 0;
 }
+
+/* MESSAGES ERREURS*/
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid transparent;
+  border-left-width: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.message__icone {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.message__texte {
+  margin: 0;
+}
+
+.message__prefixe {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-right: 0.35em;
+}
+
+/* --- Variante information --- */
+.message--info {
+  background-color: #e8f0fe;
+  border-color: #17395e;
+  color: #17395e;
+}
+
+.message--info .message__icone {
+  background-color: #17395e;
+  color: #ffffff;
+}
+
+.message--info .message__icone::before {
+  content: "i";
+  font-style: italic;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* --- Variante succès --- */
+.message--succes {
+  background-color: #e6f4ea;
+  border-color: #1e4620;
+  color: #1e4620;
+}
+
+.message--succes .message__icone {
+  background-color: #1e4620;
+  color: #ffffff;
+}
+
+.message--succes .message__icone::before {
+  content: "\2713";
+}
+
+/* --- Variante erreur --- */
+.message--erreur {
+  background-color: #fdecea;
+  border-color: #611a15;
+  color: #611a15;
+}
+
+.message--erreur .message__icone {
+  background-color: #611a15;
+  color: #ffffff;
+}
+
+.message--erreur .message__icone::before {
+  content: "\26A0";
+}
