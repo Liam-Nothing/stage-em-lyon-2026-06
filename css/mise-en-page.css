@@ -310,3 +310,55 @@ select#select-tri {
     max-width: 100%;
     height: auto;
 }
+
+img.img-amis {
+    grid-area: photo;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+img.photo-profil {
+    width: 120px;
+}
+
+div#liste-amis-profil {
+    background-color: #651926e3;
+    padding: 10px;
+    width:fit-content;
+    margin: 0px;
+    border-radius: 7px;
+}
+
+div#liste-recco-amis-profil {
+    background-color: #651926b5;
+    padding: 10px;
+    width: fit-content;
+    margin: 0px;
+    border-radius: 7px;
+
+}
+
+.div-mes-amis {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 600px;
+}
+
+.liste-avis {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--bouton);
+    padding: 50px;
+    border-radius: 7px;
+}
+
+.div-mes-activites {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+

@@ -184,6 +184,7 @@ function creerCarteProfil(conteneur, personne, typeBouton, surClicBouton) {
 
   let photo = document.createElement("img");
   photo.src = personne.photoProfil;
+  photo.className = "img-amis";
   photo.alt = personne.pseudo;
   lienProfil.appendChild(photo);
 
