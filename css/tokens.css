@@ -47,6 +47,7 @@ h5 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     animation: card-appear 250ms ease-out;
+    height: 350px;
 
 
 }
