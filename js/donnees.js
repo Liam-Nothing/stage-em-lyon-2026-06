@@ -174,11 +174,11 @@ function remplirFicheAvis(avis, modele) {
     const fiche = modele.cloneNode(true);
 
     const imgAvatar = fiche.querySelector(".img-avatar");
-    imgAvatar.src = `★ ${avis.note}/5`;
-    imgAvatar.alt = `note ${avis.note} étoiles`;
+    imgAvatar.src = avis.photoProfil;
+    imgAvatar.alt = `photo de profil de ${avis.pseudo}`;
 
     const img = fiche.querySelector("img");
-    img.src = `★ ${avis.note}/5`;
+    img.src = `images/etoiles-${avis.note}.png`;
     img.alt = `note ${avis.note} étoiles`;
 
     fiche.querySelector(".valeur-pseudo").textContent = avis.pseudo;

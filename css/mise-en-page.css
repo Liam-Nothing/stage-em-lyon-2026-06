@@ -574,3 +574,7 @@ p.commentaire-avis-livre {
     line-height: 1.5;
     color: var(--text);
 }
+
+div#contenu-livre {
+    position: sticky;
+}
