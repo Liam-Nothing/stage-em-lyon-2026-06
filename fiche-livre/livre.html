@@ -33,7 +33,7 @@
         </nav>
     </header>
     <main>
-        <section class="container">
+        <section class="container-livre">
 
             <!-- Squelette de chargement : affiché pendant le fetch de livres.json, masqué ensuite -->
             <div id="squelette-fiche-livre">
@@ -220,16 +220,19 @@
                     </div>
                     <div class="div-avis">
                         <h3>Avis des lecteurs</h3>
-                        <div class="liste-avis"></div>
-                        <article>
-                            <div>
-                                <img class="img-avatar" src="" alt="photo profil">
-                                <img class="img-etoiles" alt="note">
-                            </div>
-                            <p class="valeur-pseudo"></p>
-                            <p></p>
-                            <time datetime="2026-07"></time>
-                        </article>
+                        <div class="liste-avis">
+                            <article class="article-avis">
+                                <div>
+                                    <span class="img-avatar">
+                                        <img class="img-avatar" src="" alt="">
+                                    </span>
+                                </div>
+                                <p class="valeur-pseudo"></p>
+                                <p class="commentaire-avis-livre"></p>
+                                <time datetime="2026-07"></time>
+                            </article>
+
+                        </div>
                     </div>
                 </div>
             </div>
