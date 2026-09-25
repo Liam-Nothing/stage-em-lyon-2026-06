@@ -36,7 +36,7 @@ function validerAvis(texte, note) {
 async function lireAvis(idLivre) {
     let avisJson = [];
     try {
-        const reponse = await fetch("../data/avis.json"); 
+        const reponse = await fetch("../data/avis.json");
         avisJson = await reponse.json();
     } catch (erreur) {
         console.warn("../data/avis.json illisible :", erreur.message);
@@ -62,14 +62,42 @@ async function afficherAvis(idLivre) {
 
     for (const a of avis) {
         const p = document.createElement("p");
-        p.textContent = a.pseudo + " : " + a.commentaire;
+
+        // On construit le texte petit à petit pour gérer les infos manquantes
+        let texte = a.pseudo + " : " + a.commentaire;
+
+        if (a.note) {
+            texte += " (note : " + a.note + "/5)";
+        }
+        if (a.dateFinLecture) {
+            texte += " — lu le " + a.dateFinLecture;
+        }
+
+        p.textContent = texte;
         conteneur.appendChild(p);
     }
 }
 
 
+// Noms des mois en français, dans l'ordre (janvier = index 0),
+// pour correspondre au format texte lu par parserDateFrancaise()
+const MOIS_FR_LISTE = [
+    "janvier", "février", "mars", "avril", "mai", "juin",
+    "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+];
+
+// Construit une date du jour au format "25 septembre 2026",
+// le même format que parserDateFrancaise() sait lire
+function dateActuelleEnFrancais() {
+    const aujourdHui = new Date();
+    const jour = aujourdHui.getDate();
+    const mois = MOIS_FR_LISTE[aujourdHui.getMonth()];
+    const annee = aujourdHui.getFullYear();
+    return `${jour} ${mois} ${annee}`;
+}
+
 //// FONCTION ENREGISTRER AVIS ////
-function enregistrerAvis(idLivre, commentaire) {
+function enregistrerAvis(idLivre, commentaire, note) {
     let avis = [];
     try {
         avis = JSON.parse(localStorage.getItem("avis")) || [];
@@ -81,7 +109,9 @@ function enregistrerAvis(idLivre, commentaire) {
         pseudo: "moi",
         idLivre: idLivre,
         commentaire: commentaire,
-        datePublicationCommentaire: new Date().toISOString()
+        note: Number(note),
+        datePublicationCommentaire: dateActuelleEnFrancais(),
+        photoProfil: "images/avatar-defaut.png" // adapte le chemin à ton vrai avatar par défaut
     });
 
     localStorage.setItem("avis", JSON.stringify(avis));
@@ -160,4 +190,86 @@ function initEtagere(root) {
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.shelf').forEach(initEtagere);
+});
+
+
+
+// ---- Pop-up ---- //
+document.addEventListener('DOMContentLoaded', function () {
+
+    const overlay = document.getElementById('avis-modal-overlay');
+    const boutonAnnuler = document.getElementById('avis-modal-annuler');
+    const formulaire = document.getElementById('avis-modal-formulaire');
+
+    const optionLu = document.querySelector('.shelf__item[data-value="lu"]');
+
+    const parametresURL = new URLSearchParams(window.location.search);
+    const idLivre = parametresURL.get('id');
+
+    async function recupererTousLesAvis() {
+        const avisJson = (await chargerAvis()) || [];
+
+        let avisLocaux = [];
+        try {
+            avisLocaux = JSON.parse(localStorage.getItem("avis")) || [];
+        } catch (erreur) {
+            console.warn("Clé 'avis' illisible :", erreur.message);
+        }
+
+        return avisJson.concat(avisLocaux);
+    }
+
+    // ---- Fonction pour AFFICHER la pop-up ----
+    function ouvrirPopup() {
+        overlay.classList.add('visible');
+    }
+
+    // ---- Fonction pour CACHER la pop-up ----
+    function fermerPopup() {
+        overlay.classList.remove('visible');
+    }
+
+    if (optionLu) {
+        optionLu.addEventListener('click', ouvrirPopup);
+    }
+
+    boutonAnnuler.addEventListener('click', fermerPopup);
+
+    overlay.addEventListener('click', function (evenement) {
+        if (evenement.target === overlay) {
+            fermerPopup();
+        }
+    });
+
+    formulaire.addEventListener('submit', async function (evenement) {
+        evenement.preventDefault();
+
+        const champMessage = document.getElementById('message-avis');
+        const message = champMessage.value;
+
+        const noteCochee = formulaire.querySelector('input[name="note"]:checked');
+        const note = noteCochee ? Number(noteCochee.value) : null;
+
+        const resultat = validerAvis(message, note);
+        afficherErreurAvis(champMessage, resultat);
+
+        if (!resultat.valide) {
+            return;
+        }
+
+        // 1. On sauvegarde le nouvel avis dans le localStorage
+        enregistrerAvis(idLivre, message, note);
+
+        // 2. On récupère TOUS les avis (data/avis.json + localStorage, non filtrés)
+        //    puis on demande à ta fonction existante de générer les vraies cartes
+        const tousLesAvis = await recupererTousLesAvis();
+
+        afficherAvisDuLivre(tousLesAvis, idLivre);
+
+        // 3. On vide le formulaire pour la prochaine fois
+        formulaire.reset();
+
+        fermerPopup();
+    });
+
 });

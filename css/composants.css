@@ -142,22 +142,22 @@ input[type="text"] {
   text-align: center;
 }*/
 
-.div-couverture-colomn-index{
-   display: flex;
-    column-gap: 18px;
-    align-items: center;
-    text-align: left;
-    background-color: #fdfbf7;
-    border-radius: 10px;
-    padding: 15px 20px;
-    flex-wrap: inherit;
-    column-gap: 25px;
-    row-gap: 15px;
+.div-couverture-colomn-index {
+  display: flex;
+  column-gap: 18px;
+  align-items: center;
+  text-align: left;
+  background-color: #fdfbf7;
+  border-radius: 10px;
+  padding: 15px 20px;
+  flex-wrap: inherit;
+  column-gap: 25px;
+  row-gap: 15px;
 }
 
 
 
-.div-couverture-colomn-index.img{
+.div-couverture-colomn-index.img {
   width: 100px;
 }
 
@@ -256,6 +256,39 @@ legend {
   width: 15px;
   height: 24px;
   animation: star-pop 120ms ease-out;
+}
+
+
+/* POP-UP */
+/* Fond sombre qui recouvre toute la page, caché par défaut */
+.avis-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  /* caché par défaut */
+  display: none;
+
+  /* pour centrer la fenêtre du formulaire */
+  align-items: center;
+  justify-content: center;
+}
+
+/* afficher la pop-up */
+.avis-modal-overlay.visible {
+  display: flex;
+}
+
+/* La petite fenêtre blanche qui contient le formulaire */
+.avis-modal-overlay .div-formulaire-avis {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 400px;
 }
 
 

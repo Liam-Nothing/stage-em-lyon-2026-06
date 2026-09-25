@@ -350,7 +350,6 @@ div#liste-recco-amis-profil {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: var(--bouton);
     padding: 50px;
     border-radius: 7px;
 }

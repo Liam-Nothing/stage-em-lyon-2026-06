@@ -103,25 +103,35 @@ function trierAvisParDate(avis) {
     );
 }
 
+
 // fonction AVIS 
 async function initAvis() {
     // Étape 1 : lire l'id dans l'URL
     let parametresAvis = new URLSearchParams(window.location.search);
     let idLivre = parametresAvis.get("id");
-
+ 
     // Étape 2 : gérer le cas "id absent"
     if (idLivre === null) {
         afficherErreur();
         return;
     }
-
+ 
     // Étape 3 : charger les avis depuis le JSON
     let aviss = await chargerAvis();
-
+ 
+    // Étape 3bis (AJOUTÉ) : fusionner avec les avis enregistrés en local
+    // par l'utilisateur (via la pop-up "Ajouter un avis")
+    let avisLocaux = [];
+    try {
+        avisLocaux = JSON.parse(localStorage.getItem("avis")) || [];
+    } catch (erreur) {
+        console.warn("Clé 'avis' illisible :", erreur.message);
+    }
+    aviss = aviss.concat(avisLocaux);
+ 
     // Étape 4 : chercher l'avis correspondant à l'id
     let avisFiltres = avisDuLivre(aviss, idLivre);
-
-
+ 
     // Étape 6 : afficher l'avis trouvé
     afficherAvisDuLivre(aviss, idLivre);
 }
@@ -159,8 +169,6 @@ function afficherAvisDuLivre(avis, idLivre) {
         conteneur.appendChild(remplirFicheAvis(unAvis, modele));
     });
 }
-
-
 
 function remplirFicheAvis(avis, modele) {
     const fiche = modele.cloneNode(true);
@@ -282,10 +290,6 @@ function initFormulaireAvis() {
     });
 }
 
-if (document.querySelector(".div-formulaire-avis")) {
-    initFormulaireAvis();
-}
-
 
 //// FONCTION NORMALISER LE TEXTE ////
 
@@ -361,25 +365,6 @@ let livres = [];
 const champRecherche = document.querySelector(".search-bar input");
 const selectGenre = document.getElementById("select-genre");
 const selectTri = document.getElementById("select-tri");
-
-
-/*document.addEventListener("DOMContentLoaded", async () => {
-    livres = await chargerLivres();
-    afficherLivres(livres);
-});*/
-
-
-/*champRecherche.addEventListener("input", () => {
-    const requete = champRecherche.value;
-    const resultats = chercherLivres(livres, requete);
-
-    if (resultats.length === 0) {
-        afficherEtatVide();
-    } else {
-        afficherLivres(resultats);
-    }
-});*/
-
 
 function initialiserFiltres(livres) {
 

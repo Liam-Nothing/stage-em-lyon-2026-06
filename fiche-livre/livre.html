@@ -137,42 +137,58 @@
                         </div>
                         <a href="">2,345 avis</a>
 
-                        <div class="formulaire-note">
-                            <fieldset>
-                                <legend>Ma note</legend>
+                        <div class="avis-modal-overlay" id="avis-modal-overlay">
+                            <div class="div-formulaire-avis">
+                                <h4>Ajouter un avis</h4>
+                                <form action="" method="post" id="avis-modal-formulaire">
+                                    <div class="formulaire-note">
+                                        <fieldset>
+                                            <div class="note-etoile">
+                                                <input type="radio" id="etoile-5" name="note" value="5">
+                                                <label class="demi-droite" for="etoile-5" title="5 étoiles"></label>
 
-                                <div class="note-etoile">
-                                    <input type="radio" id="etoile-5" name="note" value="5">
-                                    <label class="demi-droite" for="etoile-5" title="5 étoiles"></label>
+                                                <input type="radio" id="etoile-4-5" name="note" value="4.5">
+                                                <label class="demi-gauche" for="etoile-4-5" title="4,5 étoiles"></label>
 
-                                    <input type="radio" id="etoile-4-5" name="note" value="4.5">
-                                    <label class="demi-gauche" for="etoile-4-5" title="4,5 étoiles"></label>
+                                                <input type="radio" id="etoile-4" name="note" value="4">
+                                                <label class="demi-droite" for="etoile-4" title="4 étoiles"></label>
 
-                                    <input type="radio" id="etoile-4" name="note" value="4">
-                                    <label class="demi-droite" for="etoile-4" title="4 étoiles"></label>
+                                                <input type="radio" id="etoile-3-5" name="note" value="3.5">
+                                                <label class="demi-gauche" for="etoile-3-5" title="3,5 étoiles"></label>
 
-                                    <input type="radio" id="etoile-3-5" name="note" value="3.5">
-                                    <label class="demi-gauche" for="etoile-3-5" title="3,5 étoiles"></label>
+                                                <input type="radio" id="etoile-3" name="note" value="3">
+                                                <label class="demi-droite" for="etoile-3" title="3 étoiles"></label>
 
-                                    <input type="radio" id="etoile-3" name="note" value="3">
-                                    <label class="demi-droite" for="etoile-3" title="3 étoiles"></label>
+                                                <input type="radio" id="etoile-2-5" name="note" value="2.5">
+                                                <label class="demi-gauche" for="etoile-2-5" title="2,5 étoiles"></label>
 
-                                    <input type="radio" id="etoile-2-5" name="note" value="2.5">
-                                    <label class="demi-gauche" for="etoile-2-5" title="2,5 étoiles"></label>
+                                                <input type="radio" id="etoile-2" name="note" value="2">
+                                                <label class="demi-droite" for="etoile-2" title="2 étoiles"></label>
 
-                                    <input type="radio" id="etoile-2" name="note" value="2">
-                                    <label class="demi-droite" for="etoile-2" title="2 étoiles"></label>
+                                                <input type="radio" id="etoile-1-5" name="note" value="1.5">
+                                                <label class="demi-gauche" for="etoile-1-5" title="1,5 étoiles"></label>
 
-                                    <input type="radio" id="etoile-1-5" name="note" value="1.5">
-                                    <label class="demi-gauche" for="etoile-1-5" title="1,5 étoiles"></label>
+                                                <input type="radio" id="etoile-1" name="note" value="1">
+                                                <label class="demi-droite" for="etoile-1" title="1 étoile"></label>
 
-                                    <input type="radio" id="etoile-1" name="note" value="1">
-                                    <label class="demi-droite" for="etoile-1" title="1 étoile"></label>
-
-                                    <input type="radio" id="etoile-0-5" name="note" value="0.5">
-                                    <label class="demi-gauche" for="etoile-0-5" title="0,5 étoile"></label>
-                                </div>
-                            </fieldset>
+                                                <input type="radio" id="etoile-0-5" name="note" value="0.5">
+                                                <label class="demi-gauche" for="etoile-0-5" title="0,5 étoile"></label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <ul>
+                                        <li class="champ-saisie">
+                                            <label for="message-avis">Parle nous de ta lecture</label>
+                                            <input type="text" id="message-avis" name="message-avis"
+                                                aria-valuemax="1000" aria-valuemin="10">
+                                        </li>
+                                    </ul>
+                                    <div class="div-button-form">
+                                        <button type="button" id="avis-modal-annuler">Annuler</button>
+                                        <button type="submit">Publier</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -216,64 +232,6 @@
                         </article>
                     </div>
                 </div>
-            </div>
-
-            <div class="div-formulaire-avis">
-                <h4>Ajouter un avis</h4>
-                <form action="" method="post">
-                    <div class="formulaire-note">
-                        <fieldset>
-
-                            <div class="note-etoile">
-                                <input type="radio" id="etoile-5" name="note" value="5">
-                                <label class="demi-droite" for="etoile-5" title="5 étoiles"></label>
-
-                                <input type="radio" id="etoile-4-5" name="note" value="4.5">
-                                <label class="demi-gauche" for="etoile-4-5" title="4,5 étoiles"></label>
-
-                                <input type="radio" id="etoile-4" name="note" value="4">
-                                <label class="demi-droite" for="etoile-4" title="4 étoiles"></label>
-
-                                <input type="radio" id="etoile-3-5" name="note" value="3.5">
-                                <label class="demi-gauche" for="etoile-3-5" title="3,5 étoiles"></label>
-
-                                <input type="radio" id="etoile-3" name="note" value="3">
-                                <label class="demi-droite" for="etoile-3" title="3 étoiles"></label>
-
-                                <input type="radio" id="etoile-2-5" name="note" value="2.5">
-                                <label class="demi-gauche" for="etoile-2-5" title="2,5 étoiles"></label>
-
-                                <input type="radio" id="etoile-2" name="note" value="2">
-                                <label class="demi-droite" for="etoile-2" title="2 étoiles"></label>
-
-                                <input type="radio" id="etoile-1-5" name="note" value="1.5">
-                                <label class="demi-gauche" for="etoile-1-5" title="1,5 étoiles"></label>
-
-                                <input type="radio" id="etoile-1" name="note" value="1">
-                                <label class="demi-droite" for="etoile-1" title="1 étoile"></label>
-
-                                <input type="radio" id="etoile-0-5" name="note" value="0.5">
-                                <label class="demi-gauche" for="etoile-0-5" title="0,5 étoile"></label>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <ul>
-                        <li class="champ-saisie">
-                            <label for="date-fin-lecture">Date de fin de lecture</label>
-                            <input type="date" name="date-fin-lecture" id="date-fin-lecture" value="2026-09-01"
-                                min="2000-01-01" max="2028-01-01">
-                        </li>
-                        <li class="champ-saisie">
-                            <label for="message-avis">Parle nous de ta lecture</label>
-                            <input type="text" id="message-avis" name="message-avis" aria-valuemax="1000"
-                                aria-valuemin="10">
-                        </li>
-                    </ul>
-                    <div class="div-button-form">
-                        <button type="button">Annuler</button>
-                        <button type="submit">Publier</button>
-                    </div>
-                </form>
             </div>
         </section>
 
