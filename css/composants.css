@@ -142,17 +142,22 @@ input[type="text"] {
   text-align: center;
 }*/
 
-.div-couverture-colomn-index {
-  display: flex;
-  column-gap: 18px;
-  align-items: center;
-  text-align: left;
-  background-color: #fdfbf7;
-  border-radius: 10px;
-  padding: 15px 20px;
-  flex-wrap: inherit;
-  column-gap: 25px;
-  row-gap: 15px;
+.div-couverture-colomn-index{
+    text-align: left;
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    grid-template-rows: 30px;
+    grid-template-areas:
+        "photo pseudo"
+        "photo bio"
+        "photo bouton";
+    column-gap: 75px;
+    row-gap: 4px;
+    align-items: start;
+    background-color: #fdfbf7;
+    border-radius: 10px;
+    padding: 30px 16px;
+   
 }
 
 
@@ -431,16 +436,19 @@ legend {
 
 /* template avis utilisateur CSS////*/
 article {
-  width: fit-content;
-  background-color: var(--card);
+  width: 150px;
+  text-align: center;
+  background-color: var(--bouton);
   padding: 20px;
   border: 1px solid var(--bordure);
   display: flex;
   flex-direction: column;
+  color: var(--primaire);
   gap: 3px;
   border-radius: 5px;
   max-width: 370px;
   animation: card-appear 250ms ease-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 
 }
 
