@@ -29,7 +29,7 @@ function creerCarteLivre(grilleLivre, livre) {
     carteLivre.appendChild(auteurLivre);
 
     const mesNotes = lireNotes();
-    if (livre.id in mesNotes) {
+    if (livre.id in avis) {
         let badgeNote = document.createElement("span");
         badgeNote.className = "badge-note-perso";
         badgeNote.textContent = mesNotes[livre.id];
