@@ -142,6 +142,8 @@ button:disabled{
     background-color: var(--bouton);
     color: var(--primaire);
     border-radius: 5px;
+    padding: 20px;
+    max-width: 1100px;
 }
 
 
@@ -232,11 +234,6 @@ h2.titre-fil-dactu {
     animation: card-appear 250ms ease-out;
 }
 
-
-
-
-
-
 .carte-photo-profil {
     width: 50px;
     height: 50px;
@@ -298,11 +295,11 @@ select#select-tri {
 
 .container-profil {
     display: flex;
-    flex-direction: column; /* passe en colonne */
-    flex-wrap: wrap;        /* autorise le retour à la ligne */
-    width: 100%;            /* ne dépasse jamais */
-    max-width: 100%;        /* sécurité */
-    gap: 16px;              /* réduit l’espace */
+    flex-direction: column;
+    flex-wrap: wrap;        
+    width: 100%;            
+    max-width: 100%;        
+    gap: 16px;              
 }
 
 .container-profil img,
@@ -320,7 +317,9 @@ img.img-amis {
 }
 
 img.photo-profil {
-    width: 120px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
 }
 
 div#liste-amis-profil {
@@ -343,7 +342,7 @@ div#liste-recco-amis-profil {
 .div-mes-amis {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     width: 600px;
 }
 
@@ -359,6 +358,11 @@ div#liste-recco-amis-profil {
 .div-mes-activites {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
+.div-amis {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}

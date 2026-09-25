@@ -94,11 +94,12 @@ function creerCarteAvis(conteneur, avis) {
   ligneNoteDate.appendChild(note);
 
   let date = document.createElement("span");
-  date.textContent = `lu en ${avis.datePublicationCommentaire}`;
+  date.textContent = ` lu en ${avis.datePublicationCommentaire}`;
   ligneNoteDate.appendChild(date);
 
   let couverture = document.createElement("img");
   couverture.src = avis.couverture;
+  couverture.className = "couverture-card-profil";
   couverture.alt = "couverture livre";
   article.appendChild(couverture);
 

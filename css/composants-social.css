@@ -92,7 +92,7 @@
     margin-bottom: 1rem;
 }
 
-.carte-avis img {
+.couverture-card-profil {
     width: 60px;
     height: auto;
     border-radius: 4px;
@@ -171,8 +171,6 @@
     box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
     transition: box-shadow 200ms ease-out;
 }
-
-
 
 .bouton-ajouter:active {
     background-color: var(--primaire);
