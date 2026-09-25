@@ -2,10 +2,11 @@
 /// FONCTION CREER CARTE LIVRE ///
 function creerCarteLivre(grilleLivre, livre) {
   let carteLivre = document.createElement("div");
-  carteLivre.className = "div-couverture-colomn-index";
+  carteLivre.className = "div-couverture-colomn-index-livre";
   grilleLivre.appendChild(carteLivre);
 
   let articleLivre = document.createElement("article");
+  articleLivre.className ="article-livre";
   carteLivre.appendChild(articleLivre);
 
   let lienLivre = document.createElement("a");
