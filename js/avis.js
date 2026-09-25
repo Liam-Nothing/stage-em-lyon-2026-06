@@ -78,16 +78,11 @@ async function afficherAvis(idLivre) {
     }
 }
 
-
-// Noms des mois en français, dans l'ordre (janvier = index 0),
-// pour correspondre au format texte lu par parserDateFrancaise()
 const MOIS_FR_LISTE = [
     "janvier", "février", "mars", "avril", "mai", "juin",
     "juillet", "août", "septembre", "octobre", "novembre", "décembre"
 ];
 
-// Construit une date du jour au format "25 septembre 2026",
-// le même format que parserDateFrancaise() sait lire
 function dateActuelleEnFrancais() {
     const aujourdHui = new Date();
     const jour = aujourdHui.getDate();
@@ -195,81 +190,142 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ---- Pop-up ---- //
+// ============================================
+// POP-UP "AJOUTER UN AVIS" - Version simple
+// ============================================
+// Ce script fait 2 choses :
+// 1. Quand on clique sur "Lu" dans le menu, on affiche la pop-up
+// 2. Les boutons "Annuler" et "Publier" permettent de la refermer
+
+// On attend que la page soit entièrement chargée avant de commencer
 document.addEventListener('DOMContentLoaded', function () {
 
-    const overlay = document.getElementById('avis-modal-overlay');
-    const boutonAnnuler = document.getElementById('avis-modal-annuler');
-    const formulaire = document.getElementById('avis-modal-formulaire');
+  // ---- On récupère les éléments dont on a besoin ----
+  // (Il faut que ces éléments existent déjà dans ton HTML, voir plus bas)
+  const overlay = document.getElementById('avis-modal-overlay');
+  const boutonAnnuler = document.getElementById('avis-modal-annuler');
+  const formulaire = document.getElementById('avis-modal-formulaire');
 
-    const optionLu = document.querySelector('.shelf__item[data-value="lu"]');
+  // L'élément <div class="shelf"> qui contient tout le menu déroulant
+  const etagere = document.getElementById('etagere');
 
-    const parametresURL = new URLSearchParams(window.location.search);
-    const idLivre = parametresURL.get('id');
+  // ---- On récupère l'identifiant du livre depuis l'URL ----
+  // Si ton URL ressemble à : livre.html?id=42
+  // alors idLivre vaudra "42"
+  // (adapte "id" si ton paramètre s'appelle autrement dans l'URL)
+  const parametresURL = new URLSearchParams(window.location.search);
+  // Pas de Number(...) ici : tout le reste du site (voir trouverLivre()
+  // dans livre.js) traite l'id comme du texte, pas comme un nombre.
+  // Il faut rester cohérent pour que les comparaisons "===" fonctionnent
+  // aussi bien avec data/avis.json qu'avec le localStorage.
+  const idLivre = parametresURL.get('id');
 
-    async function recupererTousLesAvis() {
-        const avisJson = (await chargerAvis()) || [];
+  // ---- Récupère TOUS les avis (tous livres confondus), sans filtrer ----
+  // afficherAvisDuLivre() se charge lui-même de filtrer par idLivre.
+  // On réutilise chargerAvis(), qui existe déjà et fonctionne pour le
+  // chargement initial de la page, plutôt que de dupliquer un fetch.
+  async function recupererTousLesAvis() {
+    const avisJson = (await chargerAvis()) || [];
 
-        let avisLocaux = [];
-        try {
-            avisLocaux = JSON.parse(localStorage.getItem("avis")) || [];
-        } catch (erreur) {
-            console.warn("Clé 'avis' illisible :", erreur.message);
-        }
-
-        return avisJson.concat(avisLocaux);
+    let avisLocaux = [];
+    try {
+      avisLocaux = JSON.parse(localStorage.getItem("avis")) || [];
+    } catch (erreur) {
+      console.warn("Clé 'avis' illisible :", erreur.message);
     }
 
-    // ---- Fonction pour AFFICHER la pop-up ----
-    function ouvrirPopup() {
-        overlay.classList.add('visible');
+    return avisJson.concat(avisLocaux);
+  }
+
+  // ---- Fonction pour AFFICHER la pop-up ----
+  function ouvrirPopup() {
+    overlay.classList.add('visible');
+    // On déplace le focus dans la pop-up, sinon un utilisateur au clavier
+    // resterait "bloqué" sur le bouton du menu, invisible derrière l'overlay
+    document.getElementById('message-avis').focus();
+  }
+
+  // ---- Fonction pour CACHER la pop-up ----
+  function fermerPopup() {
+    overlay.classList.remove('visible');
+    // On redonne le focus au bouton du menu, pour ne pas le perdre
+    etagere.querySelector('.shelf__trigger').focus();
+  }
+
+  // ---- La touche Échap ferme la pop-up, comme pour le menu déroulant ----
+  document.addEventListener('keydown', function (evenement) {
+    if (evenement.key === 'Escape' && overlay.classList.contains('visible')) {
+      fermerPopup();
     }
+  });
 
-    // ---- Fonction pour CACHER la pop-up ----
-    function fermerPopup() {
-        overlay.classList.remove('visible');
-    }
-
-    if (optionLu) {
-        optionLu.addEventListener('click', ouvrirPopup);
-    }
-
-    boutonAnnuler.addEventListener('click', fermerPopup);
-
-    overlay.addEventListener('click', function (evenement) {
-        if (evenement.target === overlay) {
-            fermerPopup();
-        }
+  // ---- Quand on choisit "Lu" dans le menu (souris OU clavier), on ouvre la pop-up ----
+  // initEtagere() émet toujours "shelf-change" à la sélection, quelle que
+  // soit la méthode utilisée (clic, ou Entrée/Espace au clavier) — donc
+  // écouter cet évènement plutôt que "click" couvre les deux cas.
+  if (etagere) {
+    etagere.addEventListener('shelf-change', function (evenement) {
+      if (evenement.detail === 'lu') {
+        ouvrirPopup();
+      }
     });
+  }
 
-    formulaire.addEventListener('submit', async function (evenement) {
-        evenement.preventDefault();
+  // ---- Quand on clique sur "Annuler", on ferme la pop-up ----
+  boutonAnnuler.addEventListener('click', fermerPopup);
 
-        const champMessage = document.getElementById('message-avis');
-        const message = champMessage.value;
+  // ---- Quand on clique en dehors de la fenêtre (sur le fond sombre) ----
+  overlay.addEventListener('click', function (evenement) {
+    // On vérifie qu'on a cliqué directement sur le fond, pas sur le formulaire
+    if (evenement.target === overlay) {
+      fermerPopup();
+    }
+  });
 
-        const noteCochee = formulaire.querySelector('input[name="note"]:checked');
-        const note = noteCochee ? Number(noteCochee.value) : null;
+  // ---- Quand on soumet le formulaire (clic sur "Publier") ----
+  formulaire.addEventListener('submit', async function (evenement) {
+    // On empêche la page de se recharger (comportement par défaut d'un formulaire)
+    evenement.preventDefault();
 
-        const resultat = validerAvis(message, note);
-        afficherErreurAvis(champMessage, resultat);
+    // On récupère le commentaire saisi par l'utilisateur
+    const champMessage = document.getElementById('message-avis');
+    const message = champMessage.value;
 
-        if (!resultat.valide) {
-            return;
-        }
+    // On récupère l'étoile cochée (note-etoile est un groupe de radios)
+    const noteCochee = formulaire.querySelector('input[name="note"]:checked');
+    const note = noteCochee ? Number(noteCochee.value) : null;
 
-        // 1. On sauvegarde le nouvel avis dans le localStorage
-        enregistrerAvis(idLivre, message, note);
+    // ---- Validation (reprise de initFormulaireAvis, qui ne doit PLUS
+    // être appelée ailleurs pour éviter d'avoir deux gestionnaires sur
+    // le même formulaire) ----
+    const resultat = validerAvis(message, note);
+    afficherErreurAvis(champMessage, resultat);
 
-        // 2. On récupère TOUS les avis (data/avis.json + localStorage, non filtrés)
-        //    puis on demande à ta fonction existante de générer les vraies cartes
-        const tousLesAvis = await recupererTousLesAvis();
+    // Si le texte n'est pas valide (trop court, trop long, vide),
+    // on arrête ici : pas d'enregistrement, la pop-up reste ouverte
+    // pour que l'utilisateur corrige.
+    if (!resultat.valide) {
+      return;
+    }
 
-        afficherAvisDuLivre(tousLesAvis, idLivre);
+    // 1. On sauvegarde le nouvel avis dans le localStorage
+    enregistrerAvis(idLivre, message, note);
 
-        // 3. On vide le formulaire pour la prochaine fois
-        formulaire.reset();
+    // 2. On récupère TOUS les avis (data/avis.json + localStorage, non filtrés)
+    //    puis on demande à ta fonction existante de générer les vraies cartes
+    const tousLesAvis = await recupererTousLesAvis();
 
-        fermerPopup();
-    });
+    // ---- Logs temporaires pour déboguer, à retirer une fois que ça marche ----
+    console.log('idLivre utilisé pour filtrer :', idLivre, typeof idLivre);
+    console.log('Tous les avis récupérés :', tousLesAvis);
+    console.log('Un exemple d\'idLivre dans les avis :', tousLesAvis[0]?.idLivre, typeof tousLesAvis[0]?.idLivre);
+
+    afficherAvisDuLivre(tousLesAvis, idLivre);
+
+    // 3. On vide le formulaire pour la prochaine fois
+    formulaire.reset();
+
+    fermerPopup();
+  });
 
 });

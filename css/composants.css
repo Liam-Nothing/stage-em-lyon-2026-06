@@ -133,31 +133,26 @@ input[type="text"] {
 
 
 
-.div-couverture-colomn-index{
-    text-align: left;
-    display: grid;
-    grid-template-columns: 70px 1fr;
-    grid-template-rows: 30px;
-    grid-template-areas:
-        "photo pseudo"
-        "photo bio"
-        "photo bouton";
-    column-gap: 75px;
-    row-gap: 4px;
-    align-items: start;
-    background-color: #fdfbf7;
-    border-radius: 10px;
-    padding: 30px 16px;
-   
+.div-couverture-colomn-index {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  grid-template-rows: 30px;
+  grid-template-areas:
+    "photo pseudo"
+    "photo bio"
+    "photo bouton";
+  column-gap: 75px;
+  row-gap: 4px;
+  align-items: start;
+  background-color: #fdfbf7;
+  border-radius: 10px;
+  padding: 30px 16px;
 }
-
-
 
 .div-couverture-colomn-index.img {
   width: 100px;
 }
-
-
 
 .grille-flex-wrap {
   display: flex;
