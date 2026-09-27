@@ -34,13 +34,7 @@ function validerAvis(texte, note) {
 
 //// FONCTION LIRE AVIS : fusionne data/avis.json et le localStorage ////
 async function lireAvis(idLivre) {
-    let avisJson = [];
-    try {
-        const reponse = await fetch("../data/avis.json");
-        avisJson = await reponse.json();
-    } catch (erreur) {
-        console.warn("../data/avis.json illisible :", erreur.message);
-    }
+    const avisJson = (await chargerAvis()) || [];
 
     let avisLocaux = [];
     try {
@@ -101,12 +95,12 @@ function enregistrerAvis(idLivre, commentaire, note) {
     }
 
     avis.push({
-        pseudo: "moi",
+        pseudo: "Chema-mystery",
         idLivre: idLivre,
         commentaire: commentaire,
         note: Number(note),
         datePublicationCommentaire: dateActuelleEnFrancais(),
-        photoProfil: "images/avatar-defaut.png" // adapte le chemin à ton vrai avatar par défaut
+        photoProfil: "../assets/pp1.jpg"
     });
 
     localStorage.setItem("avis", JSON.stringify(avis));

@@ -32,6 +32,11 @@ async function initLivre() {
   // Étape 3 : charger les livres depuis le JSON
   let livres = await chargerLivres();
 
+  if (livres === null) {
+    masquerSquelette("fiche-livre");
+    return;
+  }
+
   // Étape 4 : chercher le livre correspondant à l'id
   let livre = trouverLivre(livres, id);
 
