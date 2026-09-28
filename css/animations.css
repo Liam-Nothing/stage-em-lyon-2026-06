@@ -1,5 +1,10 @@
 
-/*/    ANIMATION CARTE //*/
+
+/*/    ANIMATION CSS //*/
+
+
+
+/*/    ANIMATION CARTE- AVIS - CARTE//*/
 
 @keyframes card-appear {
     from {
@@ -42,26 +47,7 @@
     }
 }
 
-/* Quand une étoile est sélectionnée */
-input[type="radio"]:checked + label {
-    animation: star-pop 120ms ease-out;
-}
 
-label.etoile:hover {
-    animation: star-pop 120ms ease-out;
-}
-
-
-label.etoile {
-    transition: color 120ms ease-out;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    label.etoile {
-        animation: none !important;
-        transition: none !important;
-    }
-}
 
 
 

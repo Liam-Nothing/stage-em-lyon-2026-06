@@ -1,25 +1,11 @@
-/* avatar */
-.avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 2px solid var(--bordure);
-    background-color: var(--primaire);
-    object-fit: cover;
-}
- 
-.avatar--sm {
-    width: 32px;
-    height: 32px;
-}
- 
-.avatar--lg {
-    width: 72px;
-    height: 72px;
-}
+
+/*//// COMPOSANTS SOCIAL///////*/
 
 
-/* carte d'avis */
+
+
+/*///  CARTE AVIS   ///*/
+
 .carte-avis {
     display: flex;
     flex-direction: column;
@@ -29,6 +15,11 @@
     background: var(--card);
     border: 1px solid var(--bordure);
     border-radius: 5px;
+
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
 }
  
 .carte-avis__entete {
@@ -54,43 +45,8 @@
 }
  
 
-/* entrée de fil d'activité */
-.entree-fil {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--bordure);
-}
- 
-.entree-fil__contenu {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
- 
-.entree-fil__texte {
-    color: var(--text);
-    font-size: 15px;
-}
- 
-.entree-fil__texte strong {
-    font-weight: 600;
-}
- 
-.entree-fil__horodatage {
-    color: var(--secondaire-text);
-    font-size: 13px;
-}
 
-
-/* --- Avis (profil) --- */
-.carte-avis {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-}
+/* --- CARTE AVIS UTILISATEUR COURANT (PROFIL.HTML) --- */
 
 .couverture-card-profil {
     width: 60px;
@@ -111,7 +67,7 @@
 }
 
 
-/* --- Amies (profil) --- */
+/* --- LISTE AMIS (PROFIL.HTML) --- */
 .liste-amies .div-couverture-colomn-index {
     display: flex;
     flex-direction: column;
@@ -135,33 +91,8 @@
     margin-bottom: 2rem;
 }
 
-.div-couverture-colomn-index {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 140px;
-}
+/* --- BOUTON AJOUTER -RETIRER (PROFIL.HTML) --- */
 
-.div-couverture-colomn-index img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.div-couverture-colomn-index button {
-    margin-top: 0.5rem;
-    padding: 0.4rem 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
-    animation: button-press 120ms ease-out;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
-    transition: box-shadow 120ms ease-out;
-}
 
 .bouton-retirer:active {
     background-color: var(--primaire);

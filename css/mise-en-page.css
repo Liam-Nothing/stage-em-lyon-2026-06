@@ -1,9 +1,5 @@
-.fil-activite {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0;
-    justify-content: space-between;
-}
+
+/*/////STYLE COMMUN A TOUTES LES PAGES //*/
 
 
 /*//// STYLE HEADER /////*/
@@ -34,7 +30,7 @@ nav {
 }
 
 
-/*///// STYLE FOOTER */
+/*///// STYLE FOOTER //////*/
 footer {
     background-color: var(--bouton);
     color: var(--primaire);
@@ -86,7 +82,7 @@ footer {
 }
 
 
-/*---- css bouton interaction---*/
+/*---- STYLE BOUTON ---*/
 button {
     background-color: var(--bouton);
     color: var(--primaire);
@@ -138,61 +134,20 @@ button:disabled {
     height: auto;
 }
 
-.div-photo {
-    background-color: var(--bouton);
-    color: var(--primaire);
-    border-radius: 5px;
-    padding: 20px;
-    gap: 40px;
-    width: fit-content;
-    max-width: 1200px;
-    padding-left: 110px;
-    display: grid;
-    grid-template-rows: 20px;
-    padding-top: 90px;
-}
 
 
-/*-- STYLE FORMULAIRE AVIS ----*/
-li.champ-saisie {
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-}
 
-.div-button-form {
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
-    gap: 12px;
-    animation: button-press 120ms ease-out;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
-    transition: box-shadow 120ms ease-out;
-}
+/*// ------STYLE CSS PAGE INDEX--------///*/
 
-.div-formulaire-avis {
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    background-color: var(--card);
-    padding: 40px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
-
-/*//// INDEX.HTML ///////*/
 
 /*///// CSS FIL D'ACTUALITE //////*/
+.fil-activite {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    justify-content: space-between;
+}
+
 
 .div-fil-dactu {
     width: 360px;
@@ -204,13 +159,6 @@ form {
     padding-left: 18px;
     padding-right: 18px;
     border-radius: 5px;
-}
-
-.div-recherche-livres {
-    width: 800px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
 .fil-dactu {
@@ -225,6 +173,13 @@ form {
 
 h2.titre-fil-dactu {
     text-align: center;
+}
+
+.div-recherche-livres {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 
@@ -297,9 +252,47 @@ select#select-tri {
     gap: 5px;
 }
 
+/*-- STYLE FORMULAIRE AVIS ----*/
+li.champ-saisie {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.div-button-form {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    gap: 12px;
+    animation: button-press 120ms ease-out;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 120ms ease-out;
+}
+
+.div-formulaire-avis {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background-color: var(--card);
+    padding: 40px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
 
 
-/*//// CSS PROFIL ////*/
+
+
+
+/*///-----STYLE CSS PAGE PROFIL-----////*/
 
 .container-profil {
     display: flex;
@@ -310,6 +303,19 @@ select#select-tri {
     gap: 16px;
 }
 
+.div-photo {
+    background-color: var(--bouton);
+    color: var(--primaire);
+    border-radius: 5px;
+    padding: 20px;
+    gap: 40px;
+    width: fit-content;
+    max-width: 1200px;
+    padding-left: 110px;
+    display: grid;
+    grid-template-rows: 20px;
+    padding-top: 90px;
+}
 
 img.img-amis {
     grid-area: photo;
@@ -402,7 +408,7 @@ img.couverture-card-profil {
     min-width: 0;
 }
 
-/* Le commentaire : limité à 3 lignes */
+
 .carte-avis>div>p:first-child {
     margin: 0 0 6px 0;
     font-size: 16px;
@@ -534,7 +540,7 @@ h3.stat-pile-a-lire {
     gap: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
-/* Évite tout débordement horizontal */
+
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -545,18 +551,18 @@ img {
   height: auto;
 }
 
-/* Tablette et mobile */
+
 @media (max-width: 768px) {
 
   .container-profil {
-    flex-direction: column;   /* on empile au lieu d'aligner */
+    flex-direction: column;   
     align-items: stretch;
     width: 100%;
     padding: 0 12px;
     gap: 16px;
   }
 
-  /* Empêche les enfants flex de dépasser */
+ 
   .container-profil > * {
     width: 100%;
     min-width: 0;
@@ -575,7 +581,7 @@ img {
   }
 }
 
-/* Petit mobile */
+
 @media (max-width: 480px) {
 
   .container-profil {
@@ -583,7 +589,6 @@ img {
     gap: 75px;
   }
 
-  /* Les stats (livres lus / en cours / à lire) restent en ligne */
   .div-bio-stat .stats,
   .container-stats {
     flex-wrap: wrap;
@@ -591,14 +596,13 @@ img {
     gap: 8px;
   }
 
-  /* Cartes d'amis pleine largeur */
   .carte-ami {
     width: 100%;
   }
 }
 
 
-/*//  CSS LIVRE      //*/
+/*//------STYLE CSS PAGE LIVRE------//*/
 
 .container-livre {
     width: fit-content;
