@@ -12,7 +12,7 @@
   flex-direction: column;
   width: fit-content;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 15px;
   padding: 40px;
 }
@@ -39,8 +39,8 @@
 
 p.summury {
   background-color: #FFFCF7;
-  padding: 10px;
-
+  padding: 20px;
+  border-radius: 5px;
 }
 
 .div-infos-colomn {
@@ -102,6 +102,7 @@ img.logo-nav {
 
 input[type="text"] {
   background-color: #ffffffab;
+  border-radius: 5px;
 }
 
 
@@ -146,7 +147,7 @@ input[type="text"] {
   row-gap: 4px;
   align-items: start;
   background-color: #fdfbf7;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 30px 16px;
 }
 
@@ -173,9 +174,8 @@ input[type="text"] {
 /*//// template formulaire noter un livre CSS //////*/
 fieldset {
   border: 1px solid var(--bordure);
-  border-radius: 8px;
+  border-radius: 5px;
   padding: 1rem 1.5rem;
-  margin-bottom: 2rem;
 }
 
 legend {
@@ -249,6 +249,13 @@ legend {
   animation: star-pop 120ms ease-out;
 }
 
+.champ-saisie textarea {
+  field-sizing: content;
+  min-height: 80px;
+  max-height: 140vh;
+  width: 300px;
+}
+
 
 /* POP-UP */
 /* Fond sombre qui recouvre toute la page, caché par défaut */
@@ -276,7 +283,7 @@ legend {
 /* La petite fenêtre blanche qui contient le formulaire */
 .avis-modal-overlay .div-formulaire-avis {
   background: white;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 1.5rem;
   width: 90%;
   max-width: 400px;
@@ -296,7 +303,7 @@ legend {
   align-items: stretch;
   padding: 0;
   border: 1px solid var(--secondaire-bouton);
-  border-radius: 6px;
+  border-radius: 5px;
   background: var(--bouton);
   color: var(--card);
   font: inherit;
@@ -353,7 +360,7 @@ legend {
   list-style: none;
   background: var(--card);
   border: 1px solid var(--bordure);
-  border-radius: 6px;
+  border-radius: 5px;
   box-shadow: 0 6px 18px rgba(69, 22, 30, 0.12);
 }
 
@@ -439,10 +446,10 @@ article {
 }
 
 time {
-    text-align: right;
-    font-size: 0.85em;
-    color: #777;
-    margin: 0;
+  text-align: right;
+  font-size: 0.85em;
+  color: #777;
+  margin: 0;
 }
 
 .badge-ma-note {
@@ -499,7 +506,7 @@ time {
   padding: 0.85rem 1rem;
   border: 1px solid transparent;
   border-left-width: 4px;
-  border-radius: 6px;
+  border-radius: 5px;
   font-size: 1rem;
   line-height: 1.4;
 }

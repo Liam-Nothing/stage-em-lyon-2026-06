@@ -93,7 +93,7 @@ button {
     padding: 7px;
     border-color: var(--secondaire-bouton);
     border-style: solid;
-    border-radius: 20px;
+    border-radius: 5px;
     padding-right: 15px;
     padding-left: 15px;
     text-align: center;
@@ -175,7 +175,7 @@ li.champ-saisie {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 15px;
     background-color: var(--card);
     padding: 40px;
 }
@@ -185,7 +185,7 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 20px;
 }
 
 
@@ -235,7 +235,7 @@ h2.titre-fil-dactu {
     align-items: flex-start;
     gap: 12px;
     background-color: #fdfbf7;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 15px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     animation: card-appear 250ms ease-out;
@@ -328,18 +328,18 @@ img.photo-profil {
 
 div#liste-amis-profil {
     background-color: #651926e3;
-    padding: 10px;
+    padding: 15px;
     width: fit-content;
     margin: 0px;
-    border-radius: 7px;
+    border-radius: 5px;
 }
 
 div#liste-recco-amis-profil {
     background-color: #651926b5;
-    padding: 10px;
+    padding: 15px;
     width: fit-content;
     margin: 0px;
-    border-radius: 7px;
+    border-radius: 5px;
 
 }
 
@@ -353,7 +353,7 @@ div#liste-recco-amis-profil {
 .liste-avis {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .div-mes-activites {
@@ -389,7 +389,7 @@ img.couverture-card-profil {
 .note {
     background-color: #6b2a38;
     color: #fff;
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 2px 10px;
     font-size: 0.95em;
     white-space: nowrap;
@@ -400,7 +400,6 @@ img.couverture-card-profil {
     flex-direction: column;
     flex: 1;
     min-width: 0;
-    /* nécessaire pour que le texte se tronque au lieu d'élargir la carte */
 }
 
 /* Le commentaire : limité à 3 lignes */
@@ -462,8 +461,8 @@ p.biographie {
     background-color: var(--card);
     width: fit-content;
     height: 150px;
-    padding: 10px;
-    border-radius: 7px;
+    padding: 20px;
+    border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
@@ -494,23 +493,17 @@ h3.stat-pile-a-lire {
     justify-content: center;
 }
 
-
-
-
-
-
 .div-couverture-colomn-index-livre {
     display: flex;
     column-gap: 18px;
     align-items: center;
     text-align: left;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 15px 20px;
     flex-wrap: inherit;
     column-gap: 25px;
     row-gap: 15px;
     width: 380px;
-
 }
 
 .article-livre {
@@ -562,7 +555,7 @@ article.article-avis {
     width: 430px;
     background-color: #fdfbf7;
     border: 2px solid #6b2a38;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 16px 20px;
     margin-bottom: 14px;
     text-align: left;
@@ -577,10 +570,6 @@ p.commentaire-avis-livre {
     margin: 0 0 8px 0;
     line-height: 1.5;
     color: var(--text);
-}
-
-div#contenu-livre {
-    position: sticky;
 }
 
 @media (max-width: 480px) {

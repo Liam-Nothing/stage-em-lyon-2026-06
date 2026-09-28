@@ -135,7 +135,11 @@
                                 <img class="demie" src="../assets/demie etoile.svg" alt="etoile">
                             </div>
                         </div>
-                        <a href="" class="nbrAvis">2,345 avis</a>
+                        <p class="moyenne-avis">
+                            <span id="moyenne-avis">-</span> / 5
+                            (<span id="nombre-avis">0</span> avis)
+                        </p>
+                        <a href="#avis-modal-overlay" id="avis-modal-ouvrir">Laisser un commentaire</a>
 
                         <div class="avis-modal-overlay" id="avis-modal-overlay">
                             <div class="div-formulaire-avis">
@@ -179,8 +183,8 @@
                                     <ul>
                                         <li class="champ-saisie">
                                             <label for="message-avis">Parle nous de ta lecture</label>
-                                            <input type="text" id="message-avis" name="message-avis"
-                                                aria-valuemax="1000" aria-valuemin="10">
+                                            <textarea id="message-avis" name="message-avis" rows="8" minlength="10"
+                                                maxlength="1000" placeholder=""></textarea>
                                         </li>
                                     </ul>
                                     <div class="div-button-form">

@@ -1,7 +1,7 @@
 
 //// FONCTION VALIDER AVIS (pour le formulaire)////
 const LONGUEUR_MIN = 10;
-const LONGUEUR_MAX = 100;
+const LONGUEUR_MAX = 1000;
 
 function refus(message) {
     return { valide: false, message };
@@ -185,123 +185,131 @@ document.addEventListener('DOMContentLoaded', () => {
 // ---- Pop-up ---- //
 document.addEventListener('DOMContentLoaded', function () {
 
-  const overlay = document.getElementById('avis-modal-overlay');
-  const boutonAnnuler = document.getElementById('avis-modal-annuler');
-  const formulaire = document.getElementById('avis-modal-formulaire');
+    const overlay = document.getElementById('avis-modal-overlay');
+    const boutonAnnuler = document.getElementById('avis-modal-annuler');
+    const formulaire = document.getElementById('avis-modal-formulaire');
 
-  const etagere = document.getElementById('etagere');
+    const etagere = document.getElementById('etagere');
 
-  const parametresURL = new URLSearchParams(window.location.search);
+    const parametresURL = new URLSearchParams(window.location.search);
 
-  const idLivre = parametresURL.get('id');
+    const idLivre = parametresURL.get('id');
 
-  async function recupererTousLesAvis() {
-    const avisJson = (await chargerAvis()) || [];
+    async function recupererTousLesAvis() {
+        const avisJson = (await chargerAvis()) || [];
 
-    let avisLocaux = [];
-    try {
-      avisLocaux = JSON.parse(localStorage.getItem("avis")) || [];
-    } catch (erreur) {
-      console.warn("Clé 'avis' illisible :", erreur.message);
+        let avisLocaux = [];
+        try {
+            avisLocaux = JSON.parse(localStorage.getItem("avis")) || [];
+        } catch (erreur) {
+            console.warn("Clé 'avis' illisible :", erreur.message);
+        }
+
+        return avisJson.concat(avisLocaux);
     }
 
-    return avisJson.concat(avisLocaux);
-  }
+    // ---- Fonction pour AFFICHER la pop-up ----
+    function ouvrirPopup() {
+        overlay.classList.add('visible');
 
-  // ---- Fonction pour AFFICHER la pop-up ----
-  function ouvrirPopup() {
-    overlay.classList.add('visible');
-
-    document.getElementById('message-avis').focus();
-  }
-
-  // ---- Fonction pour CACHER la pop-up ----
-  function fermerPopup() {
-    overlay.classList.remove('visible');
-
-    etagere.querySelector('.shelf__trigger').focus();
-  }
-
-  document.addEventListener('keydown', function (evenement) {
-    if (evenement.key === 'Escape' && overlay.classList.contains('visible')) {
-      fermerPopup();
+        document.getElementById('message-avis').focus();
     }
-  });
 
-  if (etagere) {
-    etagere.addEventListener('shelf-change', function (evenement) {
-      if (evenement.detail === 'lu') {
-        ouvrirPopup();
-      }
+    // ---- Fonction pour CACHER la pop-up ----
+    function fermerPopup() {
+        overlay.classList.remove('visible');
+
+        etagere.querySelector('.shelf__trigger').focus();
+    }
+
+    document.addEventListener('keydown', function (evenement) {
+        if (evenement.key === 'Escape' && overlay.classList.contains('visible')) {
+            fermerPopup();
+        }
     });
-  }
 
-  boutonAnnuler.addEventListener('click', fermerPopup);
-
-  overlay.addEventListener('click', function (evenement) {
-    if (evenement.target === overlay) {
-      fermerPopup();
-    }
-  });
-
-  formulaire.addEventListener('submit', async function (evenement) {
-    evenement.preventDefault();
-
-    const champMessage = document.getElementById('message-avis');
-    const message = champMessage.value;
-
-    const noteCochee = formulaire.querySelector('input[name="note"]:checked');
-    const note = noteCochee ? Number(noteCochee.value) : null;
-
-    const resultat = validerAvis(message, note);
-    afficherErreurAvis(champMessage, resultat);
-
-    if (!resultat.valide) {
-      return;
+    if (etagere) {
+        etagere.addEventListener('shelf-change', function (evenement) {
+            if (evenement.detail === 'lu', 'abandonné', 'en cours de lecture') {
+                ouvrirPopup();
+            }
+        });
     }
 
-    // 1. On sauvegarde le nouvel avis dans le localStorage
-    enregistrerAvis(idLivre, message, note);
+    boutonAnnuler.addEventListener('click', fermerPopup);
 
-    const tousLesAvis = await recupererTousLesAvis();
+    overlay.addEventListener('click', function (evenement) {
+        if (evenement.target === overlay) {
+            fermerPopup();
+        }
+    });
 
-    afficherAvisDuLivre(tousLesAvis, idLivre);
+    const lienAvis = document.getElementById('avis-modal-ouvrir');
+    if (lienAvis) {
+        lienAvis.addEventListener('click', function (evenement) {
+            evenement.preventDefault();
+            ouvrirPopup();
+        });
+    }
 
-    // 3. On vide le formulaire pour la prochaine fois
-    formulaire.reset();
+    formulaire.addEventListener('submit', async function (evenement) {
+        evenement.preventDefault();
 
-    fermerPopup();
-  });
+        const champMessage = document.getElementById('message-avis');
+        const message = champMessage.value;
 
+        const noteCochee = formulaire.querySelector('input[name="note"]:checked');
+        const note = noteCochee ? Number(noteCochee.value) : null;
+
+        const resultat = validerAvis(message, note);
+        afficherErreurAvis(champMessage, resultat);
+
+        if (!resultat.valide) {
+            return;
+        }
+
+        // 1. On sauvegarde le nouvel avis dans le localStorage
+        enregistrerAvis(idLivre, message, note);
+
+        const tousLesAvis = await recupererTousLesAvis();
+
+        afficherAvisDuLivre(tousLesAvis, idLivre);
+
+        // 3. On vide le formulaire pour la prochaine fois
+        formulaire.reset();
+
+        fermerPopup();
+    });
 });
 
 
+
 function compterAvis(avisLivre = []) {
-  return avisLivre.length;
+    return avisLivre.length;
 }
 
 function nombreAvis(avisLivre) {
-  const paragraphe = document.querySelector(".nbrAvis p");
+    const paragraphe = document.querySelector(".nbrAvis p");
 
-  if (!paragraphe) {
-    console.error("Impossible de trouver l'élément .nbrAvis p");
-    return;
-  }
+    if (!paragraphe) {
+        console.error("Impossible de trouver l'élément .nbrAvis p");
+        return;
+    }
 
-  paragraphe.textContent = compterAvis(avisLivre);
+    paragraphe.textContent = compterAvis(avisLivre);
 }
 
 
 /* MOYENNE AVIS */
 function calculerMoyenneAvis(avisLivre) {
-  if (avisLivre.length === 0) {
-    return 0;
-  }
+    if (avisLivre.length === 0) {
+        return 0;
+    }
 
-  const somme = avisLivre.reduce(
-    (total, unAvis) => total + unAvis.note,
-    0
-  );
+    const somme = avisLivre.reduce(
+        (total, unAvis) => total + unAvis.note,
+        0
+    );
 
-  return somme / avisLivre.length;
+    return somme / avisLivre.length;
 }
