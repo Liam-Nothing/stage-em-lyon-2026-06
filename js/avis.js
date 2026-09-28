@@ -208,6 +208,30 @@ document.addEventListener('DOMContentLoaded', function () {
         return avisJson.concat(avisLocaux);
     }
 
+    function calculerMoyenneAvis(avisLivre) {
+        if (avisLivre.length === 0) {
+            return 0;
+        }
+        const somme = avisLivre.reduce(
+            (total, unAvis) => total + unAvis.note,
+            0
+        );
+        return somme / avisLivre.length;
+    }
+
+    function afficherMoyenne(tousLesAvis) {
+        const avisLivre = tousLesAvis.filter(function (unAvis) {
+            return String(unAvis.idLivre) === String(idLivre)
+                && typeof unAvis.note === 'number';
+        });
+
+        const moyenne = calculerMoyenneAvis(avisLivre);
+
+        document.getElementById('moyenne-avis').textContent =
+            avisLivre.length > 0 ? moyenne.toFixed(1).replace('.', ',') : '-';
+        document.getElementById('nombre-avis').textContent = avisLivre.length;
+    }
+
     // ---- Fonction pour AFFICHER la pop-up ----
     function ouvrirPopup() {
         overlay.classList.add('visible');
@@ -274,42 +298,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const tousLesAvis = await recupererTousLesAvis();
 
         afficherAvisDuLivre(tousLesAvis, idLivre);
+        afficherMoyenne(tousLesAvis);
 
         // 3. On vide le formulaire pour la prochaine fois
         formulaire.reset();
 
         fermerPopup();
     });
+    recupererTousLesAvis().then(function (tousLesAvis) {
+        afficherAvisDuLivre(tousLesAvis, idLivre);
+        afficherMoyenne(tousLesAvis);
+    });
 });
-
-
-
-function compterAvis(avisLivre = []) {
-    return avisLivre.length;
-}
-
-function nombreAvis(avisLivre) {
-    const paragraphe = document.querySelector(".nbrAvis p");
-
-    if (!paragraphe) {
-        console.error("Impossible de trouver l'élément .nbrAvis p");
-        return;
-    }
-
-    paragraphe.textContent = compterAvis(avisLivre);
-}
-
-
-/* MOYENNE AVIS */
-function calculerMoyenneAvis(avisLivre) {
-    if (avisLivre.length === 0) {
-        return 0;
-    }
-
-    const somme = avisLivre.reduce(
-        (total, unAvis) => total + unAvis.note,
-        0
-    );
-
-    return somme / avisLivre.length;
-}

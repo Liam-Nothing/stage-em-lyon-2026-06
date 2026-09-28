@@ -115,8 +115,6 @@ function remplirFicheLivre(livre) {
 
   document.querySelector(".couvertureImg").src = livre.couvertureLivre;
   document.querySelector(".couvertureImg").alt = livre.titre;
-
-  document.querySelector(".valeur-note").textContent = livre.noteMoyenne;
 }
 
 // Lancement
