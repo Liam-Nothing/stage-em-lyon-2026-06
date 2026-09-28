@@ -144,7 +144,8 @@ button:disabled {
     border-radius: 5px;
     padding: 20px;
     gap: 40px;
-    width: 1200px;
+    width: fit-content;
+    max-width: 1200px;
     padding-left: 110px;
     display: grid;
     grid-template-rows: 20px;
@@ -312,10 +313,9 @@ select#select-tri {
 
 img.img-amis {
     grid-area: photo;
-    width: 115px;
-    height: 115px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
-
     object-fit: cover;
     display: block;
 }
@@ -455,6 +455,9 @@ h1.pseudo {
     display: flex;
     flex-direction: row;
     gap: 40px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 p.biographie {
@@ -518,9 +521,81 @@ h3.stat-pile-a-lire {
     max-width: 370px;
     animation: card-appear 250ms ease-out;
     color: var(--text);
-    /* barré/désactivé dans le dev tools */
 }
 
+.div-bio {
+    width: fit-content;
+}
+
+
+.div-row-stat {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+/* Évite tout débordement horizontal */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tablette et mobile */
+@media (max-width: 768px) {
+
+  .container-profil {
+    flex-direction: column;   /* on empile au lieu d'aligner */
+    align-items: stretch;
+    width: 100%;
+    padding: 0 12px;
+    gap: 16px;
+  }
+
+  /* Empêche les enfants flex de dépasser */
+  .container-profil > * {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .div-bio-stat {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .container-fil-activite,
+  .div-row {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/* Petit mobile */
+@media (max-width: 480px) {
+
+  .container-profil {
+    padding: 0 8px;
+    gap: 75px;
+  }
+
+  /* Les stats (livres lus / en cours / à lire) restent en ligne */
+  .div-bio-stat .stats,
+  .container-stats {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* Cartes d'amis pleine largeur */
+  .carte-ami {
+    width: 100%;
+  }
+}
 
 
 /*//  CSS LIVRE      //*/
