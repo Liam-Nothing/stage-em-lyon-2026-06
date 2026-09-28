@@ -496,10 +496,12 @@ h3.stat-pile-a-lire {
 
 
 
+
+
+
 .div-couverture-colomn-index-livre {
     display: flex;
     column-gap: 18px;
-    /* barré/désactivé, remplacé plus bas */
     align-items: center;
     text-align: left;
     border-radius: 10px;
@@ -530,8 +532,8 @@ h3.stat-pile-a-lire {
 
 /*//  CSS LIVRE      //*/
 
-.container-livre{
-    width: 100%;
+.container-livre {
+    width: fit-content;
     max-width: 1200px;
     margin: auto;
     padding: 40px 0px;
@@ -547,6 +549,7 @@ div#contenu-fiche-livre {
     display: flex;
     flex-direction: row;
     gap: 20px;
+        flex-wrap: wrap;
 }
 
 .div-avis {
@@ -569,6 +572,7 @@ p.valeur-pseudo {
     font-weight: bold;
     color: #6b2a38;
 }
+
 p.commentaire-avis-livre {
     margin: 0 0 8px 0;
     line-height: 1.5;
@@ -577,4 +581,75 @@ p.commentaire-avis-livre {
 
 div#contenu-livre {
     position: sticky;
+}
+
+@media (max-width: 480px) {
+
+  /* ===== HEADER ===== */
+  header {
+    width: 100%;
+  }
+
+  header nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+  }
+
+  /* ===== CONTENEUR PRINCIPAL ===== */
+  main {
+    width: 100%;
+  }
+
+  .container-livre {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #contenu-fiche-livre {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* ===== COLONNE COUVERTURE ===== */
+  .div-row.fil-activite {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ===== COLONNE INFOS ===== */
+  .div-infos-colomn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 8px;
+  }
+
+  /* ===== TEXTES ===== */
+  .titre-livre {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .div-infos-colomn p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    width: 100%;
+    padding: 16px;
+  }
 }
