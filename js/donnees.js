@@ -25,23 +25,31 @@ function trierLivres(livres, critere) {
 
 // fonction charger JSON //
 async function chargerDonnees(chemin) {
+    let reponse;
+
     try {
-        const reponse = await fetch(chemin);
+        reponse = await fetch(chemin);
+    } catch (erreurReseau) {
+        const message = `Impossible d'accéder à "${chemin}" (${erreurReseau.message})`;
+        console.error(message);
+        afficherErreurChargement(message);
+        return null;
+    }
 
-        // Réponse HTTP en erreur (404, 500, etc.)
-        if (!reponse.ok) {
-            throw new Error(`Statut ${reponse.status} en tentant de charger "${chemin}"`);
-        }
 
-        // JSON malformé : .json() lève une erreur si le parsing échoue
-        try {
-            return await reponse.json();
-        } catch (erreurParsing) {
-            throw new Error(`Le fichier "${chemin}" ne contient pas un JSON valide`);
-        }
+    // Réponse HTTP en erreur (404, 500, etc.)
+    if (!reponse.ok) {
+        const message = `"${chemin}" a répondu avec une erreur (statut ${reponse.status})`;
+        console.error(message);
+        afficherErreurChargement(message);
+        return null;
+    }
 
-    } catch (erreur) {
-        const message = `Chargement impossible pour "${chemin}" : ${erreur.message}`;
+    // JSON malformé : .json() lève une erreur si le parsing échoue
+    try {
+        return await reponse.json();
+    } catch (erreurParsing) {
+        const message = `"${chemin}" ne contient pas un JSON valide (${erreurParsing.message})`;
         console.error(message);
         afficherErreurChargement(message);
         return null;
@@ -50,11 +58,22 @@ async function chargerDonnees(chemin) {
 
 // Affiche un message visible dans la page plutôt que de la laisser blanche
 function afficherErreurChargement(message) {
-    const conteneur = document.getElementById("contenu") || document.body;
+    document.querySelectorAll(".erreur-chargement").forEach(el => el.remove());
+
+    const grilleLivre = document.querySelector(".grille-flex-wrap");
+    if (grilleLivre) {
+        grilleLivre.innerHTML = `<p class="etat-vide erreur-chargement" role="alert">⚠️ ${message}</p>`;
+        return;
+    }
+
+    const conteneur = document.querySelector("main") || document.body;
     const alerte = document.createElement("div");
-    alerte.className = "erreur-chargement";
+    alerte.className = "message message--erreur erreur-chargement";
     alerte.setAttribute("role", "alert");
-    alerte.textContent = `⚠️ ${message}`;
+    alerte.innerHTML = `
+        <span class="message__icone" aria-hidden="true">!</span>
+        <p class="message__texte"><span class="message__prefixe">Erreur —</span> ${message}</p>
+    `;
     conteneur.prepend(alerte);
 }
 
@@ -109,16 +128,20 @@ async function initAvis() {
     // Étape 1 : lire l'id dans l'URL
     let parametresAvis = new URLSearchParams(window.location.search);
     let idLivre = parametresAvis.get("id");
- 
+
     // Étape 2 : gérer le cas "id absent"
     if (idLivre === null) {
         afficherErreur();
         return;
     }
- 
+
     // Étape 3 : charger les avis depuis le JSON
     let aviss = await chargerAvis();
- 
+    
+    if (aviss === null) {
+        return;
+    }
+
     // Étape 3bis (AJOUTÉ) : fusionner avec les avis enregistrés en local
     // par l'utilisateur (via la pop-up "Ajouter un avis")
     let avisLocaux = [];
@@ -128,10 +151,10 @@ async function initAvis() {
         console.warn("Clé 'avis' illisible :", erreur.message);
     }
     aviss = aviss.concat(avisLocaux);
- 
+
     // Étape 4 : chercher l'avis correspondant à l'id
     let avisFiltres = avisDuLivre(aviss, idLivre);
- 
+
     // Étape 6 : afficher l'avis trouvé
     afficherAvisDuLivre(aviss, idLivre);
 }
@@ -337,11 +360,6 @@ function afficherEtatVide() {
     grilleLivre.innerHTML = `
         <p class="etat-vide">Aucun résultat trouvé.</p>
     `;
-}
-
-function afficherErreurChargement(message) {
-    const grilleLivre = document.querySelector(".grille-flex-wrap");
-    grilleLivre.innerHTML = `<p class="erreur-chargement" role="alert">⚠️ ${message}</p>`;
 }
 
 function rafraichirBibliotheque() {
