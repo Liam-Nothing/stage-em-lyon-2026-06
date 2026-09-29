@@ -6,7 +6,7 @@ async function construireFil(idUtilisateurCourant) {
     const utilisateurs = await chargerUtilisateurs();
 
     // 2. Lire la liste des amies depuis le localStorage (robuste)
-    const amisJSON = localStorage.getItem("amis");
+    const amisJSON = localStorage.getItem("amis-user-456");
 
     let idsAmiesLocalStorage = [];
     try {
