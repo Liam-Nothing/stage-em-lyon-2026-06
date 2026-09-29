@@ -21,14 +21,6 @@ async function initProfil() {
   remplirFicheProfil(utilisateur, avis, utilisateurs);
 }
 
-async function chargerUtilisateurs() {
-  return chargerDonnees("../data/utilisateurs.json");
-}
-
-async function chargerAvis() {
-  return chargerDonnees("../data/avis.json");
-}
-
 function trouverUtilisateur(utilisateurs, id) {
   return utilisateurs.find(u => u.id === id);
 }

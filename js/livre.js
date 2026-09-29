@@ -1,20 +1,3 @@
-// --- Gestion des notes en localStorage ---
-function lireNotes() {
-  try {
-    const texte = localStorage.getItem("mesNotes");
-    return JSON.parse(texte) || {};
-  } catch (erreur) {
-    console.warn("Contenu de 'mesNotes' illisible, réinitialisation :", erreur.message);
-    return {};
-  }
-}
-
-function enregistrerNote(idLivre, maNote) {
-  const notes = lireNotes();
-  notes[idLivre] = maNote;
-  localStorage.setItem("mesNotes", JSON.stringify(notes));
-}
-
 
 // --- Fiche livre ---
 async function initLivre() {
