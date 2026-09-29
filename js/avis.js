@@ -176,6 +176,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('moyenne-avis').textContent =
             avisLivre.length > 0 ? moyenne.toFixed(1).replace('.', ',') : '-';
         document.getElementById('nombre-avis').textContent = avisLivre.length;
+
+        const conteneurEtoiles = document.querySelector('.etoiles-moyenne');
+        remplirEtoiles(conteneurEtoiles, moyenne);
     }
 
     // ---- Fonction pour AFFICHER la pop-up ----
@@ -252,8 +255,12 @@ document.addEventListener('DOMContentLoaded', function () {
         fermerPopup();
     });
 
-    chargerTousLesAvis().then(function (tousLesAvis) {
-        afficherAvisDuLivre(tousLesAvis, idLivre);
-        afficherMoyenne(tousLesAvis);
-    });
+    if (idLivre === null) {
+        afficherErreur();
+    } else {
+        chargerTousLesAvis().then(function (tousLesAvis) {
+            afficherAvisDuLivre(tousLesAvis, idLivre);
+            afficherMoyenne(tousLesAvis);
+        });
+    }
 });
