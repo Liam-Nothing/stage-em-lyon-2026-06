@@ -317,13 +317,11 @@ function initFormulaireAvis() {
 //// FONCTION NORMALISER LE TEXTE ////
 
 function normaliser(texte) {
-    return texte
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '');
-
+    let resultat = texte.toLowerCase();      
+    resultat = resultat.normalize('NFD');     
+    resultat = resultat.replace(/\p{Diacritic}/gu, ''); 
+    return resultat;
 }
-
 
 //// FONCTION CHERCHERLIVRE() /////
 function chercherLivres(livres, requete) {
