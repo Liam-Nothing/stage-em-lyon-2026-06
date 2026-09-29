@@ -46,14 +46,12 @@ livrio/
 |   ├── composants.html
 │   └── composants-social.css
 ├── js/
-│   ├── amis.js
 │   ├── avis.js
 │   ├── bibliotheque.js
 │   ├── donnees.js
 |   ├── fil.js
 |   ├── livre.js
 |   ├── profil.js
-|   ├── rendu.js
 |   ├── squelette.js
 │   └── storage.js 
 ├── data/

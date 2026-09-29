@@ -1,4 +1,3 @@
-
 /*/////STYLE COMMUN A TOUTES LES PAGES //*/
 
 
@@ -353,7 +352,7 @@ div#liste-recco-amis-profil {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 600px;
+    width: 560px;
 }
 
 .liste-avis {
@@ -541,64 +540,65 @@ h3.stat-pile-a-lire {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 
 @media (max-width: 768px) {
 
-  .container-profil {
-    flex-direction: column;   
-    align-items: stretch;
-    width: 100%;
-    padding: 0 12px;
-    gap: 16px;
-  }
+    .container-profil {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        padding: 0 12px;
+        gap: 16px;
+    }
 
- 
-  .container-profil > * {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-  }
 
-  .div-bio-stat {
-    flex-direction: column;
-    gap: 12px;
-  }
+    .container-profil>* {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
 
-  .container-fil-activite,
-  .div-row {
-    flex-direction: column;
-    width: 100%;
-  }
+    .div-bio-stat {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .container-fil-activite,
+    .div-row {
+        flex-direction: column;
+        width: 100%;
+    }
 }
 
 
 @media (max-width: 480px) {
 
-  .container-profil {
-    padding: 0 8px;
-    gap: 75px;
-  }
+    .container-profil {
+        padding: 0 8px;
+        gap: 75px;
+    }
 
-  .div-bio-stat .stats,
-  .container-stats {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-  }
+    .div-bio-stat .stats,
+    .container-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
 
-  .carte-ami {
-    width: 100%;
-  }
+    .carte-ami {
+        width: 100%;
+    }
 }
 
 
@@ -621,7 +621,7 @@ div#contenu-fiche-livre {
     display: flex;
     flex-direction: row;
     gap: 20px;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .div-avis {
@@ -653,71 +653,71 @@ p.commentaire-avis-livre {
 
 @media (max-width: 480px) {
 
-  /* ===== HEADER ===== */
-  header {
-    width: 100%;
-  }
+    /* ===== HEADER ===== */
+    header {
+        width: 100%;
+    }
 
-  header nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 16px;
-  }
+    header nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+    }
 
-  /* ===== CONTENEUR PRINCIPAL ===== */
-  main {
-    width: 100%;
-  }
+    /* ===== CONTENEUR PRINCIPAL ===== */
+    main {
+        width: 100%;
+    }
 
-  .container-livre {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
+    .container-livre {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
 
-  #contenu-fiche-livre {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
+    #contenu-fiche-livre {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
 
-  /* ===== COLONNE COUVERTURE ===== */
-  .div-row.fil-activite {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    /* ===== COLONNE COUVERTURE ===== */
+    .div-row.fil-activite {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-  /* ===== COLONNE INFOS ===== */
-  .div-infos-colomn {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 0 8px;
-  }
+    /* ===== COLONNE INFOS ===== */
+    .div-infos-colomn {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 0 8px;
+    }
 
-  /* ===== TEXTES ===== */
-  .titre-livre {
-    font-size: 24px;
-  }
+    /* ===== TEXTES ===== */
+    .titre-livre {
+        font-size: 24px;
+    }
 
-  h2 {
-    font-size: 20px;
-  }
+    h2 {
+        font-size: 20px;
+    }
 
-  .div-infos-colomn p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
+    .div-infos-colomn p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
 
-  /* ===== FOOTER ===== */
-  footer {
-    width: 100%;
-    padding: 16px;
-  }
+    /* ===== FOOTER ===== */
+    footer {
+        width: 100%;
+        padding: 16px;
+    }
 }

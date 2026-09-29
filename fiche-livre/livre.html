@@ -125,7 +125,7 @@
                         </div>
 
                         <p id="sortie" aria-live="polite"></p>
-                        
+
                         <p class="moyenne-avis">
                             <span id="moyenne-avis">-</span> / 5
                             (<span id="nombre-avis">0</span> avis)
@@ -218,12 +218,11 @@
                         <div class="liste-avis">
                             <article class="article-avis">
                                 <div>
-                                    <span class="img-avatar">
-                                        <img class="img-avatar" src="" alt="">
-                                    </span>
+                                    <img class="img-avatar" src="" alt="">
                                 </div>
                                 <p class="valeur-pseudo"></p>
                                 <p class="commentaire-avis-livre"></p>
+                                <div class="etoiles-avis"></div>
                                 <time datetime="2026-07"></time>
                             </article>
 
@@ -254,10 +253,11 @@
             <div class="subscribe">
                 <h4>ABONNEZ-VOUS</h4>
                 <p>Recevez chaque moi la newsletter de Livrio</p>
-                <form action="#" method="post"></form>
-                <label for="email">Entrer votre adresse mail</label>
-                <input type="text" id="email">
-                <button type="submit">Envoyer</button>
+                <form action="#" method="post">
+                    <label for="email">Entrer votre adresse mail</label>
+                    <input type="text" id="email">
+                    <button type="submit">Envoyer</button>
+                </form>
             </div>
 
         </div>
@@ -267,9 +267,9 @@
     </footer>
     <script src="../js/squelette.js"></script>
     <script src="../js/donnees.js"></script>
-    <script src="../js/livre.js"></script>
     <script src="../js/stockage.js"></script>
     <script src="../js/avis.js"></script>
+    <script src="../js/livre.js"></script>
 </body>
 
 </html>
