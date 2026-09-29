@@ -5,9 +5,7 @@
         "biographie": "Mes genres préférés sont les romans policiers, les thrillers et les polars",
         "dateCreationCompte": "juillet 2026",
         "photoProfil": "../assets/pp1.jpg",
-        "amis": [
-            "user-212"
-        ],
+        "amis": [],
         "statLu": 7,
         "statEnCours": 3,
         "statPileALire": 2
