@@ -28,8 +28,8 @@ function enregistrerNote(idLivre, maNote) {
 
 
 ///FONCTION supprimerNote ////
-function supprimerNote(idLivre) {
+/*function supprimerNote(idLivre) {
     const notes = lireNotes();
     delete notes[idLivre];
     localStorage.setItem("mesNotes", JSON.stringify(notes));
-}
+}*/

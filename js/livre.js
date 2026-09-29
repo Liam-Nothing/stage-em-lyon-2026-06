@@ -4,11 +4,10 @@ async function initLivre() {
   // Étape 1 : lire l'id dans l'URL
   let parametres = new URLSearchParams(window.location.search);
   let id = parametres.get("id");
-  console.log("id lu dans l'URL :", id);
 
   // Étape 2 : gérer le cas "id absent"
   if (id === null) {
-    afficherErreur();
+    afficherErreurLivre();
     return;
   }
 
@@ -25,7 +24,7 @@ async function initLivre() {
 
   // Étape 5 : gérer le cas "id inconnu"
   if (livre === undefined) {
-    afficherErreur();
+    afficherErreurLivre();
     return;
   }
 
@@ -74,7 +73,7 @@ function trouverLivre(livres, id) {
 
 
 // Affiche le message d'erreur avec un lien de retour
-function afficherErreur() {
+function afficherErreurLivre() {
   // Le squelette ne doit pas tourner indéfiniment si le livre est introuvable
   masquerSquelette("fiche-livre");
 

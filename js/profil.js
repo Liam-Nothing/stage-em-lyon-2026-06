@@ -5,7 +5,7 @@ async function initProfil() {
   let id = parametres.get("id");
 
   if (id === null) {
-    id = "user-456"; 
+    id = "user-456";
   }
 
   let utilisateurs = await chargerUtilisateurs();
@@ -14,7 +14,7 @@ async function initProfil() {
   let utilisateur = trouverUtilisateur(utilisateurs, id);
 
   if (utilisateur === undefined) {
-    afficherErreur();
+    afficherErreurPorfil();
     return;
   }
 
@@ -25,7 +25,7 @@ function trouverUtilisateur(utilisateurs, id) {
   return utilisateurs.find(u => u.id === id);
 }
 
-function afficherErreur() {
+function afficherErreurProfil() {
   document.querySelector("main").innerHTML = `
     <p>Profil introuvable.</p>
     <a href="../profil/profil.html">Retour à ton profil</a>
@@ -197,10 +197,10 @@ function creerCarteProfil(conteneur, personne, typeBouton, surClicBouton) {
     bouton.textContent = "Ajouter en ami";
     bouton.className = "bouton-ajouter";
   }
-  bouton.addEventListener("click", () => surClicBouton(personne.id)); 
+  bouton.addEventListener("click", () => surClicBouton(personne.id));
   carteProfil.appendChild(bouton);
 
   return carteProfil;
-}  
+}
 
 document.addEventListener("DOMContentLoaded", initProfil);

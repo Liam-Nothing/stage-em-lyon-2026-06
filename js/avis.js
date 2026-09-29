@@ -7,7 +7,7 @@ function refus(message) {
     return { valide: false, message };
 }
 
-function validerAvis(texte, note) {
+function validerAvis(texte) {
     let contenu = "";
     if (typeof texte === "string") {
         contenu = texte.trim();
@@ -28,48 +28,6 @@ function validerAvis(texte, note) {
     }
 
     return { valide: true, message: "Saisie correcte" };
-}
-
-
-
-//// FONCTION LIRE AVIS : fusionne data/avis.json et le localStorage ////
-async function lireAvis(idLivre) {
-    const avisJson = (await chargerAvis()) || [];
-
-    let avisLocaux = [];
-    try {
-        avisLocaux = JSON.parse(localStorage.getItem("avis")) || [];
-    } catch (erreur) {
-        console.warn("Clé 'avis' illisible :", erreur.message);
-    }
-
-    return avisJson.concat(avisLocaux).filter(a => a.idLivre === idLivre);
-}
-
-
-//// FONCTION AFFICHER AVIS ////
-async function afficherAvis(idLivre) {
-    const conteneur = document.querySelector(".liste-avis");
-    conteneur.innerHTML = "";
-
-    const avis = await lireAvis(idLivre);
-
-    for (const a of avis) {
-        const p = document.createElement("p");
-
-        // On construit le texte petit à petit pour gérer les infos manquantes
-        let texte = a.pseudo + " : " + a.commentaire;
-
-        if (a.note) {
-            texte += " (note : " + a.note + "/5)";
-        }
-        if (a.dateFinLecture) {
-            texte += " — lu le " + a.dateFinLecture;
-        }
-
-        p.textContent = texte;
-        conteneur.appendChild(p);
-    }
 }
 
 const MOIS_FR_LISTE = [
@@ -96,6 +54,7 @@ function enregistrerAvis(idLivre, commentaire, note) {
 
     avis.push({
         pseudo: "Chema-mystery",
+        idUtilisateur: "user-456",
         idLivre: idLivre,
         commentaire: commentaire,
         note: Number(note),
@@ -181,6 +140,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.shelf').forEach(initEtagere);
 });
 
+function calculerMoyenneAvis(avisLivre) {
+    if (avisLivre.length === 0) {
+        return 0;
+    }
+    const somme = avisLivre.reduce(
+        (total, unAvis) => total + unAvis.note,
+        0
+    );
+    return somme / avisLivre.length;
+}
+
 
 // ---- Pop-up ---- //
 document.addEventListener('DOMContentLoaded', function () {
@@ -194,30 +164,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const parametresURL = new URLSearchParams(window.location.search);
 
     const idLivre = parametresURL.get('id');
-
-    async function recupererTousLesAvis() {
-        const avisJson = (await chargerAvis()) || [];
-
-        let avisLocaux = [];
-        try {
-            avisLocaux = JSON.parse(localStorage.getItem("avis")) || [];
-        } catch (erreur) {
-            console.warn("Clé 'avis' illisible :", erreur.message);
-        }
-
-        return avisJson.concat(avisLocaux);
-    }
-
-    function calculerMoyenneAvis(avisLivre) {
-        if (avisLivre.length === 0) {
-            return 0;
-        }
-        const somme = avisLivre.reduce(
-            (total, unAvis) => total + unAvis.note,
-            0
-        );
-        return somme / avisLivre.length;
-    }
 
     function afficherMoyenne(tousLesAvis) {
         const avisLivre = tousLesAvis.filter(function (unAvis) {
@@ -254,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (etagere) {
         etagere.addEventListener('shelf-change', function (evenement) {
-            if (evenement.detail === 'lu', 'abandonné', 'en cours de lecture') {
+            if (['lu', 'abandonne', 'en-cours'].includes(evenement.detail)) {
                 ouvrirPopup();
             }
         });
@@ -285,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const noteCochee = formulaire.querySelector('input[name="note"]:checked');
         const note = noteCochee ? Number(noteCochee.value) : null;
 
-        const resultat = validerAvis(message, note);
+        const resultat = validerAvis(message);
         afficherErreurAvis(champMessage, resultat);
 
         if (!resultat.valide) {
@@ -295,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // 1. On sauvegarde le nouvel avis dans le localStorage
         enregistrerAvis(idLivre, message, note);
 
-        const tousLesAvis = await recupererTousLesAvis();
+        const tousLesAvis = await chargerTousLesAvis();
 
         afficherAvisDuLivre(tousLesAvis, idLivre);
         afficherMoyenne(tousLesAvis);
@@ -305,7 +251,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         fermerPopup();
     });
-    recupererTousLesAvis().then(function (tousLesAvis) {
+
+    chargerTousLesAvis().then(function (tousLesAvis) {
         afficherAvisDuLivre(tousLesAvis, idLivre);
         afficherMoyenne(tousLesAvis);
     });

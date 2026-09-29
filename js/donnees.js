@@ -93,6 +93,17 @@ async function chargerAvis() {
     return chargerDonnees("../data/avis.json");
 }
 
+async function chargerTousLesAvis() {
+    const avisJson = (await chargerAvis()) || [];
+    let avisLocaux = [];
+    try {
+        avisLocaux = JSON.parse(localStorage.getItem("avis")) || [];
+    } catch (erreur) {
+        console.warn("Clé 'avis' illisible :", erreur.message);
+    }
+    return avisJson.concat(avisLocaux);
+}
+
 /* TRIER AVIS DU PLUS RECENT AU PLUS ANCIEN */
 const MOIS_FR = {
     janvier: "01", février: "02", mars: "03", avril: "04",
@@ -104,15 +115,6 @@ function parserDateFrancaise(dateTexte) {
     const [jour, moisTexte, annee] = dateTexte.split(" ");
     const mois = MOIS_FR[moisTexte.toLowerCase()];
     return new Date(`${annee}-${mois}-${jour.padStart(2, "0")}`);
-}
-
-function formaterDateJJMMAAAA(dateTexte) {
-    return parserDateFrancaise(dateTexte).toLocaleDateString("fr-FR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-        timeZone: "UTC"
-    });
 }
 
 function trierAvisParDate(avis) {
@@ -131,31 +133,14 @@ async function initAvis() {
 
     // Étape 2 : gérer le cas "id absent"
     if (idLivre === null) {
-        afficherErreur();
+        afficherErreurLivre();
         return;
     }
 
     // Étape 3 : charger les avis depuis le JSON
-    let aviss = await chargerAvis();
-    
-    if (aviss === null) {
-        return;
-    }
+    let aviss = await chargerTousLesAvis();
 
-    // Étape 3bis (AJOUTÉ) : fusionner avec les avis enregistrés en local
-    // par l'utilisateur (via la pop-up "Ajouter un avis")
-    let avisLocaux = [];
-    try {
-        avisLocaux = JSON.parse(localStorage.getItem("avis")) || [];
-    } catch (erreur) {
-        console.warn("Clé 'avis' illisible :", erreur.message);
-    }
-    aviss = aviss.concat(avisLocaux);
-
-    // Étape 4 : chercher l'avis correspondant à l'id
-    let avisFiltres = avisDuLivre(aviss, idLivre);
-
-    // Étape 6 : afficher l'avis trouvé
+    // Étape 4 : afficher l'avis trouvé
     afficherAvisDuLivre(aviss, idLivre);
 }
 
@@ -193,6 +178,28 @@ function afficherAvisDuLivre(avis, idLivre) {
     });
 }
 
+function remplirEtoiles(conteneur, note) {
+    conteneur.innerHTML = "";
+
+    for (let i = 1; i <= 5; i++) {
+        const etoile = document.createElement("img");
+        etoile.className = "icone-etoile";
+
+        if (note >= i) {
+            etoile.src = "../assets/etoile.svg";
+            etoile.alt = "étoile pleine";
+        } else if (note >= i - 0.5) {
+            etoile.src = "../assets/demie-etoile.svg";
+            etoile.alt = "demi étoile";
+        } else {
+            etoile.src = "../assets/etoile-vide.svg";
+            etoile.alt = "étoile vide";
+        }
+
+        conteneur.appendChild(etoile);
+    }
+}
+
 function remplirFicheAvis(avis, modele) {
     const fiche = modele.cloneNode(true);
 
@@ -200,9 +207,8 @@ function remplirFicheAvis(avis, modele) {
     imgAvatar.src = avis.photoProfil;
     imgAvatar.alt = `photo de profil de ${avis.pseudo}`;
 
-    const img = fiche.querySelector("img");
-    img.src = `images/etoiles-${avis.note}.png`;
-    img.alt = `note ${avis.note} étoiles`;
+    const conteneurEtoiles = fiche.querySelector(".etoiles-avis");
+    remplirEtoiles(conteneurEtoiles, avis.note);
 
     fiche.querySelector(".valeur-pseudo").textContent = avis.pseudo;
     fiche.querySelectorAll("p")[1].textContent = avis.commentaire;
@@ -215,16 +221,6 @@ function remplirFicheAvis(avis, modele) {
 
 if (document.querySelector(".div-avis")) {
     initAvis();
-}
-
-
-//fonction pour calculer la note moyenne des avis
-function calculerNoteMoyenne(avisLivre) {
-    if (avisLivre.length === 0) {
-        return null;
-    }
-    const somme = avisLivre.reduce((total, unAvis) => total + unAvis.note, 0);
-    return Math.round((somme / avisLivre.length) * 10) / 10;
 }
 
 
@@ -292,27 +288,6 @@ function afficherErreurAvis(champ, resultat) {
     contenu.textContent = resultat.message;
 }
 
-function initFormulaireAvis() {
-    const form = document.querySelector(".div-formulaire-avis form");
-    if (!form) return;
-
-    form.addEventListener("submit", (evenement) => {
-        evenement.preventDefault();
-
-        const champTexte = form.querySelector("#message-avis");
-        const champNote = form.querySelector('input[name="note"]:checked');
-        const note = champNote ? Number(champNote.value) : null;
-
-        const resultat = validerAvis(champTexte.value, note);
-        afficherErreurAvis(champTexte, resultat);
-
-        if (resultat.valide) {
-            // envoi / ajout de l'avis
-            form.reset();
-        }
-    });
-}
-
 
 //// FONCTION NORMALISER LE TEXTE ////
 
@@ -371,11 +346,7 @@ function rafraichirBibliotheque() {
     resultats = filtrerParGenre(resultats, genre);
     resultats = trierLivres(resultats, critere);
 
-    if (resultats.length === 0) {
-        afficherEtatVide();
-    } else {
-        afficherLivres(resultats);
-    }
+    afficherLivres(resultats);
 }
 
 let livres = [];
@@ -422,7 +393,6 @@ async function initialiser() {
     livres = await chargerLivres();
 
     if (livres === null) {
-        afficherErreurChargement("Impossible de charger la bibliothèque. Réessaie plus tard.");
         return;
     }
 
