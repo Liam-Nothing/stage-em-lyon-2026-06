@@ -44,13 +44,16 @@ function dateActuelleEnFrancais() {
 }
 
 //// FONCTION ENREGISTRER AVIS ////
-function enregistrerAvis(idLivre, commentaire, note) {
+async function enregistrerAvis(idLivre, commentaire, note) {
     let avis = [];
     try {
         avis = JSON.parse(localStorage.getItem("avis")) || [];
     } catch (erreur) {
         console.warn("Clé 'avis' illisible :", erreur.message);
     }
+
+    const livres = await chargerLivres();
+    const livre = livres ? livres.find(l => l.id === idLivre) : null;
 
     avis.push({
         pseudo: "Chema-mystery",
@@ -59,7 +62,8 @@ function enregistrerAvis(idLivre, commentaire, note) {
         commentaire: commentaire,
         note: Number(note),
         datePublicationCommentaire: dateActuelleEnFrancais(),
-        photoProfil: "../assets/pp1.jpg"
+        photoProfil: "../assets/pp1.jpg",
+        couverture: livre ? livre.couvertureLivre : ""
     });
 
     localStorage.setItem("avis", JSON.stringify(avis));
@@ -203,11 +207,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (etagere) {
         etagere.addEventListener('shelf-change', function (evenement) {
+            enregistrerStatut(idLivre, evenement.detail);
+
             if (['lu', 'abandonne', 'en-cours'].includes(evenement.detail)) {
                 ouvrirPopup();
             }
         });
     }
+
+    function afficherStatutExistant() {
+        if (!etagere || idLivre === null) return;
+
+        const statuts = lireStatuts();
+        const statutExistant = statuts[idLivre];
+        if (!statutExistant) return;
+
+        const label = etagere.querySelector('.shelf__label');
+        const items = [...etagere.querySelectorAll('.shelf__item')];
+        const itemCorrespondant = items.find(i => i.dataset.value === statutExistant);
+
+        if (itemCorrespondant) {
+            items.forEach(i => {
+                if (i.getAttribute('role') === 'menuitemradio') {
+                    i.setAttribute('aria-checked', String(i === itemCorrespondant));
+                }
+            });
+            label.textContent = itemCorrespondant.textContent.trim();
+        }
+    }
+
+    afficherStatutExistant();
 
     boutonAnnuler.addEventListener('click', fermerPopup);
 
@@ -242,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // 1. On sauvegarde le nouvel avis dans le localStorage
-        enregistrerAvis(idLivre, message, note);
+        await enregistrerAvis(idLivre, message, note);
 
         const tousLesAvis = await chargerTousLesAvis();
 
