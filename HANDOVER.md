@@ -8,10 +8,17 @@
 
 ## 1. Bugs
 
-### 1.1 [Statut du livre non figé]
-- **Fichier :** `fiche-livre/livre.js.`
-- **Symptôme :**Lorsqu’un statut est apposé sur le menu déroulant, celui ne se fige pas une fois que la page a été rechargé, il se remet automatiquement sur “à lire”.
-- **Piste de correction :**ajouter une fonction d’enregistrement du statut du span du menu déroulant après rechargement de la page. 
+### 1.1 [Messages pour valider l'avis]
+- **Fichier :** `js/avis.js.`
+- **Problème :**Lorsque un avis est remplie avec le formulaire, les messages d'erreurs ne s'affichent pas au bon endroit et n'appliquent le style css
+- **Piste de correction :**essayer de modifier la fonction qui affiche les messages d'erreurs et de succès du formulaire 
+
+### 1.2 [Branchement des fonctions de tri des livres par statut aux éléments html]
+- **Fichier :** `profil/profil.html.`
+- **Problème :**Les chiffres indiqués sur la page html ont intégrés par défaut, ils ne sont reliés à aucune fonction qui compte réelement le nombre de livre par statut 
+- **Piste de correction :**construire une première fonction qui va compter le nombre de livre par statut ("lu", "en cours", "abandonné", "à lire"), ajouter une fonction qui branche l'autre sur les éléments html et va afficher les résultats 
+
+
 ---
 
 ## 2. Fonctions envisagées et non faites 
@@ -27,6 +34,18 @@
 - **Ce que c'était :** proposer un affichage en mode sombre
 - **Pourquoi non fait :** manque de temps et tâches plus urgentes passées en priorité 
 - **Point de départ :** dupliquer et ajouter les variables avec les bons contrastes de couleur au fichier css/tokens.css et ranger le choix du thème dans le localStorage 
+
+### 2.3 [Fonction optionnelle : Définir et suivre ses objectifs de lecture]
+- **Fichier(s) concerné(s) :** `css/tokens.css `
+- **Ce que c'était :** proposer à l'utilisateur de se définir des objectifs de lectures au mois ou un nombre de pages à lire par jour ou par semaine et de pouvoir partager son avancée avec ses amis 
+- **Pourquoi non fait :** manque de temps et tâches plus urgentes passées en priorité 
+- **Point de départ :** construire une maquette wireframe pour avoir une idée de ce que ça peut donner 
+
+### 2.4 [Fonction optionnelle : Supprimer un avis ]
+- **Fichier(s) concerné(s) :** `js/stockage.js ; profil/profil.html `
+- **Ce que c'était :** une fonctionnalité qui permet à l'utilisateur de supprimer un avis qui l'a formulé sur l'une des ses lectures à partir de son profil et de son espace "mes activités"
+- **Pourquoi non fait :** manque de temps et tâches plus urgentes passées en priorité 
+- **Point de départ :** une fonction a déjà été construite mais a besoin de vérification et doit être branché aux éléments html de la page profil
 
 ---
 
