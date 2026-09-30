@@ -5,11 +5,11 @@ async function initProfil() {
   let id = parametres.get("id");
 
   if (id === null) {
-    id = "user-456"; 
+    id = "user-456";
   }
 
   let utilisateurs = await chargerUtilisateurs();
-  let avis = await chargerAvis();
+  let avis = await chargerTousLesAvis();
 
   let utilisateur = trouverUtilisateur(utilisateurs, id);
 
@@ -45,7 +45,8 @@ function remplirFicheProfil(utilisateur, tousLesAvis, tousLesUtilisateurs) {
   masquerSquelette("profil-entete");
 
   let avisDeCetUtilisateur = tousLesAvis.filter(a => a.idUtilisateur === utilisateur.id);
-  afficherAvis(avisDeCetUtilisateur);
+  let avisTries = trierAvisParDate(avisDeCetUtilisateur);
+  afficherAvis(avisTries);
 
   afficherListesAmies(utilisateur, tousLesUtilisateurs);
 }
@@ -197,10 +198,10 @@ function creerCarteProfil(conteneur, personne, typeBouton, surClicBouton) {
     bouton.textContent = "Ajouter en ami";
     bouton.className = "bouton-ajouter";
   }
-  bouton.addEventListener("click", () => surClicBouton(personne.id)); 
+  bouton.addEventListener("click", () => surClicBouton(personne.id));
   carteProfil.appendChild(bouton);
 
   return carteProfil;
-}  
+}
 
 document.addEventListener("DOMContentLoaded", initProfil);

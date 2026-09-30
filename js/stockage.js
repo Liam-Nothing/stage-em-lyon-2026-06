@@ -33,3 +33,27 @@ function enregistrerNote(idLivre, maNote) {
     delete notes[idLivre];
     localStorage.setItem("mesNotes", JSON.stringify(notes));
 }*/
+
+/// FONCTION lireStatuts ///////
+function lireStatuts() {
+    const texte = localStorage.getItem("statutsLivres");
+
+    if (texte === null) {
+        return {};
+    }
+
+    try {
+        return JSON.parse(texte);
+    } catch (erreur) {
+        console.warn("Contenu de 'statutsLivres' illisible, réinitialisation :", erreur.message);
+        localStorage.removeItem("statutsLivres");
+        return {};
+    }
+}
+
+/// FONCTION enregistrerStatut ///////
+function enregistrerStatut(idLivre, statut) {
+    const statuts = lireStatuts();
+    statuts[idLivre] = statut;
+    localStorage.setItem("statutsLivres", JSON.stringify(statuts));
+}

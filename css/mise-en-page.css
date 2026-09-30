@@ -162,6 +162,7 @@ button:disabled {
 
 .fil-dactu {
     background-color: var(--bouton);
+    color: var(--primaire);
     height: fit-content;
     padding: 14px;
     display: flex;
@@ -218,10 +219,12 @@ h2.titre-fil-dactu {
 
 .carte-commentaire {
     margin: 0;
+    color: var(--secondaire-text);
 }
 
 .carte-titre-livre {
     font-weight: bold;
+    color: var(--text);
     margin: 0 0 4px 0;
 }
 
@@ -332,7 +335,8 @@ img.photo-profil {
 }
 
 div#liste-amis-profil {
-    background-color: #651926e3;
+    background-color: var(--bouton);
+    color: var(--primaire);
     padding: 15px;
     width: fit-content;
     margin: 0px;
@@ -340,7 +344,8 @@ div#liste-amis-profil {
 }
 
 div#liste-recco-amis-profil {
-    background-color: #651926b5;
+    background-color: var(--secondaire-bouton);
+    color: var(--primaire);
     padding: 15px;
     width: fit-content;
     margin: 0px;
@@ -423,6 +428,7 @@ img.couverture-card-profil {
 
 .div-couverture-colomn-index h5 {
     grid-area: pseudo;
+    color: var(--text);
     margin: 0;
     font-size: 1em;
 }
@@ -542,6 +548,14 @@ h3.stat-pile-a-lire {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.article-livre img {
+    width: 100%;
+    aspect-ratio: 140 / 190;
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
 }
 
 .div-bio {
