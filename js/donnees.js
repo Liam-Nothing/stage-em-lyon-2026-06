@@ -186,7 +186,7 @@ function remplirFicheAvis(avis, modele, utilisateurs) {
     const fiche = modele.cloneNode(true);
 
     const utilisateur = utilisateurs.find(u => u.id === avis.idUtilisateur);
-    const photoProfil = avis.photoProfil || (utilisateur ? utilisateur.photoProfil : "../assets/profil-defaut.png");
+    const photoProfil = avis.photoProfil || (utilisateur ? utilisateur.photoProfil : "../assets/pp1.png");
 
     const imgAvatar = fiche.querySelector(".img-avatar");
     imgAvatar.src = photoProfil;
