@@ -124,26 +124,6 @@ function trierAvisParDate(avis) {
     );
 }
 
-
-// fonction AVIS 
-async function initAvis() {
-    // Étape 1 : lire l'id dans l'URL
-    let parametresAvis = new URLSearchParams(window.location.search);
-    let idLivre = parametresAvis.get("id");
-
-    // Étape 2 : gérer le cas "id absent"
-    if (idLivre === null) {
-        afficherErreurLivre();
-        return;
-    }
-
-    // Étape 3 : charger les avis depuis le JSON
-    let aviss = await chargerTousLesAvis();
-
-    // Étape 4 : afficher l'avis trouvé
-    afficherAvisDuLivre(aviss, idLivre);
-}
-
 function avisDuLivre(aviss, idLivre) {
     return aviss.filter(unAvis => unAvis.idLivre === idLivre);
 }
@@ -159,7 +139,7 @@ function afficherEtatVideAvis(conteneur) {
     `;
 }
 
-function afficherAvisDuLivre(avis, idLivre) {
+async function afficherAvisDuLivre(avis, idLivre) {
     const conteneur = document.querySelector(".div-avis");
     const modele = conteneur.querySelector("article");
 
@@ -173,8 +153,10 @@ function afficherAvisDuLivre(avis, idLivre) {
         return;
     }
 
+    const utilisateurs = await chargerUtilisateurs();
+
     avisTries.forEach(unAvis => {
-        conteneur.appendChild(remplirFicheAvis(unAvis, modele));
+        conteneur.appendChild(remplirFicheAvis(unAvis, modele, utilisateurs));
     });
 }
 
@@ -200,27 +182,26 @@ function remplirEtoiles(conteneur, note) {
     }
 }
 
-function remplirFicheAvis(avis, modele) {
+function remplirFicheAvis(avis, modele, utilisateurs) {
     const fiche = modele.cloneNode(true);
 
+    const utilisateur = utilisateurs.find(u => u.id === avis.idUtilisateur);
+    const photoProfil = avis.photoProfil || (utilisateur ? utilisateur.photoProfil : "../assets/profil-defaut.png");
+
     const imgAvatar = fiche.querySelector(".img-avatar");
-    imgAvatar.src = avis.photoProfil;
+    imgAvatar.src = photoProfil;
     imgAvatar.alt = `photo de profil de ${avis.pseudo}`;
 
     const conteneurEtoiles = fiche.querySelector(".etoiles-avis");
     remplirEtoiles(conteneurEtoiles, avis.note);
 
     fiche.querySelector(".valeur-pseudo").textContent = avis.pseudo;
-    fiche.querySelectorAll("p")[1].textContent = avis.commentaire;
+    fiche.querySelector(".commentaire-avis-livre").textContent = avis.commentaire;
 
     const time = fiche.querySelector("time");
     time.textContent = avis.datePublicationCommentaire;
 
     return fiche;
-}
-
-if (document.querySelector(".div-avis")) {
-    initAvis();
 }
 
 
@@ -292,9 +273,9 @@ function afficherErreurAvis(champ, resultat) {
 //// FONCTION NORMALISER LE TEXTE ////
 
 function normaliser(texte) {
-    let resultat = texte.toLowerCase();      
-    resultat = resultat.normalize('NFD');     
-    resultat = resultat.replace(/\p{Diacritic}/gu, ''); 
+    let resultat = texte.toLowerCase();
+    resultat = resultat.normalize('NFD');
+    resultat = resultat.replace(/\p{Diacritic}/gu, '');
     return resultat;
 }
 

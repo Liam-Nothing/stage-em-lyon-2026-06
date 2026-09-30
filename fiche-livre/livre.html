@@ -126,10 +126,13 @@
 
                         <p id="sortie" aria-live="polite"></p>
 
-                        <p class="moyenne-avis">
-                            <span id="moyenne-avis">-</span> / 5
-                            (<span id="nombre-avis">0</span> avis)
-                        </p>
+                        <div class="moyenne-avis">
+                            <div class="ligne-note">
+                                <div class="etoiles-moyenne"></div>
+                                <span id="moyenne-avis">-</span> / 5
+                            </div>
+                            <p>(<span id="nombre-avis">0</span> avis)</p>
+                        </div>
                         <a href="#avis-modal-overlay" id="avis-modal-ouvrir">Laisser un commentaire</a>
 
                         <div class="avis-modal-overlay" id="avis-modal-overlay">
@@ -217,10 +220,10 @@
                         <h3>Avis des lecteurs</h3>
                         <div class="liste-avis">
                             <article class="article-avis">
-                                <div>
+                                <div class="entete-avis">
                                     <img class="img-avatar" src="" alt="">
+                                    <p class="valeur-pseudo"></p>
                                 </div>
-                                <p class="valeur-pseudo"></p>
                                 <p class="commentaire-avis-livre"></p>
                                 <div class="etoiles-avis"></div>
                                 <time datetime="2026-07"></time>

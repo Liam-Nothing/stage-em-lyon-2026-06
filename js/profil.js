@@ -5,7 +5,7 @@ async function initProfil() {
   let id = parametres.get("id");
 
   if (id === null) {
-    id = "user-456";
+    id = "user-456"; 
   }
 
   let utilisateurs = await chargerUtilisateurs();
@@ -197,10 +197,10 @@ function creerCarteProfil(conteneur, personne, typeBouton, surClicBouton) {
     bouton.textContent = "Ajouter en ami";
     bouton.className = "bouton-ajouter";
   }
-  bouton.addEventListener("click", () => surClicBouton(personne.id));
+  bouton.addEventListener("click", () => surClicBouton(personne.id)); 
   carteProfil.appendChild(bouton);
 
   return carteProfil;
-}
+}  
 
 document.addEventListener("DOMContentLoaded", initProfil);
