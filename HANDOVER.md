@@ -8,13 +8,7 @@
 
 ## 1. Bugs
 
-
-### 1.1 [Résultats de recherches pas assez visible]
-- **Fichier :** `css/mise-en-pages.css.`
-- **Symptôme :** Lorsqu’une recherche est effectué, les résultats s’affichent bien mais ils s’affichent trop bas sur la page index.html (on peut penser que la fonction de recherche ne fonctionne pas) 
-- **Piste de correction :**modifier ou ajouter une ou plusieurs propriété css afin de remonter les résultats plus haut sur la page 
-
-### 1.2 [Statut du livre non figé]
+### 1.1 [Statut du livre non figé]
 - **Fichier :** `fiche-livre/livre.js.`
 - **Symptôme :**Lorsqu’un statut est apposé sur le menu déroulant, celui ne se fige pas une fois que la page a été rechargé, il se remet automatiquement sur “à lire”.
 - **Piste de correction :**ajouter une fonction d’enregistrement du statut du span du menu déroulant après rechargement de la page. 
