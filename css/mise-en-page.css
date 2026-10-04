@@ -30,54 +30,79 @@ nav {
 
 
 /*///// STYLE FOOTER //////*/
+
+/* Le fond du footer */
 footer {
     background-color: var(--bouton);
     color: var(--primaire);
+    margin-top: 40px;
 }
 
-.div-signature {
-    background-color: var(--card);
+/* Les titres "CONTACTEZ-NOUS" et "ABONNEZ-VOUS" */
+footer h4 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+/* Le contenu : une colonne à gauche, une colonne à droite.
+   (la classe .container garde le footer à 1200px max et centré) */
+.div-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 20px;
+}
+
+/* Colonne de gauche */
+.contact-us {
+    margin-bottom: 20px;
 }
 
 .lien-reseaux-sociaux-row {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: fit-content;
+    gap: 20px;
 }
 
-.logo-rs-colomn {
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 10px;
+footer .icon {
+    width: 48px;
 }
 
-.contact-us {
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    padding: 10px;
-}
-
+/* Colonne de droite */
 .subscribe {
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    gap: 3px;
-    padding: 10px;
+    width: 450px;
 }
 
-.div-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 100px;
+.subscribe form {
+    align-items: flex-start;
+}
+
+.subscribe input {
+    width: 100%;
+    padding: 12px;
+}
+
+.subscribe button {
+    background-color: var(--primaire);
+    color: var(--bouton);
+}
+
+/* La bande du bas */
+.div-signature {
+    background-color: var(--card);
+    color: var(--secondaire-text);
+    text-align: center;
+    padding: 18px;
+}
+
+/* Sur téléphone : les deux colonnes passent l'une sous l'autre */
+@media (max-width: 700px) {
+    .div-footer {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .subscribe {
+        width: 100%;
+    }
 }
 
 
@@ -140,7 +165,6 @@ button:disabled {
     gap: 0;
     justify-content: space-between;
 }
-
 
 .div-fil-dactu {
     width: 360px;
@@ -290,74 +314,98 @@ form {
 
 /*///-----STYLE CSS PAGE PROFIL-----////*/
 
+/* Conteneur de la page : les sections s'empilent */
 .container-profil {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 100%;
-    gap: 16px;
+    gap: 40px;
 }
 
+
+/* 1. BANDEAU : photo qui dépasse en bas à gauche, pseudo à droite */
 .div-photo {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 200px;
+    padding: 0 24px 24px 302px;
+    margin-bottom: 25px;
     background-color: var(--bouton);
     color: var(--primaire);
     border-radius: 5px;
-    padding: 20px;
-    gap: 40px;
-    width: fit-content;
-    max-width: 1200px;
-    padding-left: 110px;
-    display: grid;
-    grid-template-rows: 20px;
-    padding-top: 90px;
 }
 
-img.img-amis {
-    grid-area: photo;
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
+.div-photo.squelette-colonne {
+    flex-direction: row;
+    align-items: center;
+    padding: 24px;
 }
 
 img.photo-profil {
-    width: 200px;
-    height: 200px;
+    position: absolute;
+    left: 137px;
+    bottom: -22px;
+    width: 133px;
+    height: 133px;
     border-radius: 50%;
-}
-
-div#liste-amis-profil {
-    background-color: var(--bouton);
-    color: var(--primaire);
-    padding: 15px;
-    width: fit-content;
-    margin: 0px;
-    border-radius: 5px;
-}
-
-div#liste-recco-amis-profil {
+    object-fit: cover;
     background-color: var(--secondaire-bouton);
-    color: var(--primaire);
-    padding: 15px;
-    width: fit-content;
-    margin: 0px;
+}
+
+h1.pseudo {
+    padding-left: 0;
+}
+
+
+/* 2. BIO (gauche) + STATS (droite) */
+.div-bio-stat {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
+    gap: 60px;
+    align-items: start;
+}
+
+p.biographie {
+    background-color: var(--card);
+    width: 100%;
+    min-height: 150px;
+    padding: 20px;
     border-radius: 5px;
-
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.div-mes-amis {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 560px;
+.div-bio-stat .div-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    justify-content: stretch;
+    justify-items: stretch;
 }
 
-.liste-avis {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.div-bio-stat article {
+    width: 100%;
+    max-width: none;
+}
+
+h3.stat-lu,
+h3.stat-en-cours,
+h3.stat-pile-a-lire {
+    font-size: 50px;
+}
+
+
+/* 3. ACTIVITES (gauche) + AMIES (droite) */
+.container-fil-activite {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+    justify-content: stretch;
+    justify-items: stretch;
 }
 
 .div-mes-activites {
@@ -366,12 +414,16 @@ div#liste-recco-amis-profil {
     gap: 10px;
 }
 
-.div-amis {
+.liste-avis {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 10px;
 }
 
+.div-mes-activites .carte-avis {
+    width: 100%;
+    max-width: none;
+}
 
 img.couverture-card-profil {
     width: 140px;
@@ -406,7 +458,6 @@ img.couverture-card-profil {
     min-width: 0;
 }
 
-
 .carte-avis>div>p:first-child {
     margin: 0 0 6px 0;
     font-size: 16px;
@@ -418,7 +469,52 @@ img.couverture-card-profil {
     color: var(--text);
 }
 
+.div-amis {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
 
+.div-mes-amis {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Les deux listes d'amies : cartes empilées en colonne */
+div#liste-amis-profil,
+div#liste-recco-amis-profil {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    width: 100%;
+    margin: 0;
+    padding: 15px;
+    color: var(--primaire);
+    border-radius: 5px;
+}
+
+div#liste-amis-profil {
+    background-color: var(--bouton);
+}
+
+div#liste-recco-amis-profil {
+    background-color: var(--secondaire-bouton);
+}
+
+/* Carte d'une amie */
+.div-couverture-colomn-index>a {
+    grid-area: photo;
+}
+
+img.img-amis {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
 
 .div-couverture-colomn-index h5 {
     grid-area: pseudo;
@@ -439,67 +535,33 @@ img.couverture-card-profil {
     overflow: hidden;
 }
 
-.bouton-retirer {
-    grid-area: bouton;
-    justify-self: start;
-    margin-top: 4px;
-}
-
+.bouton-retirer,
 .bouton-ajouter {
     grid-area: bouton;
     justify-self: start;
     margin-top: 4px;
 }
 
-h1.pseudo {
-    padding-left: 230px;
+
+/* Mobile : tout passe en une colonne */
+@media (max-width: 800px) {
+    .div-photo {
+        padding-left: 136px;
+    }
+
+    img.photo-profil {
+        left: 24px;
+        width: 96px;
+        height: 96px;
+    }
+
+    .div-bio-stat,
+    .container-fil-activite {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+    }
 }
 
-
-.div-bio-stat {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
-
-p.biographie {
-    background-color: var(--card);
-    width: fit-content;
-    height: 150px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-h3.stat-lu {
-    font-size: 50px;
-}
-
-h3.stat-en-cours {
-    font-size: 50px;
-}
-
-h3.stat-pile-a-lire {
-    font-size: 50px;
-}
-
-
-
-.container-profil {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 0px;
-    display: flex;
-    flex-direction: row;
-    gap: 100px;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
 
 .div-couverture-colomn-index-livre {
     display: flex;
@@ -566,39 +628,9 @@ img {
 
 @media (max-width: 768px) {
 
-    .container-profil {
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-        padding: 0 12px;
-        gap: 16px;
-    }
-
-
-    .container-profil>* {
-        width: 100%;
-        min-width: 0;
-        max-width: 100%;
-    }
-
-    .div-bio-stat {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .container-fil-activite,
     .div-row {
         flex-direction: column;
         width: 100%;
-    }
-}
-
-
-@media (max-width: 480px) {
-
-    .container-profil {
-        padding: 0 8px;
-        gap: 75px;
     }
 }
 
