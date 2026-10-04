@@ -31,7 +31,7 @@
   gap: 5px;
 }
 
-p.summury {
+p.summary {
   background-color: #FFFCF7;
   padding: 20px;
   border-radius: 5px;
@@ -147,12 +147,6 @@ input[type="text"] {
   padding: 25px 15px
 }
 
-.div-couverture-colomn-index.img {
-  width: 100px;
-}
-
-
-
 .grille-flex-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -160,11 +154,6 @@ input[type="text"] {
   width: fit-content;
   margin: auto;
   align-items: center;
-}
-
-.div-couverture-colomn.img {
-  width: 324px;
-  height: 381px;
 }
 
 
@@ -232,13 +221,6 @@ legend {
 
 .note-etoile label.demi-droite::before {
   left: -0.5em;
-  animation: star-pop 120ms ease-out;
-}
-
-
-.demie {
-  width: 15px;
-  height: 24px;
   animation: star-pop 120ms ease-out;
 }
 
@@ -517,11 +499,6 @@ time {
   border-color: var(--erreur) !important;
 }
 
-.message-erreur {
-  color: var(--erreur);
-  font-size: 13px;
-  margin: 6px 0 0;
-}
 
 /* MESSAGES ERREURS*/
 .message {
