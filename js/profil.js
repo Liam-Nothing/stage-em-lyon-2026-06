@@ -11,10 +11,14 @@ async function initProfil() {
   let utilisateurs = await chargerUtilisateurs();
   let avis = await chargerTousLesAvis();
 
+  if (utilisateurs === null) {
+  return;
+}
+
   let utilisateur = trouverUtilisateur(utilisateurs, id);
 
   if (utilisateur === undefined) {
-    afficherErreurPorfil();
+    afficherErreurProfil();
     return;
   }
 
@@ -26,6 +30,8 @@ function trouverUtilisateur(utilisateurs, id) {
 }
 
 function afficherErreurProfil() {
+  document.title = "Profil introuvable - Livrio";
+
   document.querySelector("main").innerHTML = `
     <p>Profil introuvable.</p>
     <a href="../profil/profil.html">Retour à ton profil</a>
@@ -33,6 +39,8 @@ function afficherErreurProfil() {
 }
 
 function remplirFicheProfil(utilisateur, tousLesAvis, tousLesUtilisateurs) {
+  document.title = `${utilisateur.pseudo} - Livrio`;
+
   document.querySelector(".photo-profil").src = utilisateur.photoProfil;
   document.querySelector(".pseudo").textContent = `Salut ${utilisateur.pseudo}!`;
   document.querySelector(".biographie").textContent = utilisateur.biographie;

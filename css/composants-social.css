@@ -22,28 +22,6 @@
     margin-bottom: 1rem;
 }
  
-.carte-avis__entete {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
- 
-.carte-avis__auteur {
-    font-weight: 600;
-    color: var(--text);
-}
- 
-.carte-avis__note {
-    color: var(--bouton);
-    font-size: 14px;
-}
- 
-.carte-avis__texte {
-    color: var(--secondaire-text);
-    font-size: 15px;
-    line-height: 1.5;
-}
- 
 
 
 /* --- CARTE AVIS UTILISATEUR COURANT (PROFIL.HTML) --- */
@@ -68,21 +46,6 @@
 
 
 /* --- LISTE AMIS (PROFIL.HTML) --- */
-.liste-amies .div-couverture-colomn-index {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 140px;
-}
-
-.liste-amies .div-couverture-colomn-index img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
 .liste-amies-actuelles,
 .liste-amies-recommandees {
     display: flex;

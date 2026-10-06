@@ -74,7 +74,7 @@ function trouverLivre(livres, id) {
 
 // Affiche le message d'erreur avec un lien de retour
 function afficherErreurLivre() {
-  // Le squelette ne doit pas tourner indéfiniment si le livre est introuvable
+  document.title = "Livre introuvable - Livrio";
   masquerSquelette("fiche-livre");
 
   document.querySelector(".div-row.fil-activite").innerHTML = `
@@ -86,8 +86,11 @@ function afficherErreurLivre() {
 
 // Remplit la page avec les infos du livre trouvé
 function remplirFicheLivre(livre) {
+  document.title = `${livre.titre} - Livrio`;
   document.querySelector(".titre-livre").textContent = livre.titre;
-  document.querySelector(".summury").textContent = livre.resume;
+
+  document.querySelector(".titre-livre").textContent = livre.titre;
+  document.querySelector(".summary").textContent = livre.resume;
 
   document.querySelector(".valeur-auteur").textContent = livre.auteur;
   document.querySelector(".valeur-date").textContent = livre.dateDePublication;
